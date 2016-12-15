@@ -11,7 +11,7 @@ namespace InscricoesCrescer.Repositorio
 
         }
 
-        public DbSet<CandidatoEntidade> Usuario { get; set; }
+        public DbSet<CandidatoEntidade> Candidato { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscricoesCrescer.Dominio",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscricoesCrescer.Infraestrutura", "InscricoesCrescer.Infraestrutura\InscricoesCrescer.Infraestrutura.csproj", "{1AD6516D-B450-4FBA-8B67-03E2A651D62E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscricoesCrescer.Mock", "InscricoesCrescer.Mock\InscricoesCrescer.Mock.csproj", "{B0BA3466-7812-44CB-82D5-514F9D961FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscricoesCrescer.Test", "InscricoesCrescer.Test\InscricoesCrescer.Test.csproj", "{C842B697-739F-48E2-8410-2F86DB1E626B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{1AD6516D-B450-4FBA-8B67-03E2A651D62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AD6516D-B450-4FBA-8B67-03E2A651D62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AD6516D-B450-4FBA-8B67-03E2A651D62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0BA3466-7812-44CB-82D5-514F9D961FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0BA3466-7812-44CB-82D5-514F9D961FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0BA3466-7812-44CB-82D5-514F9D961FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0BA3466-7812-44CB-82D5-514F9D961FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C842B697-739F-48E2-8410-2F86DB1E626B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C842B697-739F-48E2-8410-2F86DB1E626B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C842B697-739F-48E2-8410-2F86DB1E626B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C842B697-739F-48E2-8410-2F86DB1E626B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
