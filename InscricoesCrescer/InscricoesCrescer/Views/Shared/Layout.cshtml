@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout</title>
+</head>
+<body>
+    <header>
+        <span><a href="@Url.Action("Index", "Administrativo")">Inicio</a></span>
+        <span><a>Administrativo CWI</a></span>
+        <span><a href="@Url.Action("Logout", "Login")">Logout</a></span>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <h3 style="text-align:center;">@DateTime.Now</h3>
+</body>
+</html>

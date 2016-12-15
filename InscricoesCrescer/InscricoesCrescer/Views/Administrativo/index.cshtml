@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Pagina Inicial";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div> 
+        <span><a href="@Url.Action("ProcessoSeletivo", "Administrativo")">Abrir Processo Seletivo</a></span>
+        <span><a href="@Url.Action("ListaCandidatos", "Administrativo")">Lista de Candidatos</a></span>
+    </div>
+</body>
+</html>
