@@ -17,7 +17,19 @@ namespace InscricoesCrescer.Dominio.Candidato
 
         public void Salvar(CandidatoEntidade candidato)
         {
-            this.candidatoRepositorio.Salvar(candidato);            
+            if (candidato.Id == 0 || candidato.Id == null)
+            {
+                this.candidatoRepositorio.Criar(candidato);
+            }
+            else
+            {
+                this.candidatoRepositorio.Editar(candidato);
+            }
+        }
+
+        public CandidatoEntidade BuscarCandidatoPorID(int id)
+        {
+            return this.candidatoRepositorio.BuscarPorId(id);
         }
              
     }

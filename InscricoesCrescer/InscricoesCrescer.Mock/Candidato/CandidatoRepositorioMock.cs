@@ -40,14 +40,20 @@ namespace InscricoesCrescer.Mock.Candidato
             }
         };
 
+        public CandidatoEntidade BuscarPorId(int id)
+        {
+            return candidatos.FirstOrDefault(_ => _.Id == id);
+        }
+
         public void Criar(CandidatoEntidade candidato)
         {
+            candidato.Id = 4;
             candidatos.Add(candidato);            
         }
+
         public void Editar(CandidatoEntidade candidato)
         {
-            CandidatoEntidade candidatoASerModificado = candidatos.FirstOrDefault(_ => _.Id == candidato.Id);
-            candidatoASerModificado = candidato;
+            throw new NotImplementedException();
         }
     }
 }

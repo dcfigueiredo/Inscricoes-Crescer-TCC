@@ -8,6 +8,10 @@ namespace InscricoesCrescer.Dominio.Candidato
 {
     public interface ICandidatoRepositorio
     {
-        void Salvar(CandidatoEntidade candidato);
+        void Criar(CandidatoEntidade candidato);
+
+        void Editar(CandidatoEntidade candidato);
+
+        CandidatoEntidade BuscarPorId(int id);
     }
 }
