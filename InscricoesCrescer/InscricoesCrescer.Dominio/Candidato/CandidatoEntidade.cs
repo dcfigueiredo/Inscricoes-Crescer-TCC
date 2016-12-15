@@ -11,6 +11,8 @@ namespace InscricoesCrescer.Dominio.Candidato
 
         public string Instituicao { get; set; }
 
+        public string Curso { get; set; }
+
         public DateTime Conclusao { get; set; }
     }
 }
