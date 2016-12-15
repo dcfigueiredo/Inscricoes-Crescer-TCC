@@ -1,5 +1,5 @@
 ﻿using InscricoesCrescer.Dominio.Email;
-using Loja.Infraestrutura;
+using InscricoesCrescer.Infraestrutura.Service;
 using System;
 using System.Net.Mail;
 

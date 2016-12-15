@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\AdministradorRepositorio.cs" />
     <Compile Include="Candidato\CandidatoRepositorio.cs" />
     <Compile Include="ContextoDeDados.cs" />
     <Compile Include="Migrations\201612151557110_InserirCandidatoEntidade.cs" />

@@ -1,4 +1,5 @@
-﻿using InscricoesCrescer.Dominio.Candidato;
+﻿using InscricoesCrescer.Dominio.Administrador;
+using InscricoesCrescer.Dominio.Candidato;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -12,6 +13,7 @@ namespace InscricoesCrescer.Repositorio
         }
 
         public DbSet<CandidatoEntidade> Candidato { get; set; }
+        public DbSet<AdministradorEntidade> Administrador { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

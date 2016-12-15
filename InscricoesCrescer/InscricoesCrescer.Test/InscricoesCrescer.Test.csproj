@@ -61,6 +61,10 @@
       <Project>{0CFF267C-AF6E-4703-A0D6-7AE1DCFC015E}</Project>
       <Name>InscricoesCrescer.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InscricoesCrescer.Infraestrutura\InscricoesCrescer.Infraestrutura.csproj">
+      <Project>{1ad6516d-b450-4fba-8b67-03e2a651d62e}</Project>
+      <Name>InscricoesCrescer.Infraestrutura</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InscricoesCrescer.Mock\InscricoesCrescer.Mock.csproj">
       <Project>{B0BA3466-7812-44CB-82D5-514F9D961FAD}</Project>
       <Name>InscricoesCrescer.Mock</Name>
