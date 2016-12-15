@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Candidato\CandidatoEntidade.cs" />
     <Compile Include="Criptografia\IServicoCriptografia.cs" />
     <Compile Include="Email\IServicoEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
