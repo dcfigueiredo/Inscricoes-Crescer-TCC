@@ -1,16 +1,13 @@
 ﻿using InscricoesCrescer.Dominio.Email;
+using Loja.Infraestrutura;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InscricoesCrescer.Infraestrutura.Email
 {
     public class ServicoEmail : IServicoEmail
     {
-        public bool enviarEmailConfirmacao(string para, string linkConfirmacao)
+        public bool enviarEmailConfirmacao(string destinatario)
         {
             // Hotmail                                          gmail
             //smtp.Host = "smtp.live.com";                  smtp.Host = "smtp.gmail.com";
@@ -18,10 +15,10 @@ namespace InscricoesCrescer.Infraestrutura.Email
             //email:rodrigo.scheuer@hotmail.com             email:  emailTesteCwi@gmail.com
             //                                              senha: GAoXIP3tC0Qv
             string assunto = "Confirmação de cadastro no projeto Crescer";
-            string mensagem = "Link de confirmação aqui -> ";
+            string mensagem = "Link de confirmação aqui -> " + GerarLink(destinatario);
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            MailMessage mail = new MailMessage("emailTesteCwi@gmail.com", para, assunto, mensagem);
+            MailMessage mail = new MailMessage("emailTesteCwi@gmail.com", destinatario, assunto, mensagem);
 
             smtp.UseDefaultCredentials = false;
             smtp.EnableSsl = true;
@@ -42,6 +39,14 @@ namespace InscricoesCrescer.Infraestrutura.Email
             {
                 mail.Dispose();
             }
+        }
+
+        public static string GerarLink(string email)
+        {
+            ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
+            string token = servicoCriptografia.Criptografar(email);
+            string link = "Home/ConfirmaCadastro/token=" + token;
+            return link;
         }
     }
 }

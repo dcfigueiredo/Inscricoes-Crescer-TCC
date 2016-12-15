@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using InscricoesCrescer.Dominio;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 
 namespace InscricoesCrescer.Controllers
@@ -8,6 +9,12 @@ namespace InscricoesCrescer.Controllers
         
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult ConfirmaCadastro(string token)
+        {
+            // alterar aki status do candidato
             return View();
         }
 
@@ -24,5 +31,6 @@ namespace InscricoesCrescer.Controllers
                 return false;
             }
         }
+
     }
 }

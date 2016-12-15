@@ -8,6 +8,6 @@ namespace InscricoesCrescer.Dominio.Email
 {
     public interface IServicoEmail
     {
-        bool enviarEmailConfirmacao(string para, string LinkConfirmacao);
+        bool enviarEmailConfirmacao(string para);
     }
 }

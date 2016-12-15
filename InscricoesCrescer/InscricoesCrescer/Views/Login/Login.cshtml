@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="tela-login">
+        <h1 class="titulo-login">Login</h1>
+
+        @using (Html.BeginForm("FazerLogin", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBox("email", "", new { placeholder = "E-mail" });
+            <br /><br />
+            @Html.Password("senha", "", new { placeholder = "Senha" });
+            <br /><br />
+            <button type="submit" class="btn btn-success">Entrar</button>
+        }
+        <h5 style="color:red;">@TempData["mensagemLogin"]</h5>
+    </div>
+</body>
+</html>
+
