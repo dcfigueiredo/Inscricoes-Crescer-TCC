@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201612151557110_InserirCandidatoEntidade.Designer.cs">
       <DependentUpon>201612151557110_InserirCandidatoEntidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612151642073_Adicionar campo de Curso na entidade Candidato.cs" />
+    <Compile Include="Migrations\201612151642073_Adicionar campo de Curso na entidade Candidato.Designer.cs">
+      <DependentUpon>201612151642073_Adicionar campo de Curso na entidade Candidato.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612151557110_InserirCandidatoEntidade.resx">
       <DependentUpon>201612151557110_InserirCandidatoEntidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151642073_Adicionar campo de Curso na entidade Candidato.resx">
+      <DependentUpon>201612151642073_Adicionar campo de Curso na entidade Candidato.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

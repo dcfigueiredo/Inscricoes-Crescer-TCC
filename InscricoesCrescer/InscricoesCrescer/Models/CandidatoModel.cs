@@ -13,13 +13,17 @@ namespace InscricoesCrescer.Models
         public string Nome { get; set; }
 
         [Required]
-        [DisplayName("Nome completo:")]
+        [DisplayName("E-mail:")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
         [DisplayName("Instituição de ensino:")]
         public string Instituicao { get; set; }
+
+        [Required]
+        [DisplayName("Curso:")]
+        public string Curso { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
