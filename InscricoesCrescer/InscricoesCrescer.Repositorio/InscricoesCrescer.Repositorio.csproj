@@ -49,11 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextoDeDados.cs" />
+    <Compile Include="Migrations\201612151557110_InserirCandidatoEntidade.cs" />
+    <Compile Include="Migrations\201612151557110_InserirCandidatoEntidade.Designer.cs">
+      <DependentUpon>201612151557110_InserirCandidatoEntidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InscricoesCrescer.Dominio\InscricoesCrescer.Dominio.csproj">
+      <Project>{0cff267c-af6e-4703-a0d6-7ae1dcfc015e}</Project>
+      <Name>InscricoesCrescer.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612151557110_InserirCandidatoEntidade.resx">
+      <DependentUpon>201612151557110_InserirCandidatoEntidade.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
