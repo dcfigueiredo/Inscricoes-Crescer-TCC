@@ -10,7 +10,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
 {
     public class CandidatoRepositorio : ICandidatoRepositorio
     {
-        public void salvar(CandidatoEntidade candidato)
+        public void Salvar(CandidatoEntidade candidato)
         {
             using (var context = new ContextoDeDados())
             {
