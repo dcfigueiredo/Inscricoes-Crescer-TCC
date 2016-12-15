@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="Models\CandidatoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servico\ServicoDeDependencia.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
