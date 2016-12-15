@@ -139,8 +139,6 @@
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-<<<<<<< Updated upstream
-=======
     <Content Include="Views\Home\ConfirmaCadastro.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
