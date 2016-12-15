@@ -145,7 +145,6 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
->>>>>>> Stashed changes
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
