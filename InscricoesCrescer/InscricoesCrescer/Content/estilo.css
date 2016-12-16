@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-family: Georgia,sans-serif; 
     color: #262626;
 }
 
@@ -14,55 +14,39 @@ body {
     margin-left: 35%;
     width: 400px;
     height: 350px;
-    background: white;
-    background-size:cover;
-    border-radius: 5px;
-    padding-top: 20px;
-}
+    background-color: #DFE0E2; 
+    background-size:cover; 
+    border-radius: 5px; 
+    padding-top: 20px; 
+} 
+ 
+.menu{ 
+    background-color: #262626; 
+    height: 130px; 
+} 
+ 
+.menu img{ 
+  height: 100px; 
+  width: 120px; 
+  margin: 10px; 
+} 
+ 
+ 
+.boneco img{ 
+    width:150px; 
+    height:260px; 
+} 
+ 
+.boneco{ 
+    width: 140px; 
+    float: right; 
+    position: absolute; 
+    margin-left: 777px; 
+    margin-top: 89px; 
+} 
+ 
 
-.logo-menu{
-    display: inline-block;
-    background-image:url(http://logo.empregos.com.br/45048_G.jpg);
-    background-size:cover;
-    width:200px;
-    height:100px;
-}
-
-    .tela-inicial a {
-        text-decoration: none;
-        padding-top:20px;
-        color: black;
-        font-size: 30px;
-    }
-
-    .tela-inicial a:hover{
-        color:silver;
-    }
-
-#icon-center {
-    padding-left: 35%;
-}
-
-.tela-confirmacao {
-    background: url(https://media.lovemondays.com.br/logos/e3b058/cwi-software-original.png) no-repeat center center fixed;
-}
-
-#logo {
-    background: url(https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAOyAAAAJDJmYzQ3MTU2LTcyNTctNDAzMS05NjY2LTRlNDg5NDFkNjk0MQ.png) no-repeat;
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    padding-left: 20px;
-}
-
-.navbar-header {
-    margin-left: 15px !important;
-}
-
-.navbar-fixed-top {
-    font-size: 20px !important;
-}
-
-.body-layout {
-    background:url(http://orig11.deviantart.net/b6a3/f/2011/157/7/d/background_by_dilshan91-d3i95ek.jpg) no-repeat center center fixed;
-}
+ 
+.g-recaptcha{ 
+  margin: 20px; 
+} 

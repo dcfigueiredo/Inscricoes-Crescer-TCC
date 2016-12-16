@@ -14,12 +14,16 @@ body {
     border: solid;
     border-radius: 5px;
     border-color:white;
-    background-color:white;
+     border-color:#DFE0E2; 
+    background-color:#DFE0E2; 
+    /*background-color:#DFE0E2;*/ 
 }
 
-.titulo-login{
+#titulo-login{ 
+    padding-top: 10px; 
     margin-bottom:50px;
     font-family:Centaur;
     font-weight:bold;
     font-size:50px;
+    color:#F49D33; 
 }
