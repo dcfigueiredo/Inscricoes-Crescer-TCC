@@ -1,7 +1,7 @@
 ﻿using InscricoesCrescer.Dominio.Administrador;
 using System.Web;
 
-namespace InscricoesCrescer.Infraestrutura.Service
+namespace InscricoesCrescer.Servico
 {
     public class ServicoDeAutenticacao
     {
@@ -21,3 +21,5 @@ namespace InscricoesCrescer.Infraestrutura.Service
         }
     }
 }
+
+
