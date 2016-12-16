@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InscricoesCrescer.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace InscricoesCrescer.Controllers
     public class AdministrativoController : Controller
     {
         // GET: Administrativo
+        [Autorizador]
         public ActionResult Index()
         {
 
