@@ -31,7 +31,8 @@ namespace InscricoesCrescer.Controllers
                 if (emailCriptografado.Equals(id))
                 {
                     CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(item.Email);
-                    candidatoServico.Salvar(AlterarStatusParaInteresse(candidato));
+                    candidato.Status = "Interesse";
+                    candidatoServico.Salvar(candidato);
                     TempData["cadastradoComSucesso"] = "Email Confirmado!";
                     return View();
                 }
@@ -52,8 +53,15 @@ namespace InscricoesCrescer.Controllers
                 {
                     CandidatoEntidade candidato = converterCandidato(model);
                     candidatoServico.Salvar(candidato);
-                    servico.enviarEmailConfirmacao(model.Email);
-                    TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
+                    if (servico.enviarEmailConfirmacao(model.Email))
+                    {
+                        TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
+
+                        TempData["msg"] = "Confirme seu e-mail.";
+                    } else
+                    {
+                        ModelState.AddModelError("", "Ocorreu algum erro.");
+                    }
                 }
             }else
             {
@@ -72,19 +80,6 @@ namespace InscricoesCrescer.Controllers
             candidato.Conclusao = model.Conclusao;
             candidato.Status = "Inicial";
             return candidato;
-        }
-
-        private CandidatoEntidade AlterarStatusParaInteresse(CandidatoEntidade candidato)
-        {
-            CandidatoEntidade novoCandidato = new CandidatoEntidade();
-            novoCandidato.Id = candidato.Id;
-            novoCandidato.Email = candidato.Email;
-            novoCandidato.Nome = candidato.Nome;
-            novoCandidato.Instituicao = candidato.Instituicao;
-            novoCandidato.Curso = candidato.Curso;
-            novoCandidato.Conclusao = candidato.Conclusao;
-            novoCandidato.Status = "Interesse";
-            return novoCandidato;
         }
         /*
          * //http://www.dotnetawesome.com/2015/12/google-new-recaptcha-using-aspnet-mvc.html
