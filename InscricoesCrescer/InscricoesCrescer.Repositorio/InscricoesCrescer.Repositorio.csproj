@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201612151941577_MudarNomeDaPropriedadeCandidatoEntidade.Designer.cs">
       <DependentUpon>201612151941577_MudarNomeDaPropriedadeCandidatoEntidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612160053486_NovaMigrationComAdministrador.cs" />
+    <Compile Include="Migrations\201612160053486_NovaMigrationComAdministrador.Designer.cs">
+      <DependentUpon>201612160053486_NovaMigrationComAdministrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612151941577_MudarNomeDaPropriedadeCandidatoEntidade.resx">
       <DependentUpon>201612151941577_MudarNomeDaPropriedadeCandidatoEntidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612160053486_NovaMigrationComAdministrador.resx">
+      <DependentUpon>201612160053486_NovaMigrationComAdministrador.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System;
 using InscricoesCrescer.Dominio.Candidato;
 using InscricoesCrescer.Servico;
+using InscricoesCrescer.Infraestrutura;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -29,24 +30,19 @@ namespace InscricoesCrescer.Controllers
         {
             if (ModelState.IsValid)
             {
-                CandidatoEntidade candidato = converterCandidato(model);
-                candidatoServico.Salvar(candidato);
+                ServicoEmail servico = new ServicoEmail();
+                if (servico.ValidaEmail(model.Email))
+                {
+                    CandidatoEntidade candidato = converterCandidato(model);
+                    candidatoServico.Salvar(candidato);
+                    servico.enviarEmailConfirmacao(model.Email);
+                    TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
+                }
+            }else
+            {
+                ModelState.AddModelError("", "Ocorreu algum erro.");
             }
             return View("Index");
-        }
-
-        public static bool ValidaEnderecoEmail(string enderecoEmail)
-        {
-            Regex expressaoRegex = new Regex(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}");
-
-            if (expressaoRegex.IsMatch(enderecoEmail))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         private CandidatoEntidade converterCandidato(CandidatoModel model)
