@@ -1,5 +1,4 @@
-﻿
-using InscricoesCrescer.Dominio.Administrador;
+﻿using InscricoesCrescer.Dominio.Administrador;
 using System.Web;
 
 namespace InscricoesCrescer.Infraestrutura.Service
