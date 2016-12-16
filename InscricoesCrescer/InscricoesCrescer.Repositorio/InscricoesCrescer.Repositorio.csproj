@@ -68,6 +68,14 @@
     <Compile Include="Migrations\201612160214503_AdicionaStatusNoCandidato.Designer.cs">
       <DependentUpon>201612160214503_AdicionaStatusNoCandidato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612161918241_AdionarNovosCamposCandidato.cs" />
+    <Compile Include="Migrations\201612161918241_AdionarNovosCamposCandidato.Designer.cs">
+      <DependentUpon>201612161918241_AdionarNovosCamposCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612161946278_mudarDataNascimentoParaAnulavel.cs" />
+    <Compile Include="Migrations\201612161946278_mudarDataNascimentoParaAnulavel.Designer.cs">
+      <DependentUpon>201612161946278_mudarDataNascimentoParaAnulavel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612160214503_AdicionaStatusNoCandidato.resx">
       <DependentUpon>201612160214503_AdicionaStatusNoCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612161918241_AdionarNovosCamposCandidato.resx">
+      <DependentUpon>201612161918241_AdionarNovosCamposCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612161946278_mudarDataNascimentoParaAnulavel.resx">
+      <DependentUpon>201612161946278_mudarDataNascimentoParaAnulavel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

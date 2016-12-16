@@ -11,6 +11,7 @@ namespace InscricoesCrescer.Controllers
         // GET: Administrativo
         public ActionResult Index()
         {
+
             return View();
         }
     }
