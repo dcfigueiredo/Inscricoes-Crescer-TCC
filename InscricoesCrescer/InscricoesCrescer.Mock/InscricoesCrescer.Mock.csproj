@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\AdministradorRepositorioMock.cs" />
     <Compile Include="Candidato\CandidatoRepositorioMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

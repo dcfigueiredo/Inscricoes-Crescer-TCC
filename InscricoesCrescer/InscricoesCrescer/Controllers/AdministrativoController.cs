@@ -9,6 +9,7 @@ namespace InscricoesCrescer.Controllers
     public class AdministrativoController : Controller
     {
         // GET: Administrativo
+        
         public ActionResult Index()
         {
             return View();
