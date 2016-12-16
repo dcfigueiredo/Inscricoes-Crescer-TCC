@@ -30,5 +30,8 @@ namespace InscricoesCrescer.Models
         [DisplayName("Data de concluão do curso:")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Conclusao { get; set; }
+
+        [DisplayName("Status: ")]
+        public string Status { get; set; }
     }
 }
