@@ -38,8 +38,10 @@ namespace InscricoesCrescer.Controllers
                     servico.enviarEmailConfirmacao(model.Email);
                     TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
                 }
+            }else
+            {
+                ModelState.AddModelError("", "Ocorreu algum erro.");
             }
-            ModelState.AddModelError("", "Ocorreu algum erro.");
             return View("Index");
         }
 
