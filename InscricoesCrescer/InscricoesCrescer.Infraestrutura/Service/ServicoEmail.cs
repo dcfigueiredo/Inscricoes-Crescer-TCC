@@ -2,8 +2,9 @@
 using InscricoesCrescer.Infraestrutura.Service;
 using System;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
-namespace InscricoesCrescer.Infraestrutura.Email
+namespace InscricoesCrescer.Infraestrutura
 {
     public class ServicoEmail : IServicoEmail
     {
@@ -12,8 +13,8 @@ namespace InscricoesCrescer.Infraestrutura.Email
             // Hotmail                                          gmail
             //smtp.Host = "smtp.live.com";                  smtp.Host = "smtp.gmail.com";
             //smtp.Port = 587;                              smtp.Port = 465;
-            //email:rodrigo.scheuer@hotmail.com             email:  emailTesteCwi@gmail.com
-            //                                              senha: GAoXIP3tC0Qv
+            //email:rodrigo.scheuer@hotmail.com             email:  emailTesteCwi@gmail.com  senha: GAoXIP3tC0Qv
+
             string assunto = "Confirmação de cadastro no projeto Crescer";
             string mensagem = "Link de confirmação aqui -> " + GerarLink(destinatario);
 
@@ -41,12 +42,26 @@ namespace InscricoesCrescer.Infraestrutura.Email
             }
         }
 
-        public static string GerarLink(string email)
+        private string GerarLink(string email)
         {
             ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
             string token = servicoCriptografia.Criptografar(email);
-            string link = "Home/ConfirmaCadastro/token=" + token;
+            string link = "Home/ConfirmaCadastro/id=" + token;
             return link;
+        }
+
+        public bool ValidaEmail(string enderecoEmail)
+        {
+            Regex expressaoRegex = new Regex(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}");
+
+            if (expressaoRegex.IsMatch(enderecoEmail))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
