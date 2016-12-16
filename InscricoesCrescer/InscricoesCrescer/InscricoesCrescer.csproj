@@ -130,11 +130,13 @@
     <Compile Include="Controllers\AdministrativoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Filters\Autorizador.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdministradorModel.cs" />
     <Compile Include="Models\CandidatoModel.cs" />
+    <Compile Include="Models\CandidatoModel2.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -151,6 +153,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\Administrativo\_ListaCandidatos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

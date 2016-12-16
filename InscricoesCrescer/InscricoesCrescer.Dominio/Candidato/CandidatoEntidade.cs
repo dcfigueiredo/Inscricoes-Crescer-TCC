@@ -16,5 +16,15 @@ namespace InscricoesCrescer.Dominio.Candidato
         public DateTime Conclusao { get; set; }
 
         public string Status { get; set; }
+
+        public int Telefone { get; set; }
+
+        public string Linkedin { get; set; }
+
+        public DateTime? DataNascimento { get; set; }
+
+        public string Cidade { get; set; }
+
+        public string Senha { get; set; }
     }
 }

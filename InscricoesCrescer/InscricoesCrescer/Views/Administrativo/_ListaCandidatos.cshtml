@@ -1,0 +1,39 @@
+﻿@model List<InscricoesCrescer.Models.CandidatoModel2>
+@using InscricoesCrescer.Models
+
+<div id="lista-candidatos">
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Idade</th>
+                <th>Email</th>
+                <th>Situação</th>
+                <th>Linkedin</th>
+                <th>Editar</th>
+                <th>Entrevistar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (CandidatoModel2 item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.Telefone</td>
+                        <td>@item.Idade</td>
+                        <td>@item.Email</td>
+                        <td>@item.Status</td>
+                        <td>@item.Linkedin</td>
+                        <td>@Html.ActionLink("Entrevistar", "Entrevistar", "Administrativo", new { id = @item.Id }, null)</td>
+                        <td>@Html.ActionLink("Editar", "Editar", "Administrativo", new { id = @item.Id }, null)</td>
+                                @*<a href="/Administrativo/Editar?id=1">Editar</a>*@
+                    </tr>
+                    }
+             }
+        </tbody>
+    </table>
+
+</div>
