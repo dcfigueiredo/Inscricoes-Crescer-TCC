@@ -5,25 +5,19 @@
 }
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/estilo.css" rel="stylesheet" />
-<!--js captcha-->
+!--js captcha-->
 <script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>
 
-<div class="menu">
-  <img src="Content/imagens/logo-cwi.png" alt="Logo-Cwi">
-</div>
 <div class="container">
-    <!-- <div class="row">-->
-<div class="boneco">
-    <img src="Content/imagens/boneco.jpg" alt="Logo-Cwi">
-</div>
-    <h2 class="cadastro">Cadastro do Candidato</h2>
-    
+    <div class="row">
+        <h2 class="cadastro">Cadastro</h2>
+
         <h3 style="color:green">
             @TempData["cadastradoComSucesso"]
         </h3>
 
         @using (Html.BeginForm("Salvar", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
-            {
+        {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.AntiForgeryToken()
 
@@ -42,39 +36,38 @@
                 </div>
             </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Instituicao, new { @class = "col-sm-2 control-label" })
-                    <div class="col-sm-5">
-                        @Html.TextBoxFor(model => model.Instituicao, new { @class = "form-control", required = "" })
-                        @Html.ValidationMessageFor(model => model.Instituicao)
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Instituicao, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Instituicao, new { @class = "form-control", required = "" })
+                    @Html.ValidationMessageFor(model => model.Instituicao)
                 </div>
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Curso, new { @class = "col-sm-2 control-label" })
-                        <div class="col-sm-5">
-                            @Html.TextBoxFor(model => model.Curso, new { @class = "form-control", required = "" })
-                            @Html.ValidationMessageFor(model => model.Curso)
-                        </div>
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Curso, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Curso, new { @class = "form-control", required = "" })
+                    @Html.ValidationMessageFor(model => model.Curso)
+                </div>
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Conclusao, new { @class = "col-sm-2 control-label" })
-                        <div class="col-sm-5">
-                            @Html.TextBoxFor(model => model.Conclusao, new { @class = "form-control datefield", type = "date", required = "" })
-                            @Html.ValidationMessageFor(model => model.Conclusao)
-                        </div>
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Conclusao, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Conclusao, new { @class = "form-control datefield", type = "date", required = "" })
+                    @Html.ValidationMessageFor(model => model.Conclusao)
+                </div>
+            </div>
             <!-- Tema dark :  data-theme="dark"-->
-                    <div class="g-recaptcha" data-sitekey="6LcE5Q4UAAAAAPVGVzEHWQ5-TiVTSkATErHGGJG4"></div>
+            <div class="g-recaptcha" data-sitekey="6LcE5Q4UAAAAAPVGVzEHWQ5-TiVTSkATErHGGJG4" ></div>
 
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Salvar</button>
-                        </div>
-                    </div>
+            
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Salvar</button>
+                </div>
+            </div>
         }
-    
+    </div>
 </div>
-<!--</div>-->

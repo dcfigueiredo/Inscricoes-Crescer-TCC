@@ -1,7 +1,6 @@
 ﻿
 body {
-    background-color:#DFE0E2;
-    font-family: Georgia,sans-serif;
+    background:url(http://orig11.deviantart.net/b6a3/f/2011/157/7/d/background_by_dilshan91-d3i95ek.jpg) no-repeat center center fixed;
 }
 
 .tela-login{
@@ -14,17 +13,13 @@ body {
     left:40%;
     border: solid;
     border-radius: 5px;
-    border-color:#DFE0E2;
-    background-color:#DFE0E2;
-    /*background-color:#DFE0E2;*/
+    border-color:white;
+    background-color:white;
 }
 
-
-
-#titulo-login{
-    padding-top: 10px;
+.titulo-login{
     margin-bottom:50px;
+    font-family:Centaur;
     font-weight:bold;
     font-size:50px;
-    color:#F49D33;
 }
