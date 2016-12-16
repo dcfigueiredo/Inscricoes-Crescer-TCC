@@ -27,6 +27,8 @@ namespace InscricoesCrescer.Controllers
 
             /*redirecionar para a página “Inicial – Administrativo”, definida no item 3.4. */
             return RedirectToAction("Index","Home");
+
+
         }
 
         /*

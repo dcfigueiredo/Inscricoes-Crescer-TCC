@@ -8,6 +8,7 @@ using InscricoesCrescer.Servico;
 using InscricoesCrescer.Infraestrutura;
 using System.Collections.Generic;
 using InscricoesCrescer.Infraestrutura.Service;
+using System.Net;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -41,10 +42,11 @@ namespace InscricoesCrescer.Controllers
             return View("Index");
             
         }
-
         
+
         public ActionResult Salvar(CandidatoModel model)
         {
+            //validação captcha.
             if (ModelState.IsValid)
             {
                 ServicoEmail servico = new ServicoEmail();
@@ -55,11 +57,13 @@ namespace InscricoesCrescer.Controllers
                     servico.enviarEmailConfirmacao(model.Email);
                     TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
                 }
-            }else
+            }
+            else
             {
                 ModelState.AddModelError("", "Ocorreu algum erro.");
             }
             return View("Index");
+            
         }
 
         private CandidatoEntidade converterCandidato(CandidatoModel model)
@@ -86,30 +90,5 @@ namespace InscricoesCrescer.Controllers
             novoCandidato.Status = "Interesse";
             return novoCandidato;
         }
-        /*
-         * //http://www.dotnetawesome.com/2015/12/google-new-recaptcha-using-aspnet-mvc.html
-        [HttpPost]
-        public ActionResult FormSubmit()
-        {
-            //Validate Google recaptcha here
-            var response = Request["g-recaptcha-response"];
-            string secretKey = "Your secret here";
-            var client = new WebClient();
-            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
-            var obj = JObject.Parse(result);
-            var status = (bool)obj.SelectToken("success");
-            ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
-
-            //When you will post form for save data, you should check both the model validation and google recaptcha validation
-            //EX.
-            /* if (ModelState.IsValid && status)
-            {
-
-            }
-
-            //Here I am returning to Index page for demo perpose, you can use your view here
-            return View("Index");
-        }*/
-
     }
 }
