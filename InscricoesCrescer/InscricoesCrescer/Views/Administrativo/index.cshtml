@@ -1,4 +1,5 @@
-﻿
+﻿@model List<InscricoesCrescer.Models.CandidatoModel2>
+
 @{
     Layout = "~/Views/Shared/Layout.cshtml";
     ViewBag.Title = "Pagina Inicial";
@@ -21,6 +22,11 @@
         <span class="glyphicon glyphicon-list-alt"> 
         <a href="@Url.Action("ListaCandidatos", "Administrativo")"> Lista de Candidatos</a>
         </span>
+
+        <div id="tabela-dados-candidato">
+            @Html.Partial("_ListaCandidatos", Model)
+        </div>
+
     </div>
 </body>
 </html>
