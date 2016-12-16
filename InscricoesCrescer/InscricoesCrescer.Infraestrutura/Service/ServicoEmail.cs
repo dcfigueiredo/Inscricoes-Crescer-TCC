@@ -46,7 +46,7 @@ namespace InscricoesCrescer.Infraestrutura
         {
             ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
             string token = servicoCriptografia.Criptografar(email);
-            string link = "http://localhost:64478/Home/ConfirmaCadastro/id=" + token;
+            string link = "http://localhost:64478/Home/ConfirmaCadastro/" + token;
             return link;
         }
 
