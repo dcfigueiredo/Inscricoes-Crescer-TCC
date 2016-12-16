@@ -9,6 +9,10 @@
     <div class="row">
         <h2 class="cadastro">Cadastro</h2>
 
+        <h3 style="color:red">
+            @TempData["cadastradoComSucesso"]
+        </h3>
+
         @using (Html.BeginForm("Salvar", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
         {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
