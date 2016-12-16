@@ -33,27 +33,5 @@ namespace InscricoesCrescer.Controllers
                         
             return RedirectToAction("Login","Login");
         }
-
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult FazerLogin(string usuario, string senha)
-        {
-            Usuario usuarioAutenticado = ServicoDeUsuario.BuscarUsuarioAutenticado(
-                    usuario, senha);
-
-            if (usuarioAutenticado != null)
-            {
-                ServicoDeAutenticacao.Autenticar(new UsuarioLogadoModel(
-                    usuarioAutenticado.Nome, usuarioAutenticado.Permissoes));
-                return RedirectToAction("Secreta");
-            }
-
-            return RedirectToAction("Index");
-        }
-        
-        */
-
-
     }
 }
