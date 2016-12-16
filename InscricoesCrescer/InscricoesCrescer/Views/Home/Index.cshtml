@@ -5,6 +5,9 @@
 }
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/estilo.css" rel="stylesheet" />
+!--js captcha-->
+<script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>
+
 <div class="container">
     <div class="row">
         <h2 class="cadastro">Cadastro</h2>
@@ -56,7 +59,10 @@
                     @Html.ValidationMessageFor(model => model.Conclusao)
                 </div>
             </div>
+            <!-- Tema dark :  data-theme="dark"-->
+            <div class="g-recaptcha" data-sitekey="6LcE5Q4UAAAAAPVGVzEHWQ5-TiVTSkATErHGGJG4" ></div>
 
+            
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Salvar</button>
