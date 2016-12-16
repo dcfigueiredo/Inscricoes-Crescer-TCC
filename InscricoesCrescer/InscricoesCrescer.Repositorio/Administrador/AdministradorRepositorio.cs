@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace InscricoesCrescer.Repositorio.Administrador
 {
-    public class AdministradorRepositorio
+    public class AdministradorRepositorio : IAdministradorRepositorio
     {
-        public AdministradorEntidade[] buscarAdministrador()
+        public AdministradorEntidade BuscarPorEmail(string email)
         {
             using (var contexto = new ContextoDeDados())
             {
-                return contexto.Administrador.ToArray();
-
+                return contexto.Administrador.FirstOrDefault(_ => _.Email == email);
             }
         }
     }

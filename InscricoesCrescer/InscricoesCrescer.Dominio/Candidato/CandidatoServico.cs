@@ -31,6 +31,6 @@ namespace InscricoesCrescer.Dominio.Candidato
         {
             return this.candidatoRepositorio.BuscarPorId(id);
         }
-             
+
     }
 }

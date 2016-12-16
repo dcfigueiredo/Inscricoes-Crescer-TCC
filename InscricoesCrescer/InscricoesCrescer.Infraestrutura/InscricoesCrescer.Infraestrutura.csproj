@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,11 +43,8 @@
   <ItemGroup>
     <Compile Include="Service\ServicoEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\CandidatoServico.cs" />
-    <Compile Include="Service\ServicoAdministrador.cs" />
     <Compile Include="Service\ServicoCriptografia.cs" />
     <Compile Include="Service\ServicoDeAutenticacao.cs" />
-    <Compile Include="Service\ServicoDeDependencia.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InscricoesCrescer.Dominio\InscricoesCrescer.Dominio.csproj">
