@@ -1,4 +1,5 @@
 ﻿using InscricoesCrescer.Dominio.Administrador;
+using InscricoesCrescer.Models;
 using System.Web;
 
 namespace InscricoesCrescer.Servico
@@ -7,16 +8,16 @@ namespace InscricoesCrescer.Servico
     {
         private const string USUARIO_LOGADO_CHAVE = "USUARIO_LOGADO_CHAVE";
 
-        public static void Autenticar(AdministradorEntidade model)
+        public static void Autenticar(AdministradorModel model)
         {
             HttpContext.Current.Session[USUARIO_LOGADO_CHAVE] = model;
         }
 
-        public static AdministradorEntidade AdministradorLogado
+        public static AdministradorModel AdministradorLogado
         {
             get
             {
-                return (AdministradorEntidade)HttpContext.Current.Session[USUARIO_LOGADO_CHAVE];
+                return (AdministradorModel)HttpContext.Current.Session[USUARIO_LOGADO_CHAVE];
             }
         }
     }

@@ -9,6 +9,11 @@ namespace InscricoesCrescer.Models
 {
     public class AdministradorModel
     {
+        public AdministradorModel(String email)
+        {
+            this.Email = email;
+        }
+        
         [Required]
         [DisplayName("E-mail:")]
         [DataType(DataType.EmailAddress)]

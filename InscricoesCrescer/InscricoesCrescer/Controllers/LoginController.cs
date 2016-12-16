@@ -25,8 +25,13 @@ namespace InscricoesCrescer.Controllers
         {
             AdministradorEntidade administradorAutenticado = administradorServico.BuscarPorAutenticacao(email, senha);
 
-            /*redirecionar para a página “Inicial – Administrativo”, definida no item 3.4. */
-            return RedirectToAction("Index","Home");
+            if(administradorAutenticado != null)
+            {
+                ServicoDeAutenticacao.Autenticar(new Models.AdministradorModel(administradorAutenticado.Email));
+                return RedirectToAction("Index", "Administrativo");
+            }
+                        
+            return RedirectToAction("Login","Login");
         }
 
         /*
