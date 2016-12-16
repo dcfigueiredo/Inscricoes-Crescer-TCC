@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201612160053486_NovaMigrationComAdministrador.Designer.cs">
       <DependentUpon>201612160053486_NovaMigrationComAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612160214503_AdicionaStatusNoCandidato.cs" />
+    <Compile Include="Migrations\201612160214503_AdicionaStatusNoCandidato.Designer.cs">
+      <DependentUpon>201612160214503_AdicionaStatusNoCandidato.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612160053486_NovaMigrationComAdministrador.resx">
       <DependentUpon>201612160053486_NovaMigrationComAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612160214503_AdicionaStatusNoCandidato.resx">
+      <DependentUpon>201612160214503_AdicionaStatusNoCandidato.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

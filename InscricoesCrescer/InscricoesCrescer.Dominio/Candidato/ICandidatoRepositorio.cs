@@ -13,5 +13,9 @@ namespace InscricoesCrescer.Dominio.Candidato
         void Editar(CandidatoEntidade candidato);
 
         CandidatoEntidade BuscarPorId(int id);
+
+        List<CandidatoEntidade> BuscarTodos();
+
+        CandidatoEntidade BuscarPorEmail(string email);
     }
 }

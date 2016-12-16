@@ -36,5 +36,21 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
+        public List<CandidatoEntidade> BuscarTodos()
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Candidato.OrderBy(_ => _.Nome).ToList();
+            }
+        }
+
+        public CandidatoEntidade BuscarPorEmail(string email)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Candidato.FirstOrDefault(_ => _.Email == email);
+            }
+        }
+
     }
 }

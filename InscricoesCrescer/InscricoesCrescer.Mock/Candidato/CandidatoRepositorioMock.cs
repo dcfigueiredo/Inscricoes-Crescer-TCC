@@ -40,9 +40,19 @@ namespace InscricoesCrescer.Mock.Candidato
             }
         };
 
+        public CandidatoEntidade BuscarPorEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public CandidatoEntidade BuscarPorId(int id)
         {
             return candidatos.FirstOrDefault(_ => _.Id == id);
+        }
+
+        public List<CandidatoEntidade> BuscarTodos()
+        {
+            throw new NotImplementedException();
         }
 
         public void Criar(CandidatoEntidade candidato)

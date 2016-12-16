@@ -1,8 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace InscricoesCrescer.Dominio.Candidato
 {
@@ -32,5 +31,14 @@ namespace InscricoesCrescer.Dominio.Candidato
             return this.candidatoRepositorio.BuscarPorId(id);
         }
 
+        public List<CandidatoEntidade> BuscarTodos()
+        {
+            return candidatoRepositorio.BuscarTodos();
+        }
+
+        public CandidatoEntidade BuscarPorEmail(string email)
+        {
+            return candidatoRepositorio.BuscarPorEmail(email);
+        }
     }
 }

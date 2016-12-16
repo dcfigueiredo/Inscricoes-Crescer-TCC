@@ -6,6 +6,8 @@ using System;
 using InscricoesCrescer.Dominio.Candidato;
 using InscricoesCrescer.Servico;
 using InscricoesCrescer.Infraestrutura;
+using System.Collections.Generic;
+using InscricoesCrescer.Infraestrutura.Service;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -19,10 +21,25 @@ namespace InscricoesCrescer.Controllers
             return View();
         }
 
-        public ActionResult ConfirmaCadastro(string token)
+        public ActionResult ConfirmaCadastro(string id)
         {
-            // alterar aki status do candidato
-            return View();
+            List<CandidatoEntidade> candidatos = candidatoServico.BuscarTodos();
+            ServicoCriptografia cripto = new ServicoCriptografia();
+            foreach (var item in candidatos)
+            {
+                string emailCriptografado = cripto.Criptografar(item.Email);
+                if (emailCriptografado.Equals(id))
+                {
+                    CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(item.Email);
+                    candidatoServico.Salvar(AlterarStatusParaInteresse(candidato));
+                    TempData["cadastradoComSucesso"] = "Email Confirmado!";
+                    return View();
+                }
+            }
+            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " +
+                                             "Certifique-se que seu email esta correto.";
+            return View("Index");
+            
         }
 
         
@@ -53,7 +70,21 @@ namespace InscricoesCrescer.Controllers
             candidato.Curso = model.Curso;
             candidato.Instituicao = model.Instituicao;
             candidato.Conclusao = model.Conclusao;
+            candidato.Status = "Inicial";
             return candidato;
+        }
+
+        private CandidatoEntidade AlterarStatusParaInteresse(CandidatoEntidade candidato)
+        {
+            CandidatoEntidade novoCandidato = new CandidatoEntidade();
+            novoCandidato.Id = candidato.Id;
+            novoCandidato.Email = candidato.Email;
+            novoCandidato.Nome = candidato.Nome;
+            novoCandidato.Instituicao = candidato.Instituicao;
+            novoCandidato.Curso = candidato.Curso;
+            novoCandidato.Conclusao = candidato.Conclusao;
+            novoCandidato.Status = "Interesse";
+            return novoCandidato;
         }
 
     }
