@@ -1,5 +1,5 @@
 body {
-    font-family: Georgia,sans-serif; 
+    font-family: Georgia,sans-serif;
     color: #262626;
 }
 
@@ -14,39 +14,39 @@ body {
     margin-left: 35%;
     width: 400px;
     height: 350px;
-    background-color: #DFE0E2; 
-    background-size:cover; 
-    border-radius: 5px; 
-    padding-top: 20px; 
-} 
- 
-.menu{ 
-    background-color: #262626; 
-    height: 130px; 
-} 
- 
-.menu img{ 
-  height: 100px; 
-  width: 120px; 
-  margin: 10px; 
-} 
- 
- 
-.boneco img{ 
-    width:150px; 
-    height:260px; 
-} 
- 
-.boneco{ 
-    width: 140px; 
-    float: right; 
-    position: absolute; 
-    margin-left: 777px; 
-    margin-top: 89px; 
-} 
- 
+    background-color: #DFE0E2;
+    background-size:cover;
+    border-radius: 5px;
+    padding-top: 20px;
+}
 
- 
-.g-recaptcha{ 
-  margin: 20px; 
-} 
+.menu{
+    background-color: #262626;
+    height: 130px;
+}
+
+.menu img{
+  height: 100px;
+  width: 120px;
+  margin: 10px;
+}
+
+
+.mascote img{
+    width:150px;
+    height:280px;
+}
+
+.mascote{
+    width: 140px;
+    float: right;
+    position: absolute;
+    margin-left: 777px;
+    margin-top: 89px;
+}
+
+
+
+.g-recaptcha{
+  margin: 20px;
+}
