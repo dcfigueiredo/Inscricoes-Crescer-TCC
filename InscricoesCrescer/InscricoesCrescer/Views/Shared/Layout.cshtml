@@ -9,39 +9,51 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Layout</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/estilo.css" rel="stylesheet" />
 </head>
-<body class="body-layout">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand" id="logo"></div>
-                
+<body>
+
+    <div class="container">
+        <div id="sidebar">
+            <div class="menu logotipo">
+            <img src="Content/imagens/logo-cwi.png" alt="Logo-Cwi">
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="@Url.Action("Index", "Administrativo")">Inicio</a></li>
-                </ul>
-                <ul class="nav navbar-nav" id="icon-center">
-                    <li><a href="#">Administrativo CWI</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("Logout", "Login")">Logout</a></li>
-                </ul>
+            <ul>
+                <li><a href="@Url.Action("Index", "Administrativo")">Inicio</a></li>
+                <li><a href="#">Pesquisar</a></li>
+                <li>
+                    <a href="@Url.Action("ProcessoSeletivo", "Administrativo")"> Abrir Processo Seletivo</a>
+                </li>
+                <li><a href="@Url.Action("Logout", "Login")">Sair</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="swipe-area"></div>
+            <a href="#" data-toggle=".main-content" id="sidebar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="content">
+                @RenderBody()
+                <div class="large"></div>
+                <div class="large">Some other random content</div>
             </div>
         </div>
-    </nav>
-
-    <div>
-        @RenderBody()
     </div>
 
-    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("[data-toggle]").click(function () {
+                var toggle_el = $(this).data("toggle");
+                $(toggle_el).toggleClass("open-sidebar");
+                $('#sidebar').toggleClass('change-sidebar');
+            });
+
+        });
+    </script>
 </body>
 </html>

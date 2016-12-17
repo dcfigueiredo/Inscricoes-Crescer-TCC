@@ -13,20 +13,13 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="tela-inicial"> 
-        <div class="logo-menu"></div>
-        <span class="glyphicon glyphicon-plus"> 
-        <a href="@Url.Action("ProcessoSeletivo", "Administrativo")"> Abrir Processo Seletivo</a>
-        </span>
-        <br /><br /><br /><br />
-        <span class="glyphicon glyphicon-list-alt"> 
-        <a href="@Url.Action("ListaCandidatos", "Administrativo")"> Lista de Candidatos</a>
-        </span>
+    
+    <h2>Lista de Candidatos</h2>
+    <ul>
+        <li>Anna Luiza</li>
+        <li>Daniel Pacheco</li>
+        <li>Rodrigo Scheuer</li>
+    </ul>
 
-        <div id="tabela-dados-candidato">
-            @Html.Partial("_ListaCandidatos", Model)
-        </div>
-
-    </div>
 </body>
 </html>
