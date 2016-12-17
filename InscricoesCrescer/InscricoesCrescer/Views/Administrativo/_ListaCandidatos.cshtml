@@ -1,43 +1,46 @@
 ﻿@model InscricoesCrescer.Models.ListaCandidatosViewModel
 @using InscricoesCrescer.Models
-
 @{
     string ultimaPagina = Model.UltimaPagina ? "true" : "false";
 }
-
 <div id="lista-candidatos">
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Idade</th>
-                <th>Email</th>
-                <th>Situação</th>
-                <th>Linkedin</th>
-                <th>Editar</th>
-                <th>Entrevistar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null) {
-                foreach (CandidatoParaViewModel item in Model.Candidatos)
-                {
-                    <tr>
-                        <td>@item.Nome</td>
-                        <td>@item.Telefone</td>
-                        <td>@item.Idade</td>
-                        <td>@item.Email</td>
-                        <td>@item.Situacao</td>
-                        <td>@item.Linkedin</td>
-                        <td>@Html.ActionLink("Entrevistar", "Entrevistar", "Administrativo", new { id = @item.Id }, null)</td>
-                        <td>@Html.ActionLink("Editar", "Editar", "Administrativo", new { id = @item.Id }, null)</td>
-                                @*<a href="/Administrativo/Editar?id=1">Editar</a>*@
-                    </tr>
-                    }
-             }
-        </tbody>
-    </table>
-
+    <div class="container">
+        <div class="row">
+            <div id="no-more-tables">
+                <table class="col-md-12 table table-striped table-inverse table-condensed cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Idade</th>
+                            <th>Email</th>
+                            <th>Situação</th>
+                            <th>Linkedin</th>
+                            <th>Editar</th>
+                            <th>Entrevistar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (CandidatoParaViewModel item in Model.Candidatos)
+                            {
+                                <tr>
+                                    <td>@item.Nome</td>
+                                    <td>@item.Telefone</td>
+                                    <td>@item.Idade</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Situacao</td>
+                                    <td>@item.Linkedin</td>
+                                    <td>@Html.ActionLink("Entrevistar", "Entrevistar", "Administrativo", new { id = @item.Id }, null)</td>
+                                    <td>@Html.ActionLink("Editar", "Editar", "Administrativo", new { id = @item.Id }, null)</td>
+                                    @*<a href="/Administrativo/Editar?id=1">Editar</a>*@
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
