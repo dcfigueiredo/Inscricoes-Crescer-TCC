@@ -36,7 +36,14 @@ namespace InscricoesCrescer.Models
 
         private int calcularIdade(DateTime? dataNascimento)
         {
-            return DateTime.Now.Year - dataNascimento.Value.Year;
+            if (dataNascimento.HasValue)
+            {
+                return DateTime.Now.Year - dataNascimento.Value.Year;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
     }
