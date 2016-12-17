@@ -45,7 +45,7 @@ namespace InscricoesCrescer.Controllers
             return null;
         }
 
-        public static int CalculaIdade(DateTime dataNascimento)
+        private static int CalculaIdade(DateTime dataNascimento)
         {
             if (dataNascimento != null)
             {
@@ -64,5 +64,6 @@ namespace InscricoesCrescer.Controllers
                 return 0;
             }
         }
+
     }
 }
