@@ -13,13 +13,9 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    
     <h2>Lista de Candidatos</h2>
-    <ul>
-        <li>Anna Luiza</li>
-        <li>Daniel Pacheco</li>
-        <li>Rodrigo Scheuer</li>
-    </ul>
+    
+    @Html.Partial("_listaCandidatos", Model)
 
 </body>
 </html>
