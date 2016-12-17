@@ -36,15 +36,9 @@ namespace InscricoesCrescer.Models
 
         [Required]
         [DisplayName("Telefone:")]
-        public string Telefone { get; set; }
+        public int Telefone { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        [DisplayName("Data de Nascimento:")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DataNascimento { get; set; }
-
-        public string Idade { get; set; }
+        public int Idade { get; set; }
 
         [Required]
         [DisplayName("Cidade:")]
