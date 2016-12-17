@@ -30,7 +30,7 @@ namespace InscricoesCrescer.Controllers
                 ServicoDeAutenticacao.Autenticar(new Models.AdministradorModel(administradorAutenticado.Email));
                 return RedirectToAction("Index", "Administrativo");
             }
-                        
+            TempData["mensagemLogin"] = "Email ou senha inválidos!";
             return RedirectToAction("Login","Login");
         }
     }
