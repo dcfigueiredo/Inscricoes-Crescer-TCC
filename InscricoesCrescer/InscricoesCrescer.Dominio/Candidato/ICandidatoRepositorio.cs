@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InscricoesCrescer.Dominio.Configuracao;
 
 namespace InscricoesCrescer.Dominio.Candidato
 {
@@ -17,5 +18,7 @@ namespace InscricoesCrescer.Dominio.Candidato
         List<CandidatoEntidade> BuscarTodos();
 
         CandidatoEntidade BuscarPorEmail(string email);
+
+        IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao);
     }
 }

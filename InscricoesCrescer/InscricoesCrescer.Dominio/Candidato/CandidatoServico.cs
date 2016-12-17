@@ -1,4 +1,5 @@
 ﻿
+using InscricoesCrescer.Dominio.Configuracao;
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +9,12 @@ namespace InscricoesCrescer.Dominio.Candidato
     public class CandidatoServico
     {
         private ICandidatoRepositorio candidatoRepositorio;
+        private IServicoConfiguracao servicoConfiguracao;
 
-        public CandidatoServico(ICandidatoRepositorio candidatoRepositorio)
+        public CandidatoServico(ICandidatoRepositorio candidatoRepositorio, IServicoConfiguracao servicoConfiguracao)
         {
             this.candidatoRepositorio = candidatoRepositorio;
+            this.servicoConfiguracao = servicoConfiguracao;
         }
 
         public void Salvar(CandidatoEntidade candidato)
@@ -34,6 +37,18 @@ namespace InscricoesCrescer.Dominio.Candidato
         public List<CandidatoEntidade> BuscarTodos()
         {
             return candidatoRepositorio.BuscarTodos();
+        }
+
+        public IList<CandidatoEntidade> BuscarCandidatos(int pagina)
+        {
+            int quantidadeDeCandidatosPorPagina = this.servicoConfiguracao.QuantidadeDeCandidatosPorPagina;
+
+            var paginacao = new Paginacao() {
+                Pagina = pagina,
+                QuantidadeDeItensPorPagina = quantidadeDeCandidatosPorPagina
+            };
+
+            return this.candidatoRepositorio.BuscarCandidatos(paginacao);
         }
 
         public CandidatoEntidade BuscarPorEmail(string email)

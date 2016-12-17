@@ -10,7 +10,7 @@ namespace InscricoesCrescer.Servico
     {
         public static CandidatoServico MontarCandidatoServico()
         {
-            CandidatoServico candidatoServico = new CandidatoServico(new CandidatoRepositorio());
+            CandidatoServico candidatoServico = new CandidatoServico(new CandidatoRepositorio(), new ServicoConfiguracao());
             return candidatoServico;
         }
 
@@ -18,6 +18,11 @@ namespace InscricoesCrescer.Servico
         {
             AdministradorServico administradorServico = new AdministradorServico(new AdministradorRepositorio(), new ServicoCriptografia());
             return administradorServico;
+        }
+
+        public static ServicoConfiguracao MontarServicoConfiguracao()
+        {
+            return new ServicoConfiguracao();
         }
     }
 }

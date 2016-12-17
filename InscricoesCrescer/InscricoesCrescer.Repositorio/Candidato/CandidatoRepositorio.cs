@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InscricoesCrescer.Dominio.Configuracao;
 
 namespace InscricoesCrescer.Repositorio.Candidato
 {
@@ -52,5 +53,14 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
+        public IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Candidato.Skip(paginacao.Pagina * paginacao.QuantidadeDeItensPorPagina)
+                                        .Take(paginacao.QuantidadeDeItensPorPagina)
+                                        .ToList();
+            }
+        }
     }
 }

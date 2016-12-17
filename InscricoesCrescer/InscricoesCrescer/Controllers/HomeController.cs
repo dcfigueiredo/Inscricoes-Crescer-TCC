@@ -17,11 +17,12 @@ namespace InscricoesCrescer.Controllers
         {
             return View();
         }
-
+        
         public ActionResult ConfirmaCadastro(string id)
         {
             List<CandidatoEntidade> candidatos = candidatoServico.BuscarTodos();
             ServicoCriptografia cripto = new ServicoCriptografia();
+            //TO-DO: Refatorar essa parte, é responsabilidade do serviço fazer essa buscar e comparação.
             foreach (var item in candidatos)
             {
                 string emailCriptografado = cripto.Criptografar(item.Email);

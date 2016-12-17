@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace InscricoesCrescer.Models
 {
-    public class CandidatoModel2
+    public class CandidatoParaReCadastroModel
     {
         public long? Id { get; set; }
 
