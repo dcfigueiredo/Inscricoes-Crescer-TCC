@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @{
+            @if (Model != null) {
                 foreach (CandidatoModel2 item in Model)
                 {
                     <tr>
