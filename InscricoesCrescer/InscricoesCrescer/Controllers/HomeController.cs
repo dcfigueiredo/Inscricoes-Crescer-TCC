@@ -51,21 +51,25 @@ namespace InscricoesCrescer.Controllers
                 ServicoEmail servico = new ServicoEmail();
                 if (servico.ValidaEmail(model.Email))
                 {
-                    CandidatoEntidade candidato = converterCandidato(model);
+                    CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
+                    if (candidato != null)
+                    {
+                        TempData["cadastradoJaExiste"] = "* Você já possui cadastro, Aguarde contato.";
+                        return View("Index");
+                    }
+                    candidato = converterCandidato(model);
                     candidatoServico.Salvar(candidato);
                     if (servico.enviarEmailConfirmacao(model.Email))
                     {
-                        TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
-
-                        TempData["msg"] = "Confirme seu e-mail.";
+                        TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso, E-mail de confirmação Enviado!";
                     } else
                     {
-                        ModelState.AddModelError("", "Ocorreu algum erro.");
+                        ModelState.AddModelError("", "Ocorreu algum erro. Por favor tente novamente mais tarde.");
                     }
                 }
             }else
             {
-                ModelState.AddModelError("", "Ocorreu algum erro.");
+                ModelState.AddModelError("", "E-mail inválido! verifique se foi digitado corretamente.");
             }
             return View("Index");
         }

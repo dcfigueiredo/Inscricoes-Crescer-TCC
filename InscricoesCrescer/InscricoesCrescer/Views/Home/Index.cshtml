@@ -23,7 +23,9 @@
 
         <h3 style="color:green">
             @TempData["cadastradoComSucesso"]
-            @TempData["msg"]
+        </h3>
+        <h3 style="color:red">
+            @TempData["cadastradoJaExiste"]
         </h3>
 
         @using (Html.BeginForm("Salvar", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
