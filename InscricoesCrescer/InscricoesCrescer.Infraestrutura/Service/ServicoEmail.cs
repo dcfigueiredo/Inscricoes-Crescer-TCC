@@ -1,6 +1,7 @@
 ﻿using InscricoesCrescer.Dominio.Email;
 using InscricoesCrescer.Infraestrutura.Service;
 using System;
+using System.Configuration;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 
@@ -15,18 +16,21 @@ namespace InscricoesCrescer.Infraestrutura
             //smtp.Port = 587;                              smtp.Port = 465;
             //email:rodrigo.scheuer@hotmail.com             email:  emailTesteCwi@gmail.com  senha: GAoXIP3tC0Qv
 
+            /*informações do web.config*/
+            string host = buscarConfiguracao("smtpHost");
+            int port = Convert.ToInt32(buscarConfiguracao("smtpPort"));
+            string email = buscarConfiguracao("email");
+            string senha = buscarConfiguracao("senha");
             string assunto = "Confirmação de cadastro no projeto Crescer";
             string mensagem = "Link de confirmação aqui -> " + GerarLink(destinatario);
 
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            MailMessage mail = new MailMessage("emailTesteCwi@gmail.com", destinatario, assunto, mensagem);
+            SmtpClient smtp = new SmtpClient(host, port);
+            MailMessage mail = new MailMessage(email, destinatario, assunto, mensagem);
 
-            smtp.UseDefaultCredentials = false;
+            smtp.UseDefaultCredentials = true;
             smtp.EnableSsl = true;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new System.Net.NetworkCredential("emailTesteCwi@gmail.com", "GAoXIP3tC0Qv");
-            //smtp.Timeout = 20000;
-
+            smtp.Credentials = new System.Net.NetworkCredential(email, senha);
             try
             {
                 smtp.Send(mail);
@@ -46,7 +50,9 @@ namespace InscricoesCrescer.Infraestrutura
         {
             ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
             string token = servicoCriptografia.Criptografar(email);
-            string link = "http://localhost:64478/Home/ConfirmaCadastro/" + token;
+            string servidor = buscarConfiguracao("enderecoServidor");
+            string enderecoConfirmacaoEmail = buscarConfiguracao("enderecoConfirmacaoEmail");
+            string link = servidor + enderecoConfirmacaoEmail + token;
             return link;
         }
 
@@ -61,6 +67,20 @@ namespace InscricoesCrescer.Infraestrutura
             else
             {
                 return false;
+            }
+        }
+
+        public static string buscarConfiguracao(string nomeDoCampo)
+        {
+            try
+            {
+                var configuracoes = ConfigurationManager.AppSettings;
+                string resultado = configuracoes[nomeDoCampo] ?? "campo vazio.";
+                return resultado;
+            }
+            catch (ConfigurationErrorsException)
+            {
+                return "Error ao ler configurações.";
             }
         }
     }

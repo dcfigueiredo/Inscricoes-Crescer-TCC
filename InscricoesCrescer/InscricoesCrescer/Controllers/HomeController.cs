@@ -1,8 +1,5 @@
-﻿using InscricoesCrescer.Dominio;
-using InscricoesCrescer.Models;
-using System.Text.RegularExpressions;
+﻿using InscricoesCrescer.Models;
 using System.Web.Mvc;
-using System;
 using InscricoesCrescer.Dominio.Candidato;
 using InscricoesCrescer.Servico;
 using InscricoesCrescer.Infraestrutura;
