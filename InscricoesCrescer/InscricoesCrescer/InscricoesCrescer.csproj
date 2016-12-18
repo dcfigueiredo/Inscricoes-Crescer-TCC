@@ -110,7 +110,6 @@
     <Content Include="Content\imagens\mascote.jpg" />
     <Content Include="Content\login.css" />
     <Content Include="Content\estilo.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -174,6 +173,8 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Administrativo\_ListaCandidatos.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
+    <Content Include="Views\Administrativo\_ProcessoSeletivo.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
     <Content Include="Views\Administrativo\_PrecessoSeletivo.cshtml" />

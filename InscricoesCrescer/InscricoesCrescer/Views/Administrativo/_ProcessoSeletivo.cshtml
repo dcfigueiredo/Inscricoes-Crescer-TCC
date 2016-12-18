@@ -3,8 +3,8 @@
 
 
 <div class="cadastro-processo-seletivo">
-@using (Html.BeginForm("Salvar", "Index", FormMethod.Post, new { @class = "form-horizontal" }))
-{
+@using (Ajax.BeginForm("Salvar", "Administrativo", new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "conteudo-inicio" }))
+    {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.AntiForgeryToken()
 
