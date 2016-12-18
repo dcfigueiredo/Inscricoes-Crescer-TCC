@@ -1,0 +1,66 @@
+﻿@model List<InscricoesCrescer.Models.ProcessoSeletivoViewModel>
+@using InscricoesCrescer.Models
+
+
+<div class="cadastro-processo-seletivo">
+    @using (Html.BeginForm("Salvar", "Administrativo", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataInicioEntrevistas, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-5">
+                @Html.TextBoxFor(model => model.DataInicioEntrevistas, new { @class = "form-control datefield", type = "date", required = "" })
+                @Html.ValidationMessageFor(model => model.DataInicioEntrevistas)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataSelecaoFinal, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-5">
+                @Html.TextBoxFor(model => model.DataSelecaoFinal, new { @class = "form-control datefield", type = "date", required = "" })
+                @Html.ValidationMessageFor(model => model.DataSelecaoFinal)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataInicioAulas, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-5">
+                @Html.TextBoxFor(model => model.DataInicioAulas, new { @class = "form-control datefield", type = "date", required = "" })
+                @Html.ValidationMessageFor(model => model.DataInicioAulas)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataFinalAulas, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-5">
+                @Html.TextBoxFor(model => model.DataFinalAulas, new { @class = "form-control datefield", type = "date", required = "" })
+                @Html.ValidationMessageFor(model => model.DataFinalAulas)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnoEdicao, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-5">
+                @Html.TextBoxFor(model => model.AnoEdicao, new { @class = "form-control datefield", type = "disable", required = "" })
+                @Html.ValidationMessageFor(model => model.AnoEdicao)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SemestreEdicao, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-5">
+                @Html.TextBoxFor(model => model.SemestreEdicao, new { @class = "form-control datefield", type = "disable", required = "" })
+                @Html.ValidationMessageFor(model => model.SemestreEdicao)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Salvar</button>
+            </div>
+        </div>
+    }
+</div>
+
