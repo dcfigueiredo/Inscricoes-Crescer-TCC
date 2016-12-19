@@ -173,11 +173,10 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Administrativo\_ListaCandidatos.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
     <Content Include="Views\Administrativo\_ProcessoSeletivo.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
     <Content Include="Views\Administrativo\_PrecessoSeletivo.cshtml" />
+    <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

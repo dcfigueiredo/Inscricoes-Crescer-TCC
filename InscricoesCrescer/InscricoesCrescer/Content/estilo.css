@@ -1,10 +1,21 @@
 body {
     font-family: Georgia,sans-serif;
-    color: #DFE0E2;
 }
 
 .cadastro {
     color: #F49D33;
+}
+
+.titulo-cadastro h2{
+    text-align: center;
+}
+
+.form-control{
+    width: 70%;
+}
+
+.form-horizontal{
+    padding-left: 2%;
 }
 
 .tela-inicial {

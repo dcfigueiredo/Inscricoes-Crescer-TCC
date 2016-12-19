@@ -5,6 +5,7 @@ using InscricoesCrescer.Servico;
 using InscricoesCrescer.Infraestrutura;
 using System.Collections.Generic;
 using InscricoesCrescer.Infraestrutura.Service;
+using System;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -17,15 +18,34 @@ namespace InscricoesCrescer.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult SegundaEtapaCadastroCandidato(string id)
+        {
+            List<CandidatoEntidade> candidatos = candidatoServico.BuscarTodos();
+            ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
+            //TO-DO: Refatorar essa parte, é responsabilidade do serviço fazer essa buscar e comparação.
+            foreach (CandidatoEntidade item in candidatos)
+            {
+                string emailCriptografado = servicoCriptografia.Criptografar(item.Email);
+                if (emailCriptografado.Equals(id))
+                {
+                    CandidatoParaReCadastroModel model =  ConverteCandidatoParaModel(item);
+                    return View("SegundaEtapaCadastroCandidato", model);
+                }
+            }
+            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " +"\n"+
+                                             "Certifique-se que seu email esta Cadastrado ou entre em contato conosco.";
+            return View("ConfirmaCadastro");
+        }
+
         public ActionResult ConfirmaCadastro(string id)
         {
             List<CandidatoEntidade> candidatos = candidatoServico.BuscarTodos();
-            ServicoCriptografia cripto = new ServicoCriptografia();
+            ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
             //TO-DO: Refatorar essa parte, é responsabilidade do serviço fazer essa buscar e comparação.
             foreach (var item in candidatos)
             {
-                string emailCriptografado = cripto.Criptografar(item.Email);
+                string emailCriptografado = servicoCriptografia.Criptografar(item.Email);
                 if (emailCriptografado.Equals(id))
                 {
                     CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(item.Email);
@@ -38,10 +58,10 @@ namespace InscricoesCrescer.Controllers
             TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " +
                                              "Certifique-se que seu email esta correto.";
             return View("Index");
-            
+
         }
 
-        
+
         public ActionResult Salvar(CandidatoModel model)
         {
             if (ModelState.IsValid)
@@ -60,16 +80,64 @@ namespace InscricoesCrescer.Controllers
                     if (servico.enviarEmailConfirmacao(model.Email))
                     {
                         TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso, E-mail de confirmação Enviado!";
-                    } else
+                    }
+                    else
                     {
                         ModelState.AddModelError("", "Ocorreu algum erro. Por favor tente novamente mais tarde.");
                     }
                 }
-            }else
+            }
+            else
             {
                 ModelState.AddModelError("", "E-mail inválido! verifique se foi digitado corretamente.");
             }
             return View("Index");
+        }
+
+        public ActionResult SalvarSegundoCadastro(CandidatoParaReCadastroModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Senha.Equals(model.ConfirmaSenha))
+                {
+                    ServicoEmail servico = new ServicoEmail();
+                    if (servico.ValidaEmail(model.Email))
+                    {
+                        CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
+                        if (!candidato.Status.Equals("Aguardando Contato"))
+                        {
+                            candidato = converterCandidatoSegundaEtapa(model);
+                            candidatoServico.Salvar(candidato);
+                            TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso, aguarde próximo contato.";
+                            return View("ConfirmaCadastro");
+                        }
+                        @TempData["cadastradoInvalido"] = "Você já possui Cadastro!";
+                        return View("SegundaEtapaCadastroCandidato");
+                    }
+                }
+            }
+            ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
+                                    "verifique se todos os dados foram digitados corretamente.");
+            return View("SegundaEtapaCadastroCandidato", model);
+        }
+
+        private CandidatoEntidade converterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model)
+        {
+            CandidatoEntidade candidato = new CandidatoEntidade();
+            ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
+            candidato.Id = model.Id;
+            candidato.Nome = model.Nome;
+            candidato.Email = model.Email;
+            candidato.Telefone = model.Telefone;
+            candidato.DataNascimento = model.DataNascimento;
+            candidato.Cidade = model.Cidade;
+            candidato.Curso = model.Curso;
+            candidato.Instituicao = model.Instituicao;
+            candidato.Conclusao = model.Conclusao;
+            candidato.Linkedin = model.Linkedin;
+            candidato.Senha = servicoCriptografia.Criptografar(model.Senha);
+            candidato.Status = "Aguardando Contato";
+            return candidato;
         }
 
         private CandidatoEntidade converterCandidato(CandidatoModel model)
@@ -82,6 +150,25 @@ namespace InscricoesCrescer.Controllers
             candidato.Conclusao = model.Conclusao;
             candidato.Status = "Inicial";
             return candidato;
+        }
+
+        private CandidatoParaReCadastroModel ConverteCandidatoParaModel(CandidatoEntidade candidato)
+        {
+            CandidatoParaReCadastroModel model = new CandidatoParaReCadastroModel();
+            model.Id = candidato.Id;
+            model.Nome = candidato.Nome;
+            model.Email = candidato.Email;
+            model.Telefone = candidato.Telefone;
+            model.Cidade = candidato.Cidade;
+            model.DataNascimento = Convert.ToDateTime(candidato.DataNascimento);
+            model.Instituicao = candidato.Instituicao;
+            model.Curso = candidato.Curso;
+            model.Conclusao = candidato.Conclusao;
+            model.Linkedin = candidato.Linkedin;
+            model.Senha = candidato.Senha;
+            model.ConfirmaSenha = "";
+            model.Status = candidato.Status;
+            return model;
         }
         /*
          * //http://www.dotnetawesome.com/2015/12/google-new-recaptcha-using-aspnet-mvc.html
