@@ -31,7 +31,7 @@ namespace InscricoesCrescer.Controllers
 
         public PartialViewResult CarregarEntrevistas(int id)
         {            
-            List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarPorId(id);
+            List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarTodosComMesmoId(id);
             return PartialView("_Entrevista", entrevistas);
         }
 
@@ -61,6 +61,12 @@ namespace InscricoesCrescer.Controllers
 
         public ActionResult Editar(long id)
         {
+            return View();
+        }
+
+        public ActionResult EditarEntrevista(long id)
+        {
+            //servicoEntrevista.BuscarPorId(id);
             return View();
         }
 
