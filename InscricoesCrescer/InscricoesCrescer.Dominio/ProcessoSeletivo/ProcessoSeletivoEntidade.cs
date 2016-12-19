@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace InscricoesCrescer.Models
+namespace InscricoesCrescer.Dominio.ProcessoSeletivo
 {
-
-    //criar e importar servico
-    public class ProcessoSeletivoViewModel
+    public class ProcessoSeletivoEntidade
     {
         public long? Id { get; set; }
         public DateTime DataInicioEntrevistas { get; set; }
@@ -16,7 +15,5 @@ namespace InscricoesCrescer.Models
         public DateTime DataFinalAulas { get; set; }
         public DateTime AnoEdicao { get; set; }
         public DateTime SemestreEdicao { get; set; }
-
-        
     }
 }

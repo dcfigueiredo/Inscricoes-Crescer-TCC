@@ -76,7 +76,12 @@
     <Compile Include="Migrations\201612161946278_mudarDataNascimentoParaAnulavel.Designer.cs">
       <DependentUpon>201612161946278_mudarDataNascimentoParaAnulavel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612191316170_adicionar ProcessoSeletivo.cs" />
+    <Compile Include="Migrations\201612191316170_adicionar ProcessoSeletivo.Designer.cs">
+      <DependentUpon>201612191316170_adicionar ProcessoSeletivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ProcessoSeletivo\ProcessoSeletivoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612161946278_mudarDataNascimentoParaAnulavel.resx">
       <DependentUpon>201612161946278_mudarDataNascimentoParaAnulavel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612191316170_adicionar ProcessoSeletivo.resx">
+      <DependentUpon>201612191316170_adicionar ProcessoSeletivo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
