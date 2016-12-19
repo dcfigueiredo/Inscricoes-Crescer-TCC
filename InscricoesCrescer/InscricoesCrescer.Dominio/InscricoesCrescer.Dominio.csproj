@@ -50,6 +50,9 @@
     <Compile Include="Criptografia\IServicoCriptografia.cs" />
     <Compile Include="Email\IServicoEmail.cs" />
     <Compile Include="Administrador\AdministradorEntidade.cs" />
+    <Compile Include="Entrevista\EntrevistaEntidade.cs" />
+    <Compile Include="Entrevista\EntrevistaServico.cs" />
+    <Compile Include="Entrevista\IEntrevistaRepositorio.cs" />
     <Compile Include="ProcessoSeletivo\IProcessoSeletivoRepositorio.cs" />
     <Compile Include="ProcessoSeletivo\ProcessoSeletivoEntidade.cs" />
     <Compile Include="ProcessoSeletivo\ProcessoSeletivoServico.cs" />

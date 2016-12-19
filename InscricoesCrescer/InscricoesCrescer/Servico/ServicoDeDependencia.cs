@@ -1,8 +1,11 @@
-﻿using InscricoesCrescer.Dominio.Administrador;
+﻿using System;
+using InscricoesCrescer.Dominio.Administrador;
 using InscricoesCrescer.Dominio.Candidato;
+using InscricoesCrescer.Dominio.Entrevista;
 using InscricoesCrescer.Infraestrutura.Service;
 using InscricoesCrescer.Repositorio.Administrador;
 using InscricoesCrescer.Repositorio.Candidato;
+using InscricoesCrescer.Repositorio.Entrevista;
 
 namespace InscricoesCrescer.Servico
 {
@@ -18,6 +21,12 @@ namespace InscricoesCrescer.Servico
         {
             AdministradorServico administradorServico = new AdministradorServico(new AdministradorRepositorio(), new ServicoCriptografia());
             return administradorServico;
+        }
+
+        internal static EntrevistaServico MontarEntrevistaServico()
+        {
+            EntrevistaServico entrevistaServico = new EntrevistaServico(new EntrevistaRepositorio());
+            return entrevistaServico;
         }
 
         public static ServicoConfiguracao MontarServicoConfiguracao()

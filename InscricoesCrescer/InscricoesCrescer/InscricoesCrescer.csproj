@@ -152,6 +152,7 @@
     <Compile Include="Models\CandidatoModel.cs" />
     <Compile Include="Models\CandidatoParaReCadastroModel.cs" />
     <Compile Include="Models\CandidatoParaViewModel.cs" />
+    <Compile Include="Models\CadastroEntrevistaModel.cs" />
     <Compile Include="Models\ListaCandidatosViewModel.cs" />
     <Compile Include="Models\ProcessoSeletivoViewModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -177,6 +178,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Administrativo\_PrecessoSeletivo.cshtml" />
     <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
+    <Content Include="Views\Administrativo\_CadastroEntrevista.cshtml" />
+    <Content Include="Views\Administrativo\_Entrevista.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

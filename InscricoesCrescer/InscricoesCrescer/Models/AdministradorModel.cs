@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace InscricoesCrescer.Models
 {
@@ -13,11 +10,16 @@ namespace InscricoesCrescer.Models
         {
             this.Email = email;
         }
+
+        [Required]
+        [DisplayName("Nome:")]
+        public string Nome { get; set; }
         
         [Required]
         [DisplayName("E-mail:")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
 
         [Required]
         [DisplayName("Senha:")]
