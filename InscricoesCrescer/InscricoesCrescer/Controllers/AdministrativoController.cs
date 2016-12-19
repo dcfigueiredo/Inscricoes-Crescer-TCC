@@ -24,6 +24,21 @@ namespace InscricoesCrescer.Controllers
             return View();
         }
 
+        public ActionResult ProcessoSeletivo()
+        {
+            return View();
+        }
+
+        public ActionResult Entrevistar(long id)
+        {
+            return View();
+        }
+
+        public ActionResult Editar(long id)
+        {
+            return View();
+        }
+
         [Autorizador]
         public PartialViewResult CarregarListaDeCandidatos(int pagina)
         {

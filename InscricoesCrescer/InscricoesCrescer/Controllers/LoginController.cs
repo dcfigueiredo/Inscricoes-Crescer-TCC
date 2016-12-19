@@ -19,6 +19,11 @@ namespace InscricoesCrescer.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            return View("Login");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult FazerLogin(string email, string senha)
