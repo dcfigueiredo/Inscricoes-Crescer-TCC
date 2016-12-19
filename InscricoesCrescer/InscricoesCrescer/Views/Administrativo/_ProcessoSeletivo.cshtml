@@ -1,4 +1,4 @@
-﻿@model List<InscricoesCrescer.Models.ProcessoSeletivoViewModel>
+﻿@model InscricoesCrescer.Models.ProcessoSeletivoViewModel
 @using InscricoesCrescer.Models
 
 
@@ -10,10 +10,10 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataInicioEntrevistas, new { @class = "col-sm-2 control-label" })
+            @Html.LabelFor(model => Model.DataInicioEntrevistas, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-5">
-                @Html.TextBoxFor(model => model.DataInicioEntrevistas, new { @class = "form-control datefield", type = "date", required = "" })
-                @Html.ValidationMessageFor(model => model.DataInicioEntrevistas)
+                @Html.TextBoxFor(model => Model.DataInicioEntrevistas, new { @class = "form-control datefield", type = "date", required = "" })
+                @Html.ValidationMessageFor(model => Model.DataInicioEntrevistas)
             </div>
         </div>
 
@@ -62,5 +62,4 @@
             </div>
         </div>
     }
-</div>
-
+</div> 

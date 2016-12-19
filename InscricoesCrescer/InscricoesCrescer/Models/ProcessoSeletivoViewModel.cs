@@ -10,7 +10,6 @@ namespace InscricoesCrescer.Models
     public class ProcessoSeletivoViewModel
     {
         public long? Id { get; set; }
-
         public DateTime DataInicioEntrevistas { get; set; }
         public DateTime DataSelecaoFinal { get; set; }
         public DateTime DataInicioAulas { get; set; }
@@ -21,28 +20,28 @@ namespace InscricoesCrescer.Models
 
 
 
+        /*
+        private int verificarDataEdicao()
+        {
 
-     private int verificarDataEdicao()
-     {
+            //TO DO:
+            //fazer um servico que busque estes dados para mim do banco!
 
-        //TO DO:
-        //fazer um servico que busque estes dados para mim do banco!
+            if (semestreDoRegistroAnterior == 1)
+            {
+                anoDoNovoRegistro = anodoRegistroAnterior;
 
-         if (semestreDoRegistroAnterior == 1)
-         {
-             anoDoNovoRegistro = anodoRegistroAnterior
-     
-             semestreDoNovoRegistro = semestreDoRegistroAnterior + 1
-         }
-         else
-         {
-             anoDoNovoRegistro = anoDoRegistroAnterior + 1
-     
-     
-             semestreDoNovoRegistro = 1;
-         }
+                semestreDoNovoRegistro = semestreDoRegistroAnterior + 1;
+            }
+            else
+            {
+                anoDoNovoRegistro = anoDoRegistroAnterior + 1;
 
-         
 
+                semestreDoNovoRegistro = 1;
+            }
+
+
+        }*/
     }
 }
