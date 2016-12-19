@@ -1,6 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace InscricoesCrescer.Dominio.Candidato
 {
+    [Table("Candidato")]
     public class CandidatoEntidade
     {
         public long? Id { get; set; }

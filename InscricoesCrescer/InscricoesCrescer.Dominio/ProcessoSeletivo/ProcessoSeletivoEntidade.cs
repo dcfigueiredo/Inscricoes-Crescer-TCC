@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InscricoesCrescer.Dominio.ProcessoSeletivo
 {
+    [Table("ProcessoSeletivo")]
     public class ProcessoSeletivoEntidade
     {
         public long? Id { get; set; }
