@@ -1,67 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace InscricoesCrescer.Dominio.ProcessoSeletivo
 {
     public class ProcessoSeletivoServico
     {
-        private IProcessoSeletivoRepositorio processoRepositorio;
+        private ProcessoSeletivoServico processoServico;
 
+        private IProcessoSeletivoRepositorio processoRepositorio;
+        
         public ProcessoSeletivoServico(IProcessoSeletivoRepositorio processoRepositorio)
         {
             this.processoRepositorio = processoRepositorio;
         }
+        
+        public List<ProcessoSeletivoEntidade> BuscarTodos()
+        {
+            return processoRepositorio.BuscarTodos();
+        }
 
+        public bool VerificarProcessoExiste(ProcessoSeletivoEntidade processoSeletivo)
+        {
+            ProcessoSeletivoEntidade processoProcurado = processoRepositorio.VerificarProcessoExiste(processoSeletivo);
 
+            if (processoSeletivo != null)
 
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public void Salvar(ProcessoSeletivoEntidade processo)
         {
-            this.processoRepositorio.AbrirProcessoSeletivo(processo);
-        }
-
-
-        /*
-        
-
-        public void Salvar(CandidatoEntidade candidato)
-        {
-            if (candidato.Id == 0 || candidato.Id == null)
+            if (processo.Id == 0 || processo.Id == null)
             {
-                this.candidatoRepositorio.Criar(candidato);
+                this.processoRepositorio.AbrirProcessoSeletivo(processo);
             }
             else
             {
-                this.candidatoRepositorio.Editar(candidato);
+                this.processoRepositorio.EditarProcessoSeletivo(processo);
             }
         }
-         */
-
-
-
-
-
-
-
-        //private int verificarDataEdicao()
-        //{
-        //    //TO DO:
-        //    //fazer um servico que busque estes dados para mim do banco!
-
-        //    if (semestreDoRegistroAnterior == 1)
-        //    {
-        //        anoDoNovoRegistro = anodoRegistroAnterior;
-        //        semestreDoNovoRegistro = semestreDoRegistroAnterior + 1;
-        //    }
-        //    else
-        //    {
-        //        anoDoNovoRegistro = anoDoRegistroAnterior + 1;
-        //        semestreDoNovoRegistro = 1;
-        //    }
-        //}
 
 
 

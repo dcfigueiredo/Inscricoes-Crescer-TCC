@@ -18,5 +18,32 @@ namespace InscricoesCrescer.Repositorio.ProcessoSeletivo
                 context.SaveChanges();
             }
         }
+
+
+        public void EditarProcessoSeletivo(ProcessoSeletivoEntidade processo)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                context.Entry<ProcessoSeletivoEntidade>(processo).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public List<Dominio.ProcessoSeletivo.ProcessoSeletivoEntidade> BuscarTodos()
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.ProcessoSeletivo.OrderBy(_ => _.AnoEdicao).ToList();
+            }
+        }
+
+        public ProcessoSeletivoEntidade VerificarProcessoExiste(ProcessoSeletivoEntidade processoSeletivo)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.ProcessoSeletivo.FirstOrDefault(_ => _.AnoEdicao == processoSeletivo.AnoEdicao
+                                                      && _.SemestreEdicao == processoSeletivo.SemestreEdicao);
+            }
+        }
     }
 }
