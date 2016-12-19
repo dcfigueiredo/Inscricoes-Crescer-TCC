@@ -46,4 +46,20 @@ function ouvirBotoesPaginacaoEFiltro() {
         filtro = $('#filtro').val();
         carregarListaDeCandidatos(filtro, paginaAtual);
     });
+    $('.entrevistas').click(function (event) {
+        event.preventDefault();
+        var id = $(this).attr('id');
+        carregarEntrevistas(id);
+    });
+}
+
+function carregarEntrevistas(id) {
+  $.ajax({
+    url: 'Administrativo/CarregarEntrevistas',
+    type: 'GET',
+    data: { id: id }
+  })
+    .then(function (partialView) {
+      $('#container-partial-views').html(partialView);
+    });
 }
