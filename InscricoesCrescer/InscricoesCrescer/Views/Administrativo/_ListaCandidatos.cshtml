@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div id="no-more-tables">
-                <table class="col-md-12 table table-striped table-inverse table-condensed cf">
+                <table data-ultima-pagina="@ultimaPagina" id="table-candidatos" class="col-md-12 table table-striped table-inverse table-condensed cf">
                     <thead class="cf">
                         <tr>
                             <th>Nome</th>
@@ -40,6 +40,10 @@
                         }
                     </tbody>
                 </table>
+                <div class="container">
+                    <button class="btn btn-default" id="btn-voltar" disabled>Voltar</button>
+                    <button class="btn btn-default" id="btn-avancar">Avançar</button>
+                </div>
             </div>
         </div>
     </div>
