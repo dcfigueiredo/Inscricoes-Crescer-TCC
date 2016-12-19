@@ -15,7 +15,9 @@ namespace InscricoesCrescer.Repositorio
         }
 
         public DbSet<CandidatoEntidade> Candidato { get; set; }
+
         public DbSet<AdministradorEntidade> Administrador { get; set; }
+
         public DbSet<EntrevistaEntidade> Entrevista { get; set; }
         public DbSet<ProcessoSeletivoEntidade> ProcessoSeletivo { get; set; }
 

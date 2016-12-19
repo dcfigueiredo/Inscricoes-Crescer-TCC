@@ -13,7 +13,7 @@ namespace InscricoesCrescer.Repositorio.Administrador
         {
             using (var contexto = new ContextoDeDados())
             {
-                return contexto.Administrador.FirstOrDefault(_ => _.Email == email);
+                return contexto.Administrador.FirstOrDefault(_ => _.Email.Equals(email));
             }
         }
     }

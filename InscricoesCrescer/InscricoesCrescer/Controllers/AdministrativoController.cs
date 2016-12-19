@@ -32,11 +32,10 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_ProcessoSeletivo");
         }
 
-        public ActionResult Entrevista(int id)
-        {
-            return RedirectToAction("CadastroEntrevista", id);
-            //List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarPorId(id);
-            //return PartialView("_Entrevista", entrevistas);
+        public PartialViewResult CarregarEntrevistas(int id)
+        {            
+            List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarTodosComMesmoId(id);
+            return PartialView("_Entrevista", entrevistas);
         }
 
         public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
@@ -94,6 +93,12 @@ namespace InscricoesCrescer.Controllers
 
         public ActionResult Editar(long id)
         {
+            return View();
+        }
+
+        public ActionResult EditarEntrevista(long id)
+        {
+            //servicoEntrevista.BuscarPorId(id);
             return View();
         }
 

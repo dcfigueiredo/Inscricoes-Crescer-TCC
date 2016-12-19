@@ -1,10 +1,17 @@
-﻿using System;
+﻿using InscricoesCrescer.Dominio.Candidato;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InscricoesCrescer.Dominio.Entrevista
 {
+    [Table("Entrevista")]
     public class EntrevistaEntidade
     {
         public long? Id { get; set; }
+
+        public long CandidatoEntidadeId { get; set; }
+
+        public virtual CandidatoEntidade Candidato { get; set; }
 
         public string EmailAdministrador { get; set; }
 

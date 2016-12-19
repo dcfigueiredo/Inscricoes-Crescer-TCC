@@ -30,9 +30,9 @@ namespace InscricoesCrescer.Dominio.Entrevista
             return entrevistaRepositorio.BuscarTodos();
         }
 
-        public List<EntrevistaEntidade> BuscarPorId(int id)
+        public List<EntrevistaEntidade> BuscarTodosComMesmoId(long id)
         {
-            return entrevistaRepositorio.BuscarPorId(id);
+            return entrevistaRepositorio.BuscarTodosComMesmoId(id);
         }
     }
 }

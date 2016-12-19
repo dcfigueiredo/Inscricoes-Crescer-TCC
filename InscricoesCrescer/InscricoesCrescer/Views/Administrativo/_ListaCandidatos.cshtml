@@ -4,10 +4,8 @@
     string ultimaPagina = Model.UltimaPagina ? "true" : "false";
 }
 <div id="lista-candidatos">
-    <div class="container">
-        <div class="row">
             <div id="no-more-tables">
-                <table data-ultima-pagina="@ultimaPagina" id="table-candidatos" class="col-md-12 table table-striped table-inverse table-condensed cf">
+                <table data-ultima-pagina="@ultimaPagina" id="table-candidatos" class="col-md-10 table table-striped cf">
                     <thead class="cf">
                         <tr>
                             <th>Nome</th>
@@ -32,7 +30,8 @@
                                     <td>@item.Email</td>
                                     <td>@item.Situacao</td>
                                     <td>@item.Linkedin</td>
-                                    <td>@Html.ActionLink("Entrevistar", "Entrevistar", "Administrativo", new { id = @item.Id }, null)</td>
+                                    <td><a href="#" id="@item.Id" class="entrevistas">Entrevistas</a></td>
+                                    <td>@Html.ActionLink("Entrevistas", "Entrevista", "Administrativo", new { id = @item.Id }, null)</td>
                                     <td>@Html.ActionLink("Editar", "Editar", "Administrativo", new { id = @item.Id }, null)</td>
                                     @*<a href="/Administrativo/Editar?id=1">Editar</a>*@
                                 </tr>
@@ -41,10 +40,8 @@
                     </tbody>
                 </table>
                 <div class="container">
-                    <button class="btn btn-default" id="btn-voltar" disabled>Voltar</button>
+                    <button class="btn btn-default" id="btn-voltar">Voltar</button>
                     <button class="btn btn-default" id="btn-avancar">Avançar</button>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
