@@ -7,7 +7,7 @@ namespace InscricoesCrescer.Repositorio.Entrevista
 {
     public class EntrevistaRepositorio : IEntrevistaRepositorio
     {
-        public void Criar(EntrevistaEntidade entrevista)
+        public void Criar(Dominio.Entrevista.EntrevistaEntidade entrevista)
         {
             using (var context = new ContextoDeDados())
             {
@@ -16,7 +16,7 @@ namespace InscricoesCrescer.Repositorio.Entrevista
             }
         }
 
-        public List<EntrevistaEntidade> BuscarTodos()
+        public List<Dominio.Entrevista.EntrevistaEntidade> BuscarTodos()
         {
             using (var context = new ContextoDeDados())
             {
@@ -24,7 +24,7 @@ namespace InscricoesCrescer.Repositorio.Entrevista
             }
         }
 
-        public List<EntrevistaEntidade> BuscarPorId(int id)
+        public List<Dominio.Entrevista.EntrevistaEntidade> BuscarPorId(int id)
         {
             using (var context = new ContextoDeDados())
             {

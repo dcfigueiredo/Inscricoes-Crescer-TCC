@@ -19,7 +19,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public void Criar(CandidatoEntidade candidato)
+        public void Criar(Dominio.Candidato.CandidatoEntidade candidato)
         {
             using (var context = new ContextoDeDados())
             {
@@ -28,7 +28,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public void Editar(CandidatoEntidade candidato)
+        public void Editar(Dominio.Candidato.CandidatoEntidade candidato)
         {
             using (var context = new ContextoDeDados())
             {
@@ -37,7 +37,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public List<CandidatoEntidade> BuscarTodos()
+        public List<Dominio.Candidato.CandidatoEntidade> BuscarTodos()
         {
             using (var context = new ContextoDeDados())
             {
@@ -53,7 +53,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
+        public IList<Dominio.Candidato.CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
         {
             using (var context = new ContextoDeDados())
             {

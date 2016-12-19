@@ -3,7 +3,7 @@ namespace InscricoesCrescer.Repositorio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AdicionarEntidadeEntrevista : DbMigration
+    public partial class AdicionarAlteracoes : DbMigration
     {
         public override void Up()
         {
@@ -22,10 +22,12 @@ namespace InscricoesCrescer.Repositorio.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            AddColumn("dbo.AdministradorEntidade", "Nome", c => c.String());
         }
         
         public override void Down()
         {
+            DropColumn("dbo.AdministradorEntidade", "Nome");
             DropTable("dbo.EntrevistaEntidade");
         }
     }

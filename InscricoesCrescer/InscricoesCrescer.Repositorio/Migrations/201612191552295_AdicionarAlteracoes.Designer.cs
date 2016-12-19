@@ -7,13 +7,13 @@ namespace InscricoesCrescer.Repositorio.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AdicionarNomeAdministrador : IMigrationMetadata
+    public sealed partial class AdicionarAlteracoes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdicionarNomeAdministrador));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AdicionarAlteracoes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612191211139_AdicionarNomeAdministrador"; }
+            get { return "201612191552295_AdicionarAlteracoes"; }
         }
         
         string IMigrationMetadata.Source

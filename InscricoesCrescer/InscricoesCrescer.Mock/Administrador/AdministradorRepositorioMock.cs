@@ -9,21 +9,21 @@ namespace InscricoesCrescer.Mock.Administrador
 {
     public class AdministradorRepositorioMock : IAdministradorRepositorio
     {
-        private static IList<AdministradorEntidade> candidatos = new List<AdministradorEntidade>()
+        private static IList<Dominio.Administrador.AdministradorEntidade> candidatos = new List<Dominio.Administrador.AdministradorEntidade>()
         {
-            new AdministradorEntidade()
+            new Dominio.Administrador.AdministradorEntidade()
             {
                 Id = 1,
                 Email = "annaluisa1703@gmail.com",
                 Senha = "202cb962ac59075b964b07152d234b70"
             },
-            new AdministradorEntidade()
+            new Dominio.Administrador.AdministradorEntidade()
             {
                 Id = 2,
                 Email = "daniel.carvalho.figueiredo@gmail.com",
                 Senha = "202cb962ac59075b964b07152d234b70"
             },
-            new AdministradorEntidade()
+            new Dominio.Administrador.AdministradorEntidade()
             {
                 Id = 3,
                 Email = "rodrigo.scheuer@hotmail.com",
