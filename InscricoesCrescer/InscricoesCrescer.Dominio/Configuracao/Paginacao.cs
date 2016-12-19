@@ -10,5 +10,6 @@ namespace InscricoesCrescer.Dominio.Configuracao
     {
         public int Pagina { get; set; }
         public int QuantidadeDeItensPorPagina { get; set; }
+        public string Filtro { get; set; }
     }
 }

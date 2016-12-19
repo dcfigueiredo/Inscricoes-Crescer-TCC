@@ -40,10 +40,9 @@ namespace InscricoesCrescer.Controllers
         }
 
         [Autorizador]
-        public PartialViewResult CarregarListaDeCandidatos(int pagina)
+        public PartialViewResult CarregarListaDeCandidatos(int pagina, string filtro)
         {
-            int loucura = 0;
-            IList<CandidatoEntidade> candidatos = candidatoServico.BuscarCandidatos(pagina);
+            IList<CandidatoEntidade> candidatos = candidatoServico.BuscarCandidatos(pagina, filtro);
             ListaCandidatosViewModel model = CarregarCandidatosNaModelDeListagem(candidatos, pagina);
             return PartialView("_ListaCandidatos", model);
         }

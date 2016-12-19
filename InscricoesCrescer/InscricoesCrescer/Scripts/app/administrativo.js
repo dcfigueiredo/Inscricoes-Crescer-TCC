@@ -1,22 +1,24 @@
 ﻿var paginaAtual = 0;
+var filtro = '';
+
 $('#listar-candidatos').click(function (event) {    
     event.preventDefault();
-    carregarListaDeCandidatos(paginaAtual);
+    carregarListaDeCandidatos(filtro, paginaAtual);
 });
 
 $(function iniciarPaginaAdministrativo() {
-    carregarListaDeCandidatos(paginaAtual);
+    carregarListaDeCandidatos(filtro, paginaAtual);
 });
 
-function carregarListaDeCandidatos(pagina) {
+function carregarListaDeCandidatos(filtragem, pagina) {
     $.ajax({
         url: 'Administrativo/CarregarListaDeCandidatos',
         type: 'GET',
-        data: { pagina: pagina }
+        data: { filtro: filtragem, pagina: pagina }
     })
     .then(function (partialView) {
         $('#container-partial-views').html(partialView);
-        ouvirBotoesPaginacao();
+        ouvirBotoesPaginacaoEFiltro();
         atualizarBotoesPaginacao();
     });
 };
@@ -28,15 +30,20 @@ function atualizarBotoesPaginacao() {
     $('#btn-avancar').attr('disabled', ultimaPagina);
 }
 
-function ouvirBotoesPaginacao() {
+function ouvirBotoesPaginacaoEFiltro() {
     $("#btn-voltar").click(function voltarPagina() {
         if (paginaAtual > 0) {
             paginaAtual--;
-            carregarListaDeCandidatos(paginaAtual);
+            carregarListaDeCandidatos(filtro, paginaAtual);
         }
     });
     $("#btn-avancar").click(function avancarPagina() {
         paginaAtual ++;
-        carregarListaDeCandidatos(paginaAtual);
+        carregarListaDeCandidatos(filtro, paginaAtual);
+    });
+    $('#btn-filtrar').click(function (event) {
+        paginaAtual = 0;
+        filtro = $('#filtro').val();
+        carregarListaDeCandidatos(filtro, paginaAtual);
     });
 }

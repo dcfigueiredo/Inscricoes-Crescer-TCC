@@ -39,13 +39,14 @@ namespace InscricoesCrescer.Dominio.Candidato
             return candidatoRepositorio.BuscarTodos();
         }
 
-        public IList<CandidatoEntidade> BuscarCandidatos(int pagina)
+        public IList<CandidatoEntidade> BuscarCandidatos(int pagina, string filtro)
         {
             int quantidadeDeCandidatosPorPagina = this.servicoConfiguracao.QuantidadeDeCandidatosPorPagina;
 
             var paginacao = new Paginacao() {
                 Pagina = pagina,
-                QuantidadeDeItensPorPagina = quantidadeDeCandidatosPorPagina
+                QuantidadeDeItensPorPagina = quantidadeDeCandidatosPorPagina,
+                Filtro = filtro == null ? "" : filtro
             };
 
             return this.candidatoRepositorio.BuscarCandidatos(paginacao);

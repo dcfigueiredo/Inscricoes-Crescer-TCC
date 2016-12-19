@@ -58,9 +58,9 @@ namespace InscricoesCrescer.Repositorio.Candidato
             using (var context = new ContextoDeDados())
             {
                 return context.Candidato.OrderBy(_ => _.Id).Skip(paginacao.Pagina * paginacao.QuantidadeDeItensPorPagina)
-                                        .Take(paginacao.QuantidadeDeItensPorPagina)
+                                        .Take(paginacao.QuantidadeDeItensPorPagina).Where(_ => _.Nome.Contains(paginacao.Filtro))
                                         .ToList();
             }
-        }
+        }        
     }
 }

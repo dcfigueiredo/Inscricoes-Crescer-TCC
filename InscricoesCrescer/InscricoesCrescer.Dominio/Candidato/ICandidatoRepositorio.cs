@@ -19,6 +19,6 @@ namespace InscricoesCrescer.Dominio.Candidato
 
         CandidatoEntidade BuscarPorEmail(string email);
 
-        IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao);
+        IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao);       
     }
 }
