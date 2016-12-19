@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InscricoesCrescer.Dominio.Entrevista;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InscricoesCrescer.Dominio.Candidato
@@ -29,5 +31,7 @@ namespace InscricoesCrescer.Dominio.Candidato
         public string Cidade { get; set; }
 
         public string Senha { get; set; }
-    }
+
+        public ICollection<EntrevistaEntidade> Entrevistas { get; set;}
+}
 }
