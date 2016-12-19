@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201612191847025_AdicionarRelacaoDeCandidatoComEntrevistas.Designer.cs">
       <DependentUpon>201612191847025_AdicionarRelacaoDeCandidatoComEntrevistas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.cs" />
+    <Compile Include="Migrations\201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.Designer.cs">
+      <DependentUpon>201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProcessoSeletivo\ProcessoSeletivoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612191847025_AdicionarRelacaoDeCandidatoComEntrevistas.resx">
       <DependentUpon>201612191847025_AdicionarRelacaoDeCandidatoComEntrevistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.resx">
+      <DependentUpon>201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
