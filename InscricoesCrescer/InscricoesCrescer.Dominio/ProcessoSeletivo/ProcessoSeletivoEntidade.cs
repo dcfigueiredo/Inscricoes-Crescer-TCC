@@ -15,7 +15,8 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
         public DateTime DataSelecaoFinal { get; set; }
         public DateTime DataInicioAulas { get; set; }
         public DateTime DataFinalAulas { get; set; }
-        public DateTime AnoEdicao { get; set; }
-        public DateTime SemestreEdicao { get; set; }
+        public int AnoEdicao { get; set; }
+        public int SemestreEdicao { get; set; }
+    
     }
 }

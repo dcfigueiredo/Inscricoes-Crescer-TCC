@@ -6,6 +6,8 @@ using InscricoesCrescer.Infraestrutura.Service;
 using InscricoesCrescer.Repositorio.Administrador;
 using InscricoesCrescer.Repositorio.Candidato;
 using InscricoesCrescer.Repositorio.Entrevista;
+using InscricoesCrescer.Dominio.ProcessoSeletivo;
+using InscricoesCrescer.Repositorio.ProcessoSeletivo;
 
 namespace InscricoesCrescer.Servico
 {
@@ -27,6 +29,12 @@ namespace InscricoesCrescer.Servico
         {
             EntrevistaServico entrevistaServico = new EntrevistaServico(new EntrevistaRepositorio());
             return entrevistaServico;
+        }
+
+        internal static ProcessoSeletivoServico MontarProcessoSeletivoServico()
+        {
+            ProcessoSeletivoServico processoSeletivoServico = new ProcessoSeletivoServico(new ProcessoSeletivoRepositorio());
+            return processoSeletivoServico;
         }
 
         public static ServicoConfiguracao MontarServicoConfiguracao()

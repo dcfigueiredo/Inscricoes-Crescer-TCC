@@ -7,6 +7,7 @@ using InscricoesCrescer.Servico;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System;
+using InscricoesCrescer.Dominio.ProcessoSeletivo;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -16,6 +17,8 @@ namespace InscricoesCrescer.Controllers
         private CandidatoServico candidatoServico = ServicoDeDependencia.MontarCandidatoServico();
         private IServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
         private EntrevistaServico servicoEntrevista = ServicoDeDependencia.MontarEntrevistaServico();
+        private ProcessoSeletivoServico servicoProcessoSeletivo = ServicoDeDependencia.MontarProcessoSeletivoServico();
+
 
         // GET: Administrativo
         [Autorizador]
@@ -33,6 +36,23 @@ namespace InscricoesCrescer.Controllers
         {            
             List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarTodosComMesmoId(id);
             return PartialView("_Entrevista", entrevistas);
+        }
+
+        public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
+
+            if (ModelState.IsValid)
+            {
+                ProcessoSeletivoEntidade processo = montarProcessoSeletivo(model);
+                servicoProcessoSeletivo.Salvar(processo);
+
+                TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
+                return PartialView("_CadastroProcessoSeletivo");
+            }
+            ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
+                                    "verifique se todos os dados foram digitados corretamente.");
+
+            return PartialView("_CadastroProcessoSeletivo", model);
+
         }
 
         public ActionResult CadastroEntrevista(long id)
@@ -58,6 +78,18 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_CadastroEntrevista", model);
         }
 
+        private ProcessoSeletivoEntidade montarProcessoSeletivo(ProcessoSeletivoViewModel model)
+        {
+            ProcessoSeletivoEntidade processoSeletivo = new ProcessoSeletivoEntidade();
+            processoSeletivo.Id = model.Id;
+            processoSeletivo.SemestreEdicao = model.SemestreEdicao;
+            processoSeletivo.DataSelecaoFinal = model.DataSelecaoFinal;
+            processoSeletivo.DataInicioEntrevistas = model.DataInicioEntrevistas;
+            processoSeletivo.DataInicioAulas = model.DataInicioAulas;
+            processoSeletivo.DataFinalAulas = model.DataFinalAulas;
+            processoSeletivo.AnoEdicao = model.AnoEdicao;
+            return processoSeletivo;
+        }
 
         public ActionResult Editar(long id)
         {
