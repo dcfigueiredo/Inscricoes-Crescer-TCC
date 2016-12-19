@@ -3,10 +3,7 @@ using InscricoesCrescer.Dominio.Configuracao;
 using InscricoesCrescer.Filters;
 using InscricoesCrescer.Models;
 using InscricoesCrescer.Servico;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace InscricoesCrescer.Controllers
@@ -26,7 +23,7 @@ namespace InscricoesCrescer.Controllers
 
         public ActionResult ProcessoSeletivo()
         {
-            return View();
+            return PartialView("_ProcessoSeletivo");
         }
 
         public ActionResult Entrevistar(long id)
