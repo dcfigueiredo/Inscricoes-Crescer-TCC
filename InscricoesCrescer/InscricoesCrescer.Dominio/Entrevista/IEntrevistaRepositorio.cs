@@ -7,6 +7,6 @@ namespace InscricoesCrescer.Dominio.Entrevista
         void Criar(EntrevistaEntidade candidato);
 
         List<EntrevistaEntidade> BuscarTodos();
-        List<EntrevistaEntidade> BuscarPorId(int id);
+        List<EntrevistaEntidade> BuscarTodosComMesmoId(long id);
     }
 }

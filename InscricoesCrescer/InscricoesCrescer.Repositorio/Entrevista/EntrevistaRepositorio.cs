@@ -24,7 +24,7 @@ namespace InscricoesCrescer.Repositorio.Entrevista
             }
         }
 
-        public List<Dominio.Entrevista.EntrevistaEntidade> BuscarPorId(int id)
+        public List<Dominio.Entrevista.EntrevistaEntidade> BuscarTodosComMesmoId(long id)
         {
             using (var context = new ContextoDeDados())
             {
