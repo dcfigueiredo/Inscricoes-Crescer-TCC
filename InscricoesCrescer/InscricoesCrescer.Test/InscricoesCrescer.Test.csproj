@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,8 +57,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdministradorServicoTest.cs" />
     <Compile Include="ServicoEmailTest.cs" />
+    <Compile Include="ServicoConfiguracaoTest.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InscricoesCrescer.Dominio\InscricoesCrescer.Dominio.csproj">
       <Project>{0CFF267C-AF6E-4703-A0D6-7AE1DCFC015E}</Project>

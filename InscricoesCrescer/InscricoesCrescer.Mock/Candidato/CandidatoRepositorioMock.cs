@@ -43,7 +43,9 @@ namespace InscricoesCrescer.Mock.Candidato
 
         public IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
         {
-            throw new NotImplementedException();
+            return candidatos.OrderBy(_ => _.Id).Skip(paginacao.Pagina * paginacao.QuantidadeDeItensPorPagina)
+                             .Take(paginacao.QuantidadeDeItensPorPagina).Where(_ => _.Nome.Contains(paginacao.Filtro))
+                             .ToList();
         }
 
         public CandidatoEntidade BuscarPorEmail(string email)
