@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InscricoesCrescer.Dominio.Configuracao;
 
 namespace InscricoesCrescer.Mock.Candidato
 {
@@ -39,6 +40,11 @@ namespace InscricoesCrescer.Mock.Candidato
                 Conclusao = new DateTime (2025, 12, 12)
             }
         };
+
+        public IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
+        {
+            throw new NotImplementedException();
+        }
 
         public CandidatoEntidade BuscarPorEmail(string email)
         {

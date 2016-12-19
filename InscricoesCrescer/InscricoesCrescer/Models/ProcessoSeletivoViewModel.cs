@@ -18,30 +18,21 @@ namespace InscricoesCrescer.Models
         public DateTime SemestreEdicao { get; set; }
 
 
+        //private int verificarDataEdicao()
+        //{
+        //    //TO DO:
+        //    //fazer um servico que busque estes dados para mim do banco!
 
-
-        /*
-        private int verificarDataEdicao()
-        {
-
-            //TO DO:
-            //fazer um servico que busque estes dados para mim do banco!
-
-            if (semestreDoRegistroAnterior == 1)
-            {
-                anoDoNovoRegistro = anodoRegistroAnterior;
-
-                semestreDoNovoRegistro = semestreDoRegistroAnterior + 1;
-            }
-            else
-            {
-                anoDoNovoRegistro = anoDoRegistroAnterior + 1;
-
-
-                semestreDoNovoRegistro = 1;
-            }
-
-
-        }*/
+        //    if (semestreDoRegistroAnterior == 1)
+        //    {
+        //        anoDoNovoRegistro = anodoRegistroAnterior;
+        //        semestreDoNovoRegistro = semestreDoRegistroAnterior + 1;
+        //    }
+        //    else
+        //    {
+        //        anoDoNovoRegistro = anoDoRegistroAnterior + 1;
+        //        semestreDoNovoRegistro = 1;
+        //    }
+        //}
     }
 }
