@@ -10,9 +10,9 @@ namespace InscricoesCrescer.Mock.Candidato
 {
     public class CandidatoRepositorioMock : ICandidatoRepositorio
     {
-        private static IList<CandidatoEntidade> candidatos = new List<CandidatoEntidade>()
+        private static IList<Dominio.Candidato.CandidatoEntidade> candidatos = new List<Dominio.Candidato.CandidatoEntidade>()
         {
-            new CandidatoEntidade()
+            new Dominio.Candidato.CandidatoEntidade()
             {
                 Id = 1,
                 Nome = "Anna Luisa da Silva",
@@ -21,7 +21,7 @@ namespace InscricoesCrescer.Mock.Candidato
                 Curso = "Sistemas de Informação",
                 Conclusao = new DateTime (2020, 12, 12)
             },
-            new CandidatoEntidade()
+            new Dominio.Candidato.CandidatoEntidade()
             {
                 Id = 2,
                 Nome = "Daniel de Carvalho Figueiredo",
@@ -30,7 +30,7 @@ namespace InscricoesCrescer.Mock.Candidato
                 Curso = "Ciências da Computação",
                 Conclusao = new DateTime (2021, 6, 12)
             },
-            new CandidatoEntidade()
+            new Dominio.Candidato.CandidatoEntidade()
             {
                 Id = 3,
                 Nome = "Rodrigo Scheuer",
@@ -41,7 +41,7 @@ namespace InscricoesCrescer.Mock.Candidato
             }
         };
 
-        public IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
+        public IList<Dominio.Candidato.CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
         {
             return candidatos.OrderBy(_ => _.Id).Skip(paginacao.Pagina * paginacao.QuantidadeDeItensPorPagina)
                              .Take(paginacao.QuantidadeDeItensPorPagina).Where(_ => _.Nome.Contains(paginacao.Filtro))
@@ -58,18 +58,18 @@ namespace InscricoesCrescer.Mock.Candidato
             return candidatos.FirstOrDefault(_ => _.Id == id);
         }
 
-        public List<CandidatoEntidade> BuscarTodos()
+        public List<Dominio.Candidato.CandidatoEntidade> BuscarTodos()
         {
             throw new NotImplementedException();
         }
 
-        public void Criar(CandidatoEntidade candidato)
+        public void Criar(Dominio.Candidato.CandidatoEntidade candidato)
         {
             candidato.Id = 4;
             candidatos.Add(candidato);            
         }
 
-        public void Editar(CandidatoEntidade candidato)
+        public void Editar(Dominio.Candidato.CandidatoEntidade candidato)
         {
             throw new NotImplementedException();
         }
