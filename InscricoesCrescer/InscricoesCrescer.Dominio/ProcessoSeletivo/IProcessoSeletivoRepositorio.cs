@@ -9,7 +9,10 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
     public interface IProcessoSeletivoRepositorio
     {
         void AbrirProcessoSeletivo(ProcessoSeletivoEntidade processo);
-        //Fazer o editar?
-        //void EditarProcessoSeletivo(ProcessoSeletivoEntidade processo);
+        
+        void EditarProcessoSeletivo(ProcessoSeletivoEntidade processo);
+
+        List<ProcessoSeletivoEntidade> BuscarTodos();
+        ProcessoSeletivoEntidade VerificarProcessoExiste(ProcessoSeletivoEntidade processoSeletivo);
     }
 }
