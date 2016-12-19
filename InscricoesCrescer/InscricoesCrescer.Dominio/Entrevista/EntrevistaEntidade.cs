@@ -6,7 +6,7 @@ namespace InscricoesCrescer.Dominio.Entrevista
     [Table("Entrevista")]
     public class EntrevistaEntidade
     {
-        public long? Id { get; set; }
+        public long Id { get; set; }
 
         public string EmailAdministrador { get; set; }
 

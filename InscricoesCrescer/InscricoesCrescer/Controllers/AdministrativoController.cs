@@ -46,7 +46,7 @@ namespace InscricoesCrescer.Controllers
         {
             if (ModelState.IsValid)
             {
-                EntrevistaEntidade entrevista = ConvertEntrevistaParaEntidade(model);
+                EntrevistaEntidade entrevista = ConvertModelParaEntidade(model);
                 servicoEntrevista.Salvar(entrevista);
 
                 TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
@@ -66,9 +66,11 @@ namespace InscricoesCrescer.Controllers
 
         public ActionResult EditarEntrevista(long id)
         {
-            //servicoEntrevista.BuscarPorId(id);
-            return View();
+            EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(id);
+            CadastroEntrevistaModel model = ConvertEntidadaeParaModel(entrevista);
+            return View("_CadastroEntrevista", model);
         }
+
 
         [Autorizador]
         public PartialViewResult CarregarListaDeCandidatos(int pagina, string filtro)
@@ -78,7 +80,21 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_ListaCandidatos", model);
         }
 
-        private EntrevistaEntidade ConvertEntrevistaParaEntidade(CadastroEntrevistaModel model)
+        private CadastroEntrevistaModel ConvertEntidadaeParaModel(EntrevistaEntidade entrevista)
+        {
+            CadastroEntrevistaModel model = new CadastroEntrevistaModel();
+            model.Id = entrevista.Id;
+            model.DataEntrevista = entrevista.DataEntrevista;
+            model.ParecerRH = entrevista.ParecerRH;
+            model.ParecerTecnico = entrevista.ParecerTecnico;
+            model.ProvaG36 = entrevista.ProvaG36;
+            model.ProvaAC = entrevista.ProvaAC;
+            model.ProvaTecnica = entrevista.ProvaTecnica;
+
+            return model;
+        }
+
+        private EntrevistaEntidade ConvertModelParaEntidade(CadastroEntrevistaModel model)
         {
             EntrevistaEntidade entrevista = new EntrevistaEntidade();
             entrevista.Id = model.Id;

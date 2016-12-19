@@ -14,14 +14,15 @@ namespace InscricoesCrescer.Dominio.Entrevista
 
         public bool Salvar(EntrevistaEntidade entrevista)
         {
-            if (entrevista.Id != 0 || entrevista.Id != null)
+            if (entrevista.Id == 0 || entrevista.Id == null)
             {
                 this.entrevistaRepositorio.Criar(entrevista);
                 return true;
             }
             else
             {
-                return false;
+                this.entrevistaRepositorio.Editar(entrevista);
+                return true;
             }
         }
 
@@ -33,6 +34,11 @@ namespace InscricoesCrescer.Dominio.Entrevista
         public List<EntrevistaEntidade> BuscarTodosComMesmoId(long id)
         {
             return entrevistaRepositorio.BuscarTodosComMesmoId(id);
+        }
+
+        public EntrevistaEntidade BuscarPorId(long id)
+        {
+            return entrevistaRepositorio.BuscarPorId(id);
         }
     }
 }
