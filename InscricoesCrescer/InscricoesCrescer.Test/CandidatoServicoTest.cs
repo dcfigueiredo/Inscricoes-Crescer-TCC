@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using InscricoesCrescer.Mock.Candidato;
 using InscricoesCrescer.Dominio.Candidato;
+using InscricoesCrescer.Servico;
 
 namespace InscricoesCrescer.Test
 {
@@ -9,7 +10,7 @@ namespace InscricoesCrescer.Test
     public class CandidatoServicoTest
     {
         
-        CandidatoServico candidatoServico = new CandidatoServico(new CandidatoRepositorioMock());
+        CandidatoServico candidatoServico = new CandidatoServico(new CandidatoRepositorioMock(), new ServicoConfiguracao());
         [TestMethod]
         public void TestaSalvarUmCandidato()
         {

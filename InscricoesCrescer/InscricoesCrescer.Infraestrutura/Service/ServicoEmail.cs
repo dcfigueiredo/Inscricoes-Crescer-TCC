@@ -47,7 +47,7 @@ namespace InscricoesCrescer.Infraestrutura
             }
         }
 
-        public bool enviarEmailDeNotificação(List<CandidatoEntidade> listaCandidatos)
+        public bool enviarEmailDeNotificacao(List<CandidatoEntidade> listaCandidatos)
         {
             string assunto = "Abertura do Processo Seletivo CWI";
             string direcionarParaPagina = "/Home/SegundaEtapaCadastroCandidato/";

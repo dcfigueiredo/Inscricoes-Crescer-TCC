@@ -71,6 +71,10 @@
       <Project>{B0BA3466-7812-44CB-82D5-514F9D961FAD}</Project>
       <Name>InscricoesCrescer.Mock</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InscricoesCrescer\InscricoesCrescer.csproj">
+      <Project>{8C19B84C-1FBA-4711-8263-4B97798AA97A}</Project>
+      <Name>InscricoesCrescer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
