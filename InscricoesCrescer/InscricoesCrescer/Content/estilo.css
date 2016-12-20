@@ -30,7 +30,7 @@ body {
     margin-left: 35%;
     width: 400px;
     height: 350px;
-    background-color: #DFE0E2;
+    background-color: #F6F6F7;
     background-size:cover;
     border-radius: 5px;
     padding-top: 20px;
@@ -45,7 +45,7 @@ body {
 }
 
 .menu{
-    background-color: #262626;
+    background-color: rgb(40,43,50);
     height: 130px;
 }
 
@@ -99,7 +99,7 @@ body, html {
     position: fixed;
     z-index: 1000;
     left: -240px;
-    background-color:black;
+    background-color:rgb(40,43,50);
     width: 240px;
     height: 100%;
     box-sizing: border-box;
@@ -165,7 +165,7 @@ width: 100%;
     line-height: 160%;
 }
 .main-content #sidebar-toggle {
-    background: orange;
+    background: #F4A83D;
     border-radius: 3px;
     display: block;
     position: relative;

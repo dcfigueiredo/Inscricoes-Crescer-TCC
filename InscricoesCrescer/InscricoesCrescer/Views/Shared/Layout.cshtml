@@ -32,7 +32,7 @@
             <ul>
                 <li><a href="@Url.Action("Index", "Administrativo")" id="listar-candidatos">Lista de Candidatos</a></li>
                 <li>
-                    <a href="@Url.Action("ProcessoSeletivo", "Administrativo")"> Abrir Processo Seletivo</a>
+                    <a href="@Url.Action("ProcessoSeletivo", "Administrativo")" id="abrir-processo-seletivo"> Abrir Processo Seletivo</a>
                 </li>
                 <li><a href="@Url.Action("Logout", "Login")">Sair</a></li>
             </ul>
@@ -46,8 +46,7 @@
             </a>
             <div class="content">
                 @RenderBody()
-                <div class="large"></div>
-                <div class="large">Some other random content</div>
+                
             </div>
         </div>
     </div>    

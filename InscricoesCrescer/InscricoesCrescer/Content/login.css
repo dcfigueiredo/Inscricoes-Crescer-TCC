@@ -1,35 +1,32 @@
-﻿
-body {
-  background-color:#DFE0E2;
-  font-family: Georgia,sans-serif;
+﻿body {
+  background-color:#F6F6F7;
+  font-family: sans-serif, arial;
 }
 
 .barra-lateral{
   width: 320px;
-  background-color: #262626;
+  background-color: rgb(40,43,50);
   height: 700px;
 
 }
 
 .tela-login{
     text-align:center;
-    width:300px;
+    width:380px;
     height:300px;
     display: inline-block;
     position:absolute;
     top:20%;
     left:40%;
     border: solid;
-    border-color:#DFE0E2;
-    background-color:#DFE0E2;
-    border-color:#DFE0E2;
-    background-color:#DFE0E2;
+    border-color:#F6F6F7;
+    background-color:#F6F6F7;
+    position:center;    
 }
 
 #titulo-login{
     padding-top: 10px;
     margin-bottom:50px;
-    font-family:Centaur;
     font-weight:bold;
     font-size:50px;
     color:#F49D33;
