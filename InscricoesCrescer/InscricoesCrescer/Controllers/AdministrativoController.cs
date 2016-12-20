@@ -19,7 +19,7 @@ namespace InscricoesCrescer.Controllers
         private ServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
         private EntrevistaServico servicoEntrevista = ServicoDeDependencia.MontarEntrevistaServico();
         private ProcessoSeletivoServico servicoProcessoSeletivo = ServicoDeDependencia.MontarProcessoSeletivoServico();
-
+        
 
         // GET: Administrativo
         [Autorizador]
@@ -29,9 +29,10 @@ namespace InscricoesCrescer.Controllers
         }
 
         [Autorizador]
-        public ActionResult ProcessoSeletivo()
+        public PartialViewResult CarregarProcessoSeletivo()
         {
-            return PartialView("_ProcessoSeletivo");
+            ProcessoSeletivoViewModel model = new ProcessoSeletivoViewModel();
+            return PartialView("_ProcessoSeletivo", model);
         }
 
         [Autorizador]

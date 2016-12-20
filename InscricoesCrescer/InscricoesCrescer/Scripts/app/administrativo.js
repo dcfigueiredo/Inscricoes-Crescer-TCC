@@ -6,9 +6,24 @@ $('#listar-candidatos').click(function (event) {
     carregarListaDeCandidatos(filtro, paginaAtual);
 });
 
+$('#abrir-processo-seletivo').click(function (event) {
+    event.preventDefault();
+    carregarProcessoSeletivo();
+});
+
 $(function iniciarPaginaAdministrativo() {
     carregarListaDeCandidatos(filtro, paginaAtual);
 });
+
+function carregarProcessoSeletivo() {
+    $.ajax({
+        url: 'Administrativo/CarregarProcessoSeletivo',
+        type: 'GET'
+    })
+    .then(function (partialView) {
+        $('#container-partial-views').html(partialView);
+    });
+}
 
 function carregarListaDeCandidatos(filtragem, pagina) {
     $.ajax({
