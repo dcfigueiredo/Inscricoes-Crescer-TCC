@@ -18,6 +18,11 @@ body {
     padding-left: 2%;
 }
 
+.titulo-listagem-candidatos h1{
+    padding-left: 30%;
+    margin-bottom: 10px;
+}
+
 .tela-inicial {
     text-align: center;
     display: inline-block;
