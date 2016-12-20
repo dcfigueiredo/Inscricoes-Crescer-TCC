@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using InscricoesCrescer.Dominio.Entrevista;
+using InscricoesCrescer.Models;
 
 namespace InscricoesCrescer.Models
 {
@@ -13,13 +15,28 @@ namespace InscricoesCrescer.Models
         {
             this.Id = candidato.Id;
             this.Email = candidato.Email;
-            this.Idade = calcularIdade(candidato.DataNascimento);
+            this.Idade = CalcularIdade(Convert.ToDateTime(candidato.DataNascimento));
             this.Linkedin = candidato.Linkedin;
             this.Nome = candidato.Nome;
             this.Situacao = candidato.Status;
             this.Telefone = candidato.Telefone;
             this.Curso = candidato.Curso;
             this.Instituicao = candidato.Instituicao;
+            if (candidato.Entrevistas != null)
+            {
+                this.Entrevistas = EntrevistaEntidadeParaViewModel(candidato.Entrevistas);
+            }
+        }
+
+        private IList<EntrevistaParaViewModel> EntrevistaEntidadeParaViewModel(ICollection<EntrevistaEntidade> entrevistas)
+        {
+            IList<EntrevistaParaViewModel> entrevistaModel = new List<EntrevistaParaViewModel>();
+            foreach (var entrevista in entrevistas)
+            {
+                EntrevistaParaViewModel model = new EntrevistaParaViewModel(entrevista);
+                entrevistaModel.Add(model);
+            }
+            return entrevistaModel;
         }
 
         public long? Id { get; set; }
@@ -42,17 +59,18 @@ namespace InscricoesCrescer.Models
 
         public ICollection<EntrevistaParaViewModel> Entrevistas { get; set; }
 
-        //TO-DO: Arrumar esse metodo para exibir as idades certinho na página
-        private int calcularIdade(DateTime? dataNascimento)
+
+        public static int CalcularIdade(DateTime dataNascimento)
         {
-            if (dataNascimento.HasValue)
+            // Retorna o número de anos
+            int YearsAge = DateTime.Now.Year - dataNascimento.Year;
+
+            // Se a data de aniversário não ocorreu ainda este ano, subtrair um ano a partir da idade
+            if (DateTime.Now.Month < dataNascimento.Month || (DateTime.Now.Month == dataNascimento.Month && DateTime.Now.Day < dataNascimento.Day))
             {
-                return DateTime.Now.Year - dataNascimento.Value.Year;
+                YearsAge--;
             }
-            else
-            {
-                return 0;
-            }
+            return YearsAge;
         }
 
     }

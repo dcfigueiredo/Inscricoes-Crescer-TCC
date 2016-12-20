@@ -13,5 +13,6 @@ namespace InscricoesCrescer.Dominio.Entrevista
         void Criar(EntrevistaEntidade entrevista);
 
         void Editar(EntrevistaEntidade entrevista);
+        IList<EntrevistaEntidade> BuscarPorIdDoCandidato(long id);
     }
 }
