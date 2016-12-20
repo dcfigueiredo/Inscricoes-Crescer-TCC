@@ -30,8 +30,7 @@
                                     <td>@item.Email</td>
                                     <td>@item.Situacao</td>
                                     <td>@item.Linkedin</td>
-                                    <td><a href="#" id="@item.Id" class="entrevistas">Entrevistas</a></td>
-                                    <td>@Html.ActionLink("Entrevistas", "Entrevista", "Administrativo", new { id = @item.Id }, null)</td>
+                                    <td><a href="#" id="@item.Id" class="entrevistas">Entrevistas</a></td>                                    
                                     <td>@Html.ActionLink("Editar", "Editar", "Administrativo", new { id = @item.Id }, null)</td>
                                     @*<a href="/Administrativo/Editar?id=1">Editar</a>*@
                                 </tr>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System;
+using InscricoesCrescer.Dominio.Candidato;
 
 namespace InscricoesCrescer.Repositorio.Entrevista
 {
@@ -26,19 +27,11 @@ namespace InscricoesCrescer.Repositorio.Entrevista
             }
         }
 
-        public List<Dominio.Entrevista.EntrevistaEntidade> BuscarTodos()
+        public List<EntrevistaEntidade> BuscarTodos()
         {
             using (var context = new ContextoDeDados())
             {
                 return context.Entrevista.OrderByDescending(_ => _.DataEntrevista).ToList();
-            }
-        }
-
-        public List<Dominio.Entrevista.EntrevistaEntidade> BuscarTodosComMesmoId(long id)
-        {
-            using (var context = new ContextoDeDados())
-            {
-                return context.Entrevista.Where(_ => _.Id == id).ToList(); ;
             }
         }
 

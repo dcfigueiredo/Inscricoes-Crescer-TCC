@@ -18,11 +18,17 @@ namespace InscricoesCrescer.Models
             this.Nome = candidato.Nome;
             this.Situacao = candidato.Status;
             this.Telefone = candidato.Telefone;
+            this.Curso = candidato.Curso;
+            this.Instituicao = candidato.Instituicao;
         }
 
         public long? Id { get; set; }
 
+        public string Curso { get; set; }
+
         public string Nome { get; set; }
+
+        public string Instituicao { get; set; }
 
         public int Telefone { get; set; }
 
@@ -34,6 +40,9 @@ namespace InscricoesCrescer.Models
         
         public string Linkedin { get; set; }
 
+        public ICollection<EntrevistaParaViewModel> Entrevistas { get; set; }
+
+        //TO-DO: Arrumar esse metodo para exibir as idades certinho na página
         private int calcularIdade(DateTime? dataNascimento)
         {
             if (dataNascimento.HasValue)

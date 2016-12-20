@@ -29,7 +29,7 @@ namespace InscricoesCrescer.Dominio.Candidato
             }
         }
 
-        public CandidatoEntidade BuscarCandidatoPorID(int id)
+        public CandidatoEntidade BuscarCandidatoPorID(long id)
         {
             return this.candidatoRepositorio.BuscarPorId(id);
         }

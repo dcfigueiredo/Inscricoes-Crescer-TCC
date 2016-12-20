@@ -27,17 +27,21 @@ namespace InscricoesCrescer.Controllers
             return View();
         }
 
+        [Autorizador]
         public ActionResult ProcessoSeletivo()
         {
             return PartialView("_ProcessoSeletivo");
         }
 
-        public PartialViewResult CarregarEntrevistas(int id)
+        [Autorizador]
+        public PartialViewResult CarregarEntrevistas(long id)
         {            
-            List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarTodosComMesmoId(id);
-            return PartialView("_Entrevista", entrevistas);
+            CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(id);
+            CandidatoParaViewModel model = new CandidatoParaViewModel(candidato);
+            return PartialView("_Entrevistas", model);
         }
 
+        [Autorizador]
         public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
 
             if (ModelState.IsValid)
@@ -55,6 +59,7 @@ namespace InscricoesCrescer.Controllers
 
         }
 
+        [Autorizador]
         public ActionResult CadastroEntrevista(long id)
         {
             CadastroEntrevistaModel model = new CadastroEntrevistaModel();
@@ -62,6 +67,7 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_CadastroEntrevista", model);
         }
 
+        [Autorizador]
         public ActionResult SalvarEntrevista(CadastroEntrevistaModel model)
         {
             if (ModelState.IsValid)
@@ -78,6 +84,7 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_CadastroEntrevista", model);
         }
 
+        [Autorizador]
         private ProcessoSeletivoEntidade montarProcessoSeletivo(ProcessoSeletivoViewModel model)
         {
             ProcessoSeletivoEntidade processoSeletivo = new ProcessoSeletivoEntidade();
@@ -91,18 +98,19 @@ namespace InscricoesCrescer.Controllers
             return processoSeletivo;
         }
 
+        [Autorizador]
         public ActionResult Editar(long id)
         {
             return View();
         }
 
+        [Autorizador]
         public ActionResult EditarEntrevista(long id)
         {
             EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(id);
             CadastroEntrevistaModel model = ConvertEntidadaeParaModel(entrevista);
             return View("_CadastroEntrevista", model);
         }
-
 
         [Autorizador]
         public PartialViewResult CarregarListaDeCandidatos(int pagina, string filtro)
