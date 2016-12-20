@@ -15,7 +15,6 @@ namespace InscricoesCrescer.Models
         {
             this.Id = entrevista.Id;
             this.DataEntrevista = entrevista.DataEntrevista;
-            this.Candidato = entrevista.Candidato;
             this.CandidatoEntidadeId = entrevista.CandidatoEntidadeId;
             this.ParecerRH = entrevista.ParecerRH;
             this.ParecerTecnico = entrevista.ParecerTecnico;
@@ -49,8 +48,7 @@ namespace InscricoesCrescer.Models
         [DisplayName("Nota prova Técnica: ")]
         public double ProvaTecnica { get; set; }
 
-        public long? CandidatoEntidadeId { get; internal set; }
+        public long CandidatoEntidadeId { get; set; }
 
-        public CandidatoEntidade Candidato { get; internal set; }
     }
 }

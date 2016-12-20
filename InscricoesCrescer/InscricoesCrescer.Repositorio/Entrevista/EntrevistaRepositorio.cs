@@ -13,6 +13,7 @@ namespace InscricoesCrescer.Repositorio.Entrevista
         {
             using (var context = new ContextoDeDados())
             {
+                context.Candidato.Attach(entrevista.Candidato);
                 context.Entry<EntrevistaEntidade>(entrevista).State = EntityState.Added;
                 context.SaveChanges();
             }
@@ -22,6 +23,7 @@ namespace InscricoesCrescer.Repositorio.Entrevista
         {
             using (var context = new ContextoDeDados())
             {
+                context.Candidato.Attach(entrevista.Candidato);
                 context.Entry<EntrevistaEntidade>(entrevista).State = EntityState.Modified;
                 context.SaveChanges();
             }
