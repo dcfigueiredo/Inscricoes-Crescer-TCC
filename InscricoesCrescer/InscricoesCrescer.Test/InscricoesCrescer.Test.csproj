@@ -58,6 +58,7 @@
     <Compile Include="AdministradorServicoTest.cs" />
     <Compile Include="ServicoEmailTest.cs" />
     <Compile Include="ServicoConfiguracaoTest.cs" />
+    <Compile Include="ServicoCriptografiaTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
