@@ -9,8 +9,9 @@ namespace InscricoesCrescer.Dominio.Entrevista
     {
         public long? Id { get; set; }
 
-        public long? CandidatoEntidadeId { get; set; }
+        public long CandidatoEntidadeId { get; set; }
 
+        [ForeignKey("CandidatoEntidadeId")]
         public virtual CandidatoEntidade Candidato { get; set; }
 
         public string EmailAdministrador { get; set; }

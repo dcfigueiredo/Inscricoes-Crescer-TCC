@@ -49,7 +49,7 @@ namespace InscricoesCrescer.Controllers
             if (idEntrevista == 0)
             {
                 model = new CadastroEntrevistaModel();
-                model.CandidatoEntidadeId = idEntrevistado;
+                model.CandidatoEntidadeId = idEntrevistado;            
                 return PartialView("_CadastroEntrevista", model);
             }
             else
@@ -66,7 +66,7 @@ namespace InscricoesCrescer.Controllers
 
             if (ModelState.IsValid)
             {
-                ProcessoSeletivoEntidade processo = montarProcessoSeletivo(model);
+                ProcessoSeletivoEntidade processo = MontarProcessoSeletivo(model);
                 if(servicoProcessoSeletivo.VerificarProcessoExiste(processo))
                 {
                     TempData["Data invalida"] = "* Ano ou semestre inválido, ja existe edição cadastrada nesse semestre.";
@@ -95,30 +95,23 @@ namespace InscricoesCrescer.Controllers
         }
 
         [Autorizador]
-        public ActionResult CadastroEntrevista(long? id)
-        {
-            CadastroEntrevistaModel model = new CadastroEntrevistaModel();
-            model.CandidatoEntidadeId = id;
-            return PartialView("_CadastroEntrevista", model);
-        }
-
-        [Autorizador]
-        public ActionResult SalvarEntrevista(CadastroEntrevistaModel model)
+        [HttpPost]
+        public JsonResult SalvarEntrevista(CadastroEntrevistaModel model)
         {
             if (ModelState.IsValid)
             {
                 EntrevistaEntidade entrevista = ConvertModelParaEntidade(model);
+                
                 servicoEntrevista.Salvar(entrevista);
 
                 TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
-                return PartialView("_CadastroEntrevista");
+                return Json(JsonRequestBehavior.AllowGet);
             }
             ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
                                     "verifique se todos os dados foram digitados corretamente.");
 
-            return PartialView("_CadastroEntrevista", model);
+            return Json(JsonRequestBehavior.AllowGet);
         }
-
 
         [Autorizador]
         public ActionResult Editar(long id)
@@ -153,13 +146,10 @@ namespace InscricoesCrescer.Controllers
             model.ProvaAC = entrevista.ProvaAC;
             model.ProvaTecnica = entrevista.ProvaTecnica;
             model.CandidatoEntidadeId = entrevista.CandidatoEntidadeId;
-            model.Candidato = entrevista.Candidato;
-
             return model;
         }
 
-        [Autorizador]
-        private ProcessoSeletivoEntidade montarProcessoSeletivo(ProcessoSeletivoViewModel model)
+        private ProcessoSeletivoEntidade MontarProcessoSeletivo(ProcessoSeletivoViewModel model)
         {
             ProcessoSeletivoEntidade processoSeletivo = new ProcessoSeletivoEntidade();
             processoSeletivo.Id = model.Id;
@@ -175,7 +165,7 @@ namespace InscricoesCrescer.Controllers
         private EntrevistaEntidade ConvertModelParaEntidade(CadastroEntrevistaModel model)
         {
             EntrevistaEntidade entrevista = new EntrevistaEntidade();
-            CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(model.Id.Value);
+            CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(model.CandidatoEntidadeId);
             entrevista.EmailAdministrador = ServicoDeAutenticacao.AdministradorLogado.Email;
             entrevista.DataEntrevista = model.DataEntrevista;
             entrevista.ParecerRH = model.ParecerRH;
@@ -183,9 +173,8 @@ namespace InscricoesCrescer.Controllers
             entrevista.ProvaG36 = model.ProvaG36;
             entrevista.ProvaAC = model.ProvaAC;
             entrevista.ProvaTecnica = model.ProvaTecnica;
-            entrevista.CandidatoEntidadeId = model.Id;
+            entrevista.CandidatoEntidadeId = model.CandidatoEntidadeId;
             entrevista.Candidato = candidato;
-
             return entrevista;
         }
 
