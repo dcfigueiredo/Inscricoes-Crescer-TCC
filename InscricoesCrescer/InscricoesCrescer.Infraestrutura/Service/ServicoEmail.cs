@@ -65,6 +65,7 @@ namespace InscricoesCrescer.Infraestrutura
                 smtp.EnableSsl = true;
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Credentials = new System.Net.NetworkCredential(email, senha);
+                
                 try
                 {
                     smtp.Send(mail);

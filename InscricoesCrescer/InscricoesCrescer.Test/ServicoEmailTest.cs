@@ -39,17 +39,6 @@ namespace InscricoesCrescer.Test
 
         }
 
-        [TestMethod]
-        public void TestarEnvioDeEmailDeNotificacao()
-        {
-            CandidatoServico candidatoServico = new CandidatoServico(new CandidatoRepositorioMock(), new ServicoConfiguracao());
-            List<CandidatoEntidade> lista = new List<CandidatoEntidade>();
-            lista = candidatoServico.BuscarInteressados();
-            DateTime dataInicio = Convert.ToDateTime("12/12/1992");
-            DateTime dataFim = Convert.ToDateTime("13/12/1992");
-            bool confirmacao = servicoEmail.enviarEmailDeNotificacao(lista, dataInicio, dataFim);
-            Assert.AreEqual(true, confirmacao);
-        }
 
         [TestMethod]
         public void TestarBuscaConfig()
@@ -57,5 +46,17 @@ namespace InscricoesCrescer.Test
             string config = ServicoEmail.buscarConfiguracao("configuracao");
             Assert.AreEqual("campo vazio.", config);
         }
+
+        //[TestMethod]
+        //public void TestarEnvioDeEmailDeNotificacao()
+        //{
+        //    CandidatoServico candidatoServico = new CandidatoServico(new CandidatoRepositorioMock(), new ServicoConfiguracao());
+        //    List<CandidatoEntidade> lista = new List<CandidatoEntidade>();
+        //    lista = candidatoServico.BuscarInteressados();
+        //    DateTime dataInicio = Convert.ToDateTime("12/12/1992");
+        //    DateTime dataFim = Convert.ToDateTime("13/12/1992");
+        //    bool confirmacao = servicoEmail.enviarEmailDeNotificacao(lista, dataInicio, dataFim);
+        //    Assert.AreEqual(true, confirmacao);
+        //}
     }
 }
