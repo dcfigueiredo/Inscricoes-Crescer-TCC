@@ -34,3 +34,11 @@ body {
     font-size:50px;
     color:#F49D33;
 }
+
+.logo-barra-lateral {
+    background: url('imagens/logo-cwi-small.png') no-repeat center;
+    width: 200px;
+    height: 200px;
+    margin:auto;
+    position: relative;
+}
