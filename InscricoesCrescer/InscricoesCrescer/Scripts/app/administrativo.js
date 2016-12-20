@@ -82,11 +82,11 @@ function carregarEntrevistas(id) {
 
 function ouvirBotoesEntrevista() {
     var idEntrevistado = $('.container-id').attr('id');
-    $('#nova-entrevista').click(function event() {
+    $('#nova-entrevista').click(function (event) {
         carregarCadastroEntrevista(0, idEntrevistado);
     });
-    $('.abrir-cadastro-entrevista').click(function event() {
-        event.prevetDefault();
+    $('.abrir-cadastro-entrevista').click(function (event) {
+        event.preventDefault();
         var id = $(this).attr('id');
         carregarCadastroEntrevista(id, idEntrevistado);
     });

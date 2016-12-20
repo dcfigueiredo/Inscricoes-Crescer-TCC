@@ -14,7 +14,7 @@ namespace InscricoesCrescer.Controllers
         AdministradorServico administradorServico = ServicoDeDependencia.MontarAdministradorServico();
 
         // GET: Login
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
