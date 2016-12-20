@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using InscricoesCrescer.Dominio.Entrevista;
+using InscricoesCrescer.Models;
 
 namespace InscricoesCrescer.Models
 {
@@ -20,6 +22,21 @@ namespace InscricoesCrescer.Models
             this.Telefone = candidato.Telefone;
             this.Curso = candidato.Curso;
             this.Instituicao = candidato.Instituicao;
+            if (candidato.Entrevistas != null)
+            {
+                this.Entrevistas = EntrevistaEntidadeParaViewModel(candidato.Entrevistas);
+            }
+        }
+
+        private IList<EntrevistaParaViewModel> EntrevistaEntidadeParaViewModel(ICollection<EntrevistaEntidade> entrevistas)
+        {
+            IList<EntrevistaParaViewModel> entrevistaModel = new List<EntrevistaParaViewModel>();
+            foreach (var entrevista in entrevistas)
+            {
+                EntrevistaParaViewModel model = new EntrevistaParaViewModel(entrevista);
+                entrevistaModel.Add(model);
+            }
+            return entrevistaModel;
         }
 
         public long? Id { get; set; }

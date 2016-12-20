@@ -38,6 +38,9 @@ namespace InscricoesCrescer.Controllers
         public PartialViewResult CarregarEntrevistas(long id)
         {            
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(id);
+            IList<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarPorIdDoCandidato(id);
+            candidato.Entrevistas = entrevistas;
+
             CandidatoParaViewModel model = new CandidatoParaViewModel(candidato);
             return PartialView("_Entrevistas", model);
         }
