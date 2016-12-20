@@ -18,11 +18,11 @@ namespace InscricoesCrescer.Infraestrutura
         private string senha = buscarConfiguracao("senha");
 
         public bool enviarEmailConfirmacao(string destinatario)
-        {        
+        {
             string assunto = "Confirmação de cadastro no projeto Crescer";
             string direcionarParaPagina = "/Home/ConfirmaCadastro/";
 
-            string mensagem = "Confirme seu e-mail e aguarde um proximo contato. "+"\n"+
+            string mensagem = "Confirme seu e-mail e aguarde um proximo contato. " + "\n" +
                               " Link de confirmação aqui -> " + GerarLink(destinatario, direcionarParaPagina);
 
             SmtpClient smtp = new SmtpClient(host, port);
@@ -47,17 +47,15 @@ namespace InscricoesCrescer.Infraestrutura
             }
         }
 
-        public bool enviarEmailDeNotificacao(List<CandidatoEntidade> listaCandidatos)
+        public bool enviarEmailDeNotificacao(List<CandidatoEntidade> listaCandidatos, DateTime dataInicio, DateTime dataFim)
         {
             string assunto = "Abertura do Processo Seletivo CWI";
             string direcionarParaPagina = "/Home/SegundaEtapaCadastroCandidato/";
 
             foreach (var item in listaCandidatos)
             {
-                string mensagem = "Data do Processo Seletivo: "+ 
-                                   buscarConfiguracao("DataInicioDoProcessoSeletivo") +"até " + 
-                                   buscarConfiguracao("DataFimDoProcessoSeletivo") +
-                                   "\n Se você deseja participar confirme seu cadastro aqui -> " + 
+                string mensagem = "Data do Processo Seletivo: " + dataInicio.ToString("dd/MM/yyyy") + "  até  " +
+                                   dataFim.ToString("dd/MM/yyyy") + "\n Se você deseja participar confirme seu cadastro aqui -> " +
                                    GerarLink(item.Email, direcionarParaPagina);
 
                 SmtpClient smtp = new SmtpClient(host, port);
@@ -70,7 +68,6 @@ namespace InscricoesCrescer.Infraestrutura
                 try
                 {
                     smtp.Send(mail);
-                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -81,7 +78,7 @@ namespace InscricoesCrescer.Infraestrutura
                     mail.Dispose();
                 }
             }
-            return false;
+            return true;
         }
 
         private string GerarLink(string email, string endereco)

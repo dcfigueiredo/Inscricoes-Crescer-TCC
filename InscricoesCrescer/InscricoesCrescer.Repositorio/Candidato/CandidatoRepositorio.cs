@@ -61,6 +61,14 @@ namespace InscricoesCrescer.Repositorio.Candidato
                                         .Take(paginacao.QuantidadeDeItensPorPagina).Where(_ => _.Nome.Contains(paginacao.Filtro))
                                         .ToList();
             }
-        }        
+        }
+
+        public List<CandidatoEntidade> buscarStatusInteresse()
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Candidato.Where(_ => _.Status.Contains("Interesse")).ToList();
+            }
+        }
     }
 }

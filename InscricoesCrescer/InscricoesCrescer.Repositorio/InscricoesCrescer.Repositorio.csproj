@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.Designer.cs">
       <DependentUpon>201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612200133578_TornarTodosLongsNulable.cs" />
+    <Compile Include="Migrations\201612200133578_TornarTodosLongsNulable.Designer.cs">
+      <DependentUpon>201612200133578_TornarTodosLongsNulable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProcessoSeletivo\ProcessoSeletivoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.resx">
       <DependentUpon>201612192059098_AdicionarRelacaoDeCandidatosComEntrevistasRedux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612200133578_TornarTodosLongsNulable.resx">
+      <DependentUpon>201612200133578_TornarTodosLongsNulable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

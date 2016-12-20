@@ -7,9 +7,9 @@ namespace InscricoesCrescer.Dominio.Entrevista
     [Table("Entrevista")]
     public class EntrevistaEntidade
     {
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
-        public long CandidatoEntidadeId { get; set; }
+        public long? CandidatoEntidadeId { get; set; }
 
         public virtual CandidatoEntidade Candidato { get; set; }
 

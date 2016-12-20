@@ -53,9 +53,19 @@ namespace InscricoesCrescer.Mock.Candidato
             throw new NotImplementedException();
         }
 
+        public CandidatoEntidade BuscarPorId(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         public CandidatoEntidade BuscarPorId(int id)
         {
             return candidatos.FirstOrDefault(_ => _.Id == id);
+        }
+
+        public List<CandidatoEntidade> buscarStatusInteresse()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Dominio.Candidato.CandidatoEntidade> BuscarTodos()
@@ -66,7 +76,7 @@ namespace InscricoesCrescer.Mock.Candidato
         public void Criar(Dominio.Candidato.CandidatoEntidade candidato)
         {
             candidato.Id = 4;
-            candidatos.Add(candidato);            
+            candidatos.Add(candidato);
         }
 
         public void Editar(Dominio.Candidato.CandidatoEntidade candidato)
