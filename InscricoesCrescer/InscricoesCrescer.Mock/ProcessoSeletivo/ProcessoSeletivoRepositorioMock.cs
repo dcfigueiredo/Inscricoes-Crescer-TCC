@@ -32,11 +32,23 @@ namespace InscricoesCrescer.Mock.ProcessoSeletivo
                 AnoEdicao = 2017,
                 SemestreEdicao  = 2
             },
+
+            new Dominio.ProcessoSeletivo.ProcessoSeletivoEntidade()
+            {
+                Id = 3,
+                DataInicioEntrevistas = new DateTime (2017,06,12),
+                DataSelecaoFinal = new DateTime (2017,08,27),
+                DataFinalAulas  =  new DateTime (2017,12,28),
+                DataInicioAulas = new DateTime (2017,09,24),
+                AnoEdicao = 2017,
+                SemestreEdicao  = 2
+            },
+
         };
 
         public void AbrirProcessoSeletivo(Dominio.ProcessoSeletivo.ProcessoSeletivoEntidade processo)
         {
-            processo.Id = 3;
+            processo.Id = 4;
             processos.Add(processo);
 
         }
@@ -45,7 +57,7 @@ namespace InscricoesCrescer.Mock.ProcessoSeletivo
         {
             return processos.OrderBy(_ => _.AnoEdicao).ToList();
         }
-        
+
 
         public void EditarProcessoSeletivo(ProcessoSeletivoEntidade processo)
         {
