@@ -41,7 +41,8 @@ namespace InscricoesCrescer.Test
 
         [TestMethod]
         public void TestaSalvarUmProcesso()
-        {
+        {            
+            ProcessoSeletivoServico processoServico = new ProcessoSeletivoServico(new ProcessoSeletivoRepositorioMock());
             ProcessoSeletivoEntidade processo = new ProcessoSeletivoEntidade()
             {
                  Id = 0,
@@ -50,13 +51,11 @@ namespace InscricoesCrescer.Test
                  DataInicioAulas = new DateTime(2017, 12, 12),
                  DataFinalAulas = new DateTime(2017, 12, 12),
                  AnoEdicao = 2018,
-                 SemestreEdicao =1
-                                               
-
+                 SemestreEdicao =1                 
             };
-            ProcessoSeletivoServico.Salvar(processo);
-            ProcessoSeletivoEntidade processoEsperado = processoServico.BuscarTodos();
-            Assert.AreEqual(3, processos.Count);
+            processoServico.Salvar(processo);
+            IList<ProcessoSeletivoEntidade> processos = processoServico.BuscarTodos();
+            Assert.AreEqual(4, processos.Count);
         }
 
 
