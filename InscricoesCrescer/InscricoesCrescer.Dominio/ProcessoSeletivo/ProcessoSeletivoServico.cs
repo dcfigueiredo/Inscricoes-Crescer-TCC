@@ -6,8 +6,6 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
 {
     public class ProcessoSeletivoServico
     {
-        private ProcessoSeletivoServico processoServico;
-
         private IProcessoSeletivoRepositorio processoRepositorio;
         
         public ProcessoSeletivoServico(IProcessoSeletivoRepositorio processoRepositorio)

@@ -13,6 +13,7 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
         void EditarProcessoSeletivo(ProcessoSeletivoEntidade processo);
 
         List<ProcessoSeletivoEntidade> BuscarTodos();
+
         ProcessoSeletivoEntidade VerificarProcessoExiste(ProcessoSeletivoEntidade processoSeletivo);
     }
 }
