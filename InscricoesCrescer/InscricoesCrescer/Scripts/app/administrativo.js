@@ -1,7 +1,7 @@
 ﻿var paginaAtual = 0;
 var filtro = '';
 
-$('#listar-candidatos').click(function (event) {    
+$('#listar-candidatos').click(function (event) {
     event.preventDefault();
     carregarListaDeCandidatos(filtro, paginaAtual);
 });
@@ -38,7 +38,7 @@ function ouvirBotoesPaginacaoEFiltro() {
         }
     });
     $("#btn-avancar").click(function avancarPagina() {
-        paginaAtual ++;
+        paginaAtual++;
         carregarListaDeCandidatos(filtro, paginaAtual);
     });
     $('#btn-filtrar').click(function (event) {
@@ -54,12 +54,36 @@ function ouvirBotoesPaginacaoEFiltro() {
 }
 
 function carregarEntrevistas(id) {
-  $.ajax({
-    url: 'Administrativo/CarregarEntrevistas',
-    type: 'GET',
-    data: { id: id }
-  })
+    $.ajax({
+        url: 'Administrativo/CarregarEntrevistas',
+        type: 'GET',
+        data: { id: id }
+    })
+      .then(function (partialView) {
+          $('#container-partial-views').html(partialView);
+          ouvirBotoesEntrevista();
+      });
+}
+
+function ouvirBotoesEntrevista() {
+    var idEntrevistado = $('.container-id').attr('id');
+    $('#nova-entrevista').click(function event() {
+        carregarCadastroEntrevista(0, idEntrevistado);
+    });
+    $('.abrir-cadastro-entrevista').click(function event() {
+        event.prevetDefault();
+        var id = $(this).attr('id');
+        carregarCadastroEntrevista(id, idEntrevistado);
+    });
+}
+
+function carregarCadastroEntrevista(idEntrevista, idEntrevistado) {
+    $.ajax({
+        url: 'Administrativo/CarregarCadastroEntrevista',
+        type: 'GET',
+        data: {idEntrevista : idEntrevista, idEntrevistado : idEntrevistado}
+    })
     .then(function (partialView) {
-      $('#container-partial-views').html(partialView);
+        $('#container-partial-views').html(partialView);
     });
 }

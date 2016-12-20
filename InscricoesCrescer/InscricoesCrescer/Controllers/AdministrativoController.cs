@@ -16,7 +16,7 @@ namespace InscricoesCrescer.Controllers
     {
 
         private CandidatoServico candidatoServico = ServicoDeDependencia.MontarCandidatoServico();
-        private IServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
+        private ServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
         private EntrevistaServico servicoEntrevista = ServicoDeDependencia.MontarEntrevistaServico();
         private ProcessoSeletivoServico servicoProcessoSeletivo = ServicoDeDependencia.MontarProcessoSeletivoServico();
 
@@ -43,11 +43,29 @@ namespace InscricoesCrescer.Controllers
         }
 
         [Autorizador]
+        public PartialViewResult CarregarCadastroEntrevista(long idEntrevista, long idEntrevistado)
+        {
+            CadastroEntrevistaModel model;
+            if (idEntrevista == 0)
+            {
+                model = new CadastroEntrevistaModel();
+                model.CandidatoEntidadeId = idEntrevistado;
+                return PartialView("_CadastroEntrevista", model);
+            }
+            else
+            {
+                EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(idEntrevista);
+                model = new CadastroEntrevistaModel(entrevista);
+                model.CandidatoEntidadeId = idEntrevistado;
+                return PartialView("_CadastroEntrevista", model);
+            }
+        }
+
+        [Autorizador]
         public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
 
             if (ModelState.IsValid)
             {
-
                 ProcessoSeletivoEntidade processo = montarProcessoSeletivo(model);
                 if(servicoProcessoSeletivo.VerificarProcessoExiste(processo))
                 {
@@ -77,10 +95,10 @@ namespace InscricoesCrescer.Controllers
         }
 
         [Autorizador]
-        public ActionResult CadastroEntrevista(long id)
+        public ActionResult CadastroEntrevista(long? id)
         {
             CadastroEntrevistaModel model = new CadastroEntrevistaModel();
-            model.Id = id;
+            model.CandidatoEntidadeId = id;
             return PartialView("_CadastroEntrevista", model);
         }
 
@@ -101,6 +119,45 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_CadastroEntrevista", model);
         }
 
+
+        [Autorizador]
+        public ActionResult Editar(long id)
+        {
+            return View();
+        }
+
+        [Autorizador]
+        public ActionResult EditarEntrevista(long id)
+        {
+            EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(id);
+            CadastroEntrevistaModel model = ConvertEntidadeParaModel(entrevista);
+            return View("_CadastroEntrevista", model);
+        }
+
+        [Autorizador]
+        public PartialViewResult CarregarListaDeCandidatos(int pagina, string filtro)
+        {
+            IList<CandidatoEntidade> candidatos = candidatoServico.BuscarCandidatos(pagina, filtro);
+            ListaCandidatosViewModel model = CarregarCandidatosNaModelDeListagem(candidatos, pagina);
+            return PartialView("_ListaCandidatos", model);
+        }
+
+        private CadastroEntrevistaModel ConvertEntidadeParaModel(EntrevistaEntidade entrevista)
+        {
+            CadastroEntrevistaModel model = new CadastroEntrevistaModel();
+            model.Id = entrevista.Id;
+            model.DataEntrevista = entrevista.DataEntrevista;
+            model.ParecerRH = entrevista.ParecerRH;
+            model.ParecerTecnico = entrevista.ParecerTecnico;
+            model.ProvaG36 = entrevista.ProvaG36;
+            model.ProvaAC = entrevista.ProvaAC;
+            model.ProvaTecnica = entrevista.ProvaTecnica;
+            model.CandidatoEntidadeId = entrevista.CandidatoEntidadeId;
+            model.Candidato = entrevista.Candidato;
+
+            return model;
+        }
+
         [Autorizador]
         private ProcessoSeletivoEntidade montarProcessoSeletivo(ProcessoSeletivoViewModel model)
         {
@@ -115,46 +172,10 @@ namespace InscricoesCrescer.Controllers
             return processoSeletivo;
         }
 
-        [Autorizador]
-        public ActionResult Editar(long id)
-        {
-            return View();
-        }
-
-        [Autorizador]
-        public ActionResult EditarEntrevista(long id)
-        {
-            EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(id);
-            CadastroEntrevistaModel model = ConvertEntidadaeParaModel(entrevista);
-            return View("_CadastroEntrevista", model);
-        }
-
-        [Autorizador]
-        public PartialViewResult CarregarListaDeCandidatos(int pagina, string filtro)
-        {
-            IList<CandidatoEntidade> candidatos = candidatoServico.BuscarCandidatos(pagina, filtro);
-            ListaCandidatosViewModel model = CarregarCandidatosNaModelDeListagem(candidatos, pagina);
-            return PartialView("_ListaCandidatos", model);
-        }
-
-        private CadastroEntrevistaModel ConvertEntidadaeParaModel(EntrevistaEntidade entrevista)
-        {
-            CadastroEntrevistaModel model = new CadastroEntrevistaModel();
-            model.Id = entrevista.Id;
-            model.DataEntrevista = entrevista.DataEntrevista;
-            model.ParecerRH = entrevista.ParecerRH;
-            model.ParecerTecnico = entrevista.ParecerTecnico;
-            model.ProvaG36 = entrevista.ProvaG36;
-            model.ProvaAC = entrevista.ProvaAC;
-            model.ProvaTecnica = entrevista.ProvaTecnica;
-
-            return model;
-        }
-
         private EntrevistaEntidade ConvertModelParaEntidade(CadastroEntrevistaModel model)
         {
             EntrevistaEntidade entrevista = new EntrevistaEntidade();
-            entrevista.Id = model.Id;
+            CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(model.Id.Value);
             entrevista.EmailAdministrador = ServicoDeAutenticacao.AdministradorLogado.Email;
             entrevista.DataEntrevista = model.DataEntrevista;
             entrevista.ParecerRH = model.ParecerRH;
@@ -162,6 +183,8 @@ namespace InscricoesCrescer.Controllers
             entrevista.ProvaG36 = model.ProvaG36;
             entrevista.ProvaAC = model.ProvaAC;
             entrevista.ProvaTecnica = model.ProvaTecnica;
+            entrevista.CandidatoEntidadeId = model.Id;
+            entrevista.Candidato = candidato;
 
             return entrevista;
         }

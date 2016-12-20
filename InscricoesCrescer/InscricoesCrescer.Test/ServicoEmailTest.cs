@@ -7,10 +7,11 @@ namespace InscricoesCrescer.Test
     [TestClass]
     public class ServicoEmailTest
     {
+        ServicoEmail servicoEmail = new ServicoEmail();
+
         [TestMethod]
         public void TestarValidacaoDeEmailComEmailNormal()
         {
-            ServicoEmail servicoEmail = new ServicoEmail();
             string emailValido = "daniel.carvalho.figueiredo@gmail.com";
             bool ehValido = servicoEmail.ValidaEmail(emailValido);
 
@@ -20,7 +21,6 @@ namespace InscricoesCrescer.Test
         [TestMethod]
         public void TestarValidacaoDeEmailComEmailErrado()
         {
-            ServicoEmail servicoEmail = new ServicoEmail();
             string emailValido = "daniel.carvalho.figueiredo";
             bool ehValido = servicoEmail.ValidaEmail(emailValido);
 

@@ -18,11 +18,11 @@ namespace InscricoesCrescer.Infraestrutura
         private string senha = buscarConfiguracao("senha");
 
         public bool enviarEmailConfirmacao(string destinatario)
-        {        
+        {
             string assunto = "Confirmação de cadastro no projeto Crescer";
             string direcionarParaPagina = "/Home/ConfirmaCadastro/";
 
-            string mensagem = "Confirme seu e-mail e aguarde um proximo contato. "+"\n"+
+            string mensagem = "Confirme seu e-mail e aguarde um proximo contato. " + "\n" +
                               " Link de confirmação aqui -> " + GerarLink(destinatario, direcionarParaPagina);
 
             SmtpClient smtp = new SmtpClient(host, port);
@@ -54,8 +54,8 @@ namespace InscricoesCrescer.Infraestrutura
 
             foreach (var item in listaCandidatos)
             {
-                string mensagem = "Data do Processo Seletivo: "+ dataInicio.ToString("dd/MM/yyyy") +"  até  " + 
-                                   dataFim.ToString("dd/MM/yyyy") + "\n Se você deseja participar confirme seu cadastro aqui -> " + 
+                string mensagem = "Data do Processo Seletivo: " + dataInicio.ToString("dd/MM/yyyy") + "  até  " +
+                                   dataFim.ToString("dd/MM/yyyy") + "\n Se você deseja participar confirme seu cadastro aqui -> " +
                                    GerarLink(item.Email, direcionarParaPagina);
 
                 SmtpClient smtp = new SmtpClient(host, port);

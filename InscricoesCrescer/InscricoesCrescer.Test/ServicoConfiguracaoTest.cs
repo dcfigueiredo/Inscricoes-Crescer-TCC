@@ -10,6 +10,7 @@ namespace InscricoesCrescer.Test
     public class ServicoConfiguracaoTest
     {
         IServicoConfiguracao servicoConfiguracao = new ServicoConfiguracao();
+
         [TestMethod]
         public void TestarQuantidadeDeCandidatosPorPagina()
         {
