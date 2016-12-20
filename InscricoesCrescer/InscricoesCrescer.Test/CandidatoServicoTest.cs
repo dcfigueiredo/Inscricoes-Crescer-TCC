@@ -65,6 +65,12 @@ namespace InscricoesCrescer.Test
             Assert.AreEqual("Rodrigo Scheuer", canditadoEsperado.Nome);
         }
 
+        [TestMethod]
+        public void TestaBuscarPorEmailInvalido()
+        {
+            CandidatoEntidade canditadoEsperado = candidatoServico.BuscarPorEmail("rodrigo.scheuer#hotmail.com");
+            Assert.AreEqual(null, canditadoEsperado);
+        }
 
     }
 }

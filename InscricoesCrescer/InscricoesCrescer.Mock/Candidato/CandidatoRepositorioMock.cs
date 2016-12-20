@@ -9,8 +9,8 @@ using InscricoesCrescer.Dominio.Configuracao;
 namespace InscricoesCrescer.Mock.Candidato
 {
     public class CandidatoRepositorioMock : ICandidatoRepositorio
-    {
-        private static IList<CandidatoEntidade> candidatos = new List<Dominio.Candidato.CandidatoEntidade>()
+    { 
+        private static IList<CandidatoEntidade> candidatos = new List<CandidatoEntidade>()
         {
             new CandidatoEntidade()
             {
