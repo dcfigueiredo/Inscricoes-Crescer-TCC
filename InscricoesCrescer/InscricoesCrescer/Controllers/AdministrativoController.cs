@@ -15,7 +15,7 @@ namespace InscricoesCrescer.Controllers
     {
 
         private CandidatoServico candidatoServico = ServicoDeDependencia.MontarCandidatoServico();
-        private IServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
+        private ServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
         private EntrevistaServico servicoEntrevista = ServicoDeDependencia.MontarEntrevistaServico();
         private ProcessoSeletivoServico servicoProcessoSeletivo = ServicoDeDependencia.MontarProcessoSeletivoServico();
 
@@ -39,6 +39,25 @@ namespace InscricoesCrescer.Controllers
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(id);
             CandidatoParaViewModel model = new CandidatoParaViewModel(candidato);
             return PartialView("_Entrevistas", model);
+        }
+
+        [Autorizador]
+        public PartialViewResult CarregarCadastroEntrevista(long idEntrevista, long idEntrevistado)
+        {
+            CadastroEntrevistaModel model;
+            if (idEntrevista == 0)
+            {
+                model = new CadastroEntrevistaModel();
+                model.idEntrevistado = idEntrevistado;
+                return PartialView("_CadastroEntrevista", model);
+            }
+            else
+            {
+                EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(idEntrevista);
+                model = new CadastroEntrevistaModel(entrevista);
+                model.idEntrevistado = idEntrevistado;
+                return PartialView("_CadastroEntrevista", model);
+            }
         }
 
         [Autorizador]
