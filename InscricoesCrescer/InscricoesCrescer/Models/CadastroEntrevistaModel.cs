@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using InscricoesCrescer.Dominio.Candidato;
 
 namespace InscricoesCrescer.Models
 {
     public class CadastroEntrevistaModel
     {
-        public long Id { get; internal set; }
+        public long? Id { get; internal set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -33,5 +34,9 @@ namespace InscricoesCrescer.Models
         
         [DisplayName("Nota prova Técnica: ")]
         public double ProvaTecnica { get; set; }
+
+        public long? CandidatoEntidadeId { get; internal set; }
+
+        public CandidatoEntidade Candidato { get; internal set; }
     }
 }

@@ -29,11 +29,11 @@ namespace InscricoesCrescer.Controllers
                 string emailCriptografado = servicoCriptografia.Criptografar(item.Email);
                 if (emailCriptografado.Equals(id))
                 {
-                    CandidatoParaReCadastroModel model =  ConverteCandidatoParaModel(item);
+                    CandidatoParaReCadastroModel model = ConverteCandidatoParaModel(item);
                     return View("SegundaEtapaCadastroCandidato", model);
                 }
             }
-            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " +"\n"+
+            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " + "\n" +
                                              "Certifique-se que seu email esta Cadastrado ou entre em contato conosco.";
             return View("ConfirmaCadastro");
         }

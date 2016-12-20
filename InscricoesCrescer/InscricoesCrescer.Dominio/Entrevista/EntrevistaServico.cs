@@ -15,7 +15,7 @@ namespace InscricoesCrescer.Dominio.Entrevista
 
         public bool Salvar(EntrevistaEntidade entrevista)
         {
-            if (entrevista.Id == 0)
+            if (entrevista.Id == 0 || entrevista.Id == null)
             {
                 this.entrevistaRepositorio.Criar(entrevista);
                 return true;

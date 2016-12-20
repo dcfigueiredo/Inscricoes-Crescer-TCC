@@ -6,15 +6,13 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
 {
     public class ProcessoSeletivoServico
     {
-        private ProcessoSeletivoServico processoServico;
-
         private IProcessoSeletivoRepositorio processoRepositorio;
-        
+
         public ProcessoSeletivoServico(IProcessoSeletivoRepositorio processoRepositorio)
         {
             this.processoRepositorio = processoRepositorio;
         }
-        
+
         public List<ProcessoSeletivoEntidade> BuscarTodos()
         {
             return processoRepositorio.BuscarTodos();
@@ -25,7 +23,7 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
             List<ProcessoSeletivoEntidade> processos = processoRepositorio.BuscarTodos();
             foreach (var item in processos)
             {
-                if(item.AnoEdicao.Equals(processoSeletivo.AnoEdicao))
+                if (item.AnoEdicao.Equals(processoSeletivo.AnoEdicao))
                 {
                     if (item.SemestreEdicao.Equals(processoSeletivo.SemestreEdicao))
                     {
@@ -47,8 +45,5 @@ namespace InscricoesCrescer.Dominio.ProcessoSeletivo
                 this.processoRepositorio.EditarProcessoSeletivo(processo);
             }
         }
-
-
-
     }
 }
