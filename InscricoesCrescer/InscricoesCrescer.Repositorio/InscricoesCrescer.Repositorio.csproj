@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201612200133578_TornarTodosLongsNulable.Designer.cs">
       <DependentUpon>201612200133578_TornarTodosLongsNulable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201051324_AdicionarForeignKeyNaTabelaEntrevistas.cs" />
+    <Compile Include="Migrations\201612201051324_AdicionarForeignKeyNaTabelaEntrevistas.Designer.cs">
+      <DependentUpon>201612201051324_AdicionarForeignKeyNaTabelaEntrevistas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProcessoSeletivo\ProcessoSeletivoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612200133578_TornarTodosLongsNulable.resx">
       <DependentUpon>201612200133578_TornarTodosLongsNulable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201051324_AdicionarForeignKeyNaTabelaEntrevistas.resx">
+      <DependentUpon>201612201051324_AdicionarForeignKeyNaTabelaEntrevistas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

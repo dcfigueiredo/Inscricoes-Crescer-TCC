@@ -32,6 +32,6 @@ namespace InscricoesCrescer.Dominio.Candidato
 
         public string Senha { get; set; }
 
-        public ICollection<EntrevistaEntidade> Entrevistas { get; set;}
-}
+        public ICollection<EntrevistaEntidade> Entrevistas { get; set; }
+    }
 }
