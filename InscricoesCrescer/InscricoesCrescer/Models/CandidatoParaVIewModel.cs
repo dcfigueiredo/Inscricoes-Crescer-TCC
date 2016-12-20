@@ -1,10 +1,7 @@
 ﻿using InscricoesCrescer.Dominio.Candidato;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using InscricoesCrescer.Dominio.Entrevista;
-using InscricoesCrescer.Models;
 
 namespace InscricoesCrescer.Models
 {

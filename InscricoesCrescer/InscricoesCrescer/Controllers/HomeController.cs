@@ -19,6 +19,35 @@ namespace InscricoesCrescer.Controllers
             return View();
         }
 
+        //------------------------------- Acessado pelo Administrativo --------------------------
+        public ActionResult EditarCandidato(string id)
+        {
+            CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(Convert.ToInt64(id));
+            CandidatoParaReCadastroModel model = ConverteCandidatoParaModel(candidato);
+            return View("SegundaEtapaCadastroCandidato", model);
+        }
+
+        public ActionResult SalvarCandidatoEditado(CandidatoParaReCadastroModel model)
+        {
+            ServicoEmail servico = new ServicoEmail();
+            if (servico.ValidaEmail(model.Email))
+            {
+                CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
+                candidato = converterCandidatoSegundaEtapa(model);
+                candidatoServico.Salvar(candidato);
+
+                TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
+                return RedirectToAction("Index", "Administrativo");
+            }
+            else
+            {
+                @TempData["cadastradoInvalido"] = "E-mail invalido!";
+                return View("SegundaEtapaCadastroCandidato", model);
+            }
+        }
+
+        //------------------------------------Segunda Etapa cadastro --------------------------------------
+
         public ActionResult SegundaEtapaCadastroCandidato(string id)
         {
             List<CandidatoEntidade> candidatos = candidatoServico.BuscarTodos();
@@ -37,6 +66,43 @@ namespace InscricoesCrescer.Controllers
                                              "Certifique-se que seu email esta Cadastrado ou entre em contato conosco.";
             return View("ConfirmaCadastro");
         }
+
+        public ActionResult SalvarSegundoCadastro(CandidatoParaReCadastroModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Session == null)
+                {
+                    if (model.Senha.Equals(model.ConfirmaSenha))
+                    {
+                        ServicoEmail servico = new ServicoEmail();
+                        if (servico.ValidaEmail(model.Email))
+                        {
+                            CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
+                            if (!candidato.Status.Equals("Aguardando Contato"))
+                            {
+                                candidato = converterCandidatoSegundaEtapa(model);
+                                candidatoServico.Salvar(candidato);
+                                TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso, aguarde próximo contato.";
+                                return View("ConfirmaCadastro");
+                            }
+                            @TempData["cadastradoInvalido"] = "Você já possui Cadastro!";
+                            return View("SegundaEtapaCadastroCandidato");
+                        }
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("SalvarCandidatoEditado", model);
+                }
+
+            }
+            ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
+                                    "verifique se todos os dados foram digitados corretamente.");
+            return View("SegundaEtapaCadastroCandidato", model);
+        }
+
+        // ----------------------------------Primeiro Cadastro---------------------------------------------
 
         public ActionResult ConfirmaCadastro(string id)
         {
@@ -60,7 +126,6 @@ namespace InscricoesCrescer.Controllers
             return View("Index");
 
         }
-
 
         public ActionResult Salvar(CandidatoModel model)
         {
@@ -94,33 +159,8 @@ namespace InscricoesCrescer.Controllers
             return View("Index");
         }
 
-        public ActionResult SalvarSegundoCadastro(CandidatoParaReCadastroModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (model.Senha.Equals(model.ConfirmaSenha))
-                {
-                    ServicoEmail servico = new ServicoEmail();
-                    if (servico.ValidaEmail(model.Email))
-                    {
-                        CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
-                        if (!candidato.Status.Equals("Aguardando Contato"))
-                        {
-                            candidato = converterCandidatoSegundaEtapa(model);
-                            candidatoServico.Salvar(candidato);
-                            TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso, aguarde próximo contato.";
-                            return View("ConfirmaCadastro");
-                        }
-                        @TempData["cadastradoInvalido"] = "Você já possui Cadastro!";
-                        return View("SegundaEtapaCadastroCandidato");
-                    }
-                }
-            }
-            ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
-                                    "verifique se todos os dados foram digitados corretamente.");
-            return View("SegundaEtapaCadastroCandidato", model);
-        }
-
+        
+        // -------------------------------- métodos Privados -----------------------------------
         private CandidatoEntidade converterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model)
         {
             CandidatoEntidade candidato = new CandidatoEntidade();
