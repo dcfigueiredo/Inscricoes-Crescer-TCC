@@ -11,7 +11,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
 {
     public class CandidatoRepositorio : ICandidatoRepositorio
     {
-        public CandidatoEntidade BuscarPorId(int id)
+        public CandidatoEntidade BuscarPorId(long id)
         {
             using (var context = new ContextoDeDados())
             {
@@ -19,7 +19,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public void Criar(Dominio.Candidato.CandidatoEntidade candidato)
+        public void Criar(CandidatoEntidade candidato)
         {
             using (var context = new ContextoDeDados())
             {
@@ -28,7 +28,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public void Editar(Dominio.Candidato.CandidatoEntidade candidato)
+        public void Editar(CandidatoEntidade candidato)
         {
             using (var context = new ContextoDeDados())
             {
@@ -37,7 +37,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public List<Dominio.Candidato.CandidatoEntidade> BuscarTodos()
+        public List<CandidatoEntidade> BuscarTodos()
         {
             using (var context = new ContextoDeDados())
             {
@@ -53,7 +53,7 @@ namespace InscricoesCrescer.Repositorio.Candidato
             }
         }
 
-        public IList<Dominio.Candidato.CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
+        public IList<CandidatoEntidade> BuscarCandidatos(Paginacao paginacao)
         {
             using (var context = new ContextoDeDados())
             {

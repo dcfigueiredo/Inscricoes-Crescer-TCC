@@ -13,7 +13,7 @@ namespace InscricoesCrescer.Dominio.Candidato
 
         void Editar(CandidatoEntidade candidato);
 
-        CandidatoEntidade BuscarPorId(int id);
+        CandidatoEntidade BuscarPorId(long id);
 
         List<CandidatoEntidade> BuscarTodos();
 

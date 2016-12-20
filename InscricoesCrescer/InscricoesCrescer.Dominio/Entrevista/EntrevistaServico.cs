@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InscricoesCrescer.Dominio.Candidato;
+using System;
 using System.Collections.Generic;
 
 namespace InscricoesCrescer.Dominio.Entrevista
@@ -14,7 +15,7 @@ namespace InscricoesCrescer.Dominio.Entrevista
 
         public bool Salvar(EntrevistaEntidade entrevista)
         {
-            if (entrevista.Id == 0 || entrevista.Id == null)
+            if (entrevista.Id == 0)
             {
                 this.entrevistaRepositorio.Criar(entrevista);
                 return true;
@@ -29,12 +30,7 @@ namespace InscricoesCrescer.Dominio.Entrevista
         public List<EntrevistaEntidade> BuscarTodos()
         {
             return entrevistaRepositorio.BuscarTodos();
-        }
-
-        public List<EntrevistaEntidade> BuscarTodosComMesmoId(long id)
-        {
-            return entrevistaRepositorio.BuscarTodosComMesmoId(id);
-        }
+        }      
 
         public EntrevistaEntidade BuscarPorId(long id)
         {
