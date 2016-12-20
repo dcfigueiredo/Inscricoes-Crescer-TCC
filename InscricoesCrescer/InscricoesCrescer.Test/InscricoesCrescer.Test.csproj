@@ -60,6 +60,7 @@
     <Compile Include="ServicoConfiguracaoTest.cs" />
     <Compile Include="ServicoCriptografiaTest.cs" />
     <Compile Include="ProcessoSeletivoServiceTests.cs" />
+    <Compile Include="EntrevistaServicoTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
