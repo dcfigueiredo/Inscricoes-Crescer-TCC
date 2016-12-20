@@ -36,5 +36,10 @@ namespace InscricoesCrescer.Dominio.Entrevista
         {
             return entrevistaRepositorio.BuscarPorId(id);
         }
+
+        public IList<EntrevistaEntidade> BuscarPorIdDoCandidato(long id)
+        {
+            return entrevistaRepositorio.BuscarPorIdDoCandidato(id);
+        }
     }
 }

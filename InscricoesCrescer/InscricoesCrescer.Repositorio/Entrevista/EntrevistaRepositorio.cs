@@ -44,5 +44,13 @@ namespace InscricoesCrescer.Repositorio.Entrevista
                 return context.Entrevista.FirstOrDefault(_ => _.Id == id);
             }
         }
+
+        public IList<EntrevistaEntidade> BuscarPorIdDoCandidato(long id)
+        {
+            using (var context = new ContextoDeDados())
+            {
+                return context.Entrevista.Where(_ => _.CandidatoEntidadeId == id).ToList();
+            }
+        }
     }
 }
