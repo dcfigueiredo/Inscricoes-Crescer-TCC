@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System;
 using InscricoesCrescer.Dominio.ProcessoSeletivo;
+using InscricoesCrescer.Infraestrutura;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -23,7 +24,7 @@ namespace InscricoesCrescer.Controllers
         // GET: Administrativo
         [Autorizador]
         public ActionResult Index()
-        {            
+        {
             return View();
         }
 
@@ -33,26 +34,43 @@ namespace InscricoesCrescer.Controllers
         }
 
         public PartialViewResult CarregarEntrevistas(int id)
-        {            
+        {
             List<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarTodosComMesmoId(id);
             return PartialView("_Entrevista", entrevistas);
         }
 
-        public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
+        public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model)
+        {
 
             if (ModelState.IsValid)
             {
-                ProcessoSeletivoEntidade processo = montarProcessoSeletivo(model);
-                servicoProcessoSeletivo.Salvar(processo);
 
+                ProcessoSeletivoEntidade processo = montarProcessoSeletivo(model);
+                if(servicoProcessoSeletivo.VerificarProcessoExiste(processo))
+                {
+                    TempData["Data invalida"] = "* Ano ou semestre inválido, ja existe edição cadastrada nesse semestre.";
+                    return PartialView("_ProcessoSeletivo");
+                }
+                servicoProcessoSeletivo.Salvar(processo);
+                ServicoEmail servicoEmail = new ServicoEmail();
+                List<CandidatoEntidade> candidatosInteressados = candidatoServico.BuscarInteressados();
+
+                if (servicoEmail.enviarEmailDeNotificacao(candidatosInteressados, model.DataInicioEntrevistas, model.DataSelecaoFinal))
+                {
+                    foreach (var item in candidatosInteressados)
+                    {
+                        item.Status = "Notificado";
+                        candidatoServico.Salvar(item);
+                    }
+                }
+                
                 TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
-                return PartialView("_CadastroProcessoSeletivo");
+                return PartialView("_ProcessoSeletivo");
             }
             ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
                                     "verifique se todos os dados foram digitados corretamente.");
 
-            return PartialView("_CadastroProcessoSeletivo", model);
-
+            return PartialView("_ProcessoSeletivo", model);
         }
 
         public ActionResult CadastroEntrevista(long id)

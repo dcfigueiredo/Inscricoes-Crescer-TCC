@@ -56,5 +56,10 @@ namespace InscricoesCrescer.Dominio.Candidato
         {
             return candidatoRepositorio.BuscarPorEmail(email);
         }
+
+        public List<CandidatoEntidade> BuscarInteressados()
+        {
+            return candidatoRepositorio.buscarStatusInteresse();
+        }
     }
 }
