@@ -49,14 +49,14 @@ namespace InscricoesCrescer.Controllers
             if (idEntrevista == 0)
             {
                 model = new CadastroEntrevistaModel();
-                model.idEntrevistado = idEntrevistado;
+                model.CandidatoEntidadeId = idEntrevistado;
                 return PartialView("_CadastroEntrevista", model);
             }
             else
             {
                 EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(idEntrevista);
                 model = new CadastroEntrevistaModel(entrevista);
-                model.idEntrevistado = idEntrevistado;
+                model.CandidatoEntidadeId = idEntrevistado;
                 return PartialView("_CadastroEntrevista", model);
             }
         }

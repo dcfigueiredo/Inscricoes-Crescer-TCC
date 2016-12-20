@@ -13,7 +13,15 @@ namespace InscricoesCrescer.Models
 
         public CadastroEntrevistaModel(EntrevistaEntidade entrevista)
         {
-
+            this.Id = entrevista.Id;
+            this.DataEntrevista = entrevista.DataEntrevista;
+            this.Candidato = entrevista.Candidato;
+            this.CandidatoEntidadeId = entrevista.CandidatoEntidadeId;
+            this.ParecerRH = entrevista.ParecerRH;
+            this.ParecerTecnico = entrevista.ParecerTecnico;
+            this.ProvaAC = entrevista.ProvaAC;
+            this.ProvaG36 = entrevista.ProvaG36;
+            this.ProvaTecnica = entrevista.ProvaTecnica;
         }
 
         public long? Id { get; internal set; }
@@ -23,8 +31,6 @@ namespace InscricoesCrescer.Models
         [DisplayName("Data da Entrevista: ")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataEntrevista { get; set; }
-
-        public long idEntrevistado { get; set; }
 
         [Required]
         [DisplayName("Parecer do RH: ")]
