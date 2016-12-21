@@ -101,11 +101,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\imagens\logo-adm.png" />
+    <Content Include="Content\imagens\LOGO-CWI-PADRÃO-HORIZONTAL-CLARO.jpg" />
+    <Content Include="Content\imagens\LOGO-CWI-PADRÃO-HORIZONTAL-CLARO.png" />
     <Content Include="Content\imagens\logo-cwi-small.png" />
     <Content Include="Content\imagens\logo-cwi-software-small.png" />
     <Content Include="Content\imagens\logo-cwi-software-vetor.png" />
-    <Content Include="Content\imagens\logo-cwi-vetor.png" />
-    <Content Include="Content\imagens\logo-cwi.png" />
+    <Content Include="Content\imagens\logo-vertical-claro.png" />
+    <Content Include="Content\imagens\logo-vertical-escuro.png" />
     <Content Include="Content\imagens\mascote-vetor.png" />
     <Content Include="Content\imagens\mascote.jpg" />
     <Content Include="Content\login.css" />

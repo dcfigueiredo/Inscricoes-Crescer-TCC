@@ -23,12 +23,17 @@
     background-color:#F6F6F7;
     position:center;    
 }
+    .tela-login img {
+        margin:20px;
+    }
+    
+
 
 #titulo-login{
     padding-top: 10px;
     margin-bottom:50px;
     font-weight:bold;
-    font-size:50px;
+    font-size:20px;
     color:#F49D33;
 }
 

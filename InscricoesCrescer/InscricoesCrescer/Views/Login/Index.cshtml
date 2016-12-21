@@ -20,14 +20,13 @@
         </div> 
     </div>
         <div class="tela-login">
-             <h1 id="titulo-login">Login Administrativo</h1>
-
+            <img src="~/Content/imagens/logo-adm.png" alt="Logo-Cwi">
             @using (Html.BeginForm("FazerLogin", "Login", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                @Html.TextBox("email", "", new { placeholder = "E-mail", id= "imput-login" });
+                @Html.TextBox("email", "", new { placeholder = "E-mail", id= "imput-login", @class = "form-control" });
                 <br /><br />
-                @Html.Password("senha", "", new { placeholder = "Senha", id = "imput-login" });
+                @Html.Password("senha", "", new { placeholder = "Senha", id = "imput-login", @class = "form-control" });
                 <br /><br />
                 <button type="submit" class="btn btn-default">Entrar</button>
             }
