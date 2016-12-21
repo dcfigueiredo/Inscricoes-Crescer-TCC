@@ -181,10 +181,10 @@
     <Content Include="Views\Administrativo\_ListaCandidatos.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Administrativo\_ProcessoSeletivo.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\SegundaEtapaCadastroCandidato.cshtml" />
     <Content Include="Views\Administrativo\_CadastroEntrevista.cshtml" />
     <Content Include="Views\Administrativo\_Entrevistas.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
