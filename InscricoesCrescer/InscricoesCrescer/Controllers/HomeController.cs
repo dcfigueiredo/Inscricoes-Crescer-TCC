@@ -6,6 +6,8 @@ using InscricoesCrescer.Infraestrutura;
 using System.Collections.Generic;
 using InscricoesCrescer.Infraestrutura.Service;
 using System;
+using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -131,7 +133,17 @@ namespace InscricoesCrescer.Controllers
 
         public ActionResult Salvar(CandidatoModel model)
         {
-            if (ModelState.IsValid)
+            var response = Request["g-recaptcha-response"];
+            string secretKey = servicoConfiguracao.Captcha;
+
+            var client = new WebClient();
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
+            ViewBag.Message = status ? " Sucesso validar reCaptcha" : "Falha ao validar reCaptcha";
+
+
+            if (ModelState.IsValid && !status)
             {
                 ServicoEmail servico = new ServicoEmail();
                 if (servico.ValidaEmail(model.Email))
