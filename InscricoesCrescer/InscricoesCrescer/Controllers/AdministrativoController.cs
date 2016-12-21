@@ -65,6 +65,7 @@ namespace InscricoesCrescer.Controllers
             }
         }
 
+        [HttpPost]
         [Autorizador]
         public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
 
@@ -98,8 +99,8 @@ namespace InscricoesCrescer.Controllers
             return PartialView("_ProcessoSeletivo", model);
         }
 
-        [Autorizador]
         [HttpPost]
+        [Autorizador]       
         public JsonResult SalvarEntrevista(CadastroEntrevistaModel model)
         {
             if (ModelState.IsValid)
@@ -113,12 +114,6 @@ namespace InscricoesCrescer.Controllers
                                     "verifique se todos os dados foram digitados corretamente.");
 
             return Json(JsonRequestBehavior.AllowGet);
-        }
-
-        [Autorizador]
-        public ActionResult Editar(long id)
-        {
-            return View();
         }
 
         [Autorizador]
