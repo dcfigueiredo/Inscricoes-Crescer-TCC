@@ -13,10 +13,10 @@
     <hr />
 
     <div class="cadastro-processo-seletivo">
-        @using (Html.BeginForm("SalvarProcessoSeletivo", "Administrativo", FormMethod.Post, new { @class = "form-horizontal" }))
-        {
+        @using (Html.BeginForm("SalvarProcessoSeletivo", "Administrativo", new AjaxOptions { HttpMethod = "Post", OnSuccess = "cadastradoComSucesso" }))
+            {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+            
             @Html.AntiForgeryToken()
 
             <div class="form-group">

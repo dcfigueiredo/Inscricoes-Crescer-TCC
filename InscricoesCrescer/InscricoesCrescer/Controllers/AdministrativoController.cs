@@ -67,15 +67,22 @@ namespace InscricoesCrescer.Controllers
 
         [HttpPost]
         [Autorizador]
-        public ActionResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
+        public JsonResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
 
             if (ModelState.IsValid)
             {
                 ProcessoSeletivoEntidade processo = MontarProcessoSeletivo(model);
                 if(servicoProcessoSeletivo.VerificarProcessoExiste(processo))
                 {
-                    TempData["Data invalida"] = "* Ano ou semestre inválido, ja existe edição cadastrada nesse semestre.";
-                    return PartialView("_ProcessoSeletivo");
+                    //TempData["Data invalida"] = "* Ano ou semestre inválido, ja existe edição cadastrada nesse semestre.";
+                    //return PartialView("_ProcessoSeletivo");
+
+                    return Json(new
+                    {
+                        Mensagem = "Data inválida!" + "\n" + "Ano ou semestre inválido, ja existe edição cadastrada nesse ano / semestre."
+
+                    }, JsonRequestBehavior.AllowGet);
+
                 }
                 servicoProcessoSeletivo.Salvar(processo);
                 ServicoEmail servicoEmail = new ServicoEmail();
@@ -89,14 +96,21 @@ namespace InscricoesCrescer.Controllers
                         candidatoServico.Salvar(item);
                     }
                 }
-                
-                TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
-                return PartialView("_ProcessoSeletivo");
-            }
-            ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
-                                    "verifique se todos os dados foram digitados corretamente.");
 
-            return PartialView("_ProcessoSeletivo", model);
+                // TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
+                //return PartialView("_ProcessoSeletivo");
+                return Json(new { Mensagem = "Cadastro de processo seletivo efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
+
+            }
+            //ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
+            //                      "verifique se todos os dados foram digitados corretamente.");
+
+            //return PartialView("_ProcessoSeletivo", model);
+            return Json(new
+            {
+                Mensagem = "Não foi possivel completar cadastro! " + "\n" +
+                                         "verifique se todos os dados foram digitados corretamente."
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
