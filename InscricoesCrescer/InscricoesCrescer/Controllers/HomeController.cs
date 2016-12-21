@@ -176,7 +176,14 @@ namespace InscricoesCrescer.Controllers
             candidato.Conclusao = model.Conclusao;
             candidato.Linkedin = model.Linkedin;
             candidato.Senha = servicoCriptografia.Criptografar(model.Senha);
-            candidato.Status = "Aguardando Contato";
+            if(model.ConfirmaSenha == null)
+            {
+                candidato.Status = model.Status;
+            }
+            else
+            {
+                candidato.Status = "Aguardando Contato";
+            }
             return candidato;
         }
 
@@ -206,7 +213,6 @@ namespace InscricoesCrescer.Controllers
             model.Conclusao = candidato.Conclusao;
             model.Linkedin = candidato.Linkedin;
             model.Senha = candidato.Senha;
-            model.ConfirmaSenha = "";
             model.Status = candidato.Status;
             return model;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -44,8 +45,6 @@ namespace InscricoesCrescer.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataNascimento { get; set; }
 
-        public int Idade { get; set; }
-
         [Required]
         [DisplayName("Cidade:")]
         public string Cidade { get; set; }
@@ -60,5 +59,10 @@ namespace InscricoesCrescer.Models
 
         [DisplayName("Confirma Senha:")]
         public string ConfirmaSenha { get; set; }
+
+        public List<string> ListaStatus = new List<String>()
+        { "Entrevista Agendada", "Sem Interesse", "Entrevistado", "Em Análise", "Não Classificado", "Pré-Selecionado" };
+
+        
     }
 }
