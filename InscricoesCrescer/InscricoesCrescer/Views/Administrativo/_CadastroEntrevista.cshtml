@@ -2,7 +2,7 @@
 
 
 
-@using (Ajax.BeginForm("SalvarEntrevista", "Administrativo", new AjaxOptions {HttpMethod = "Post", OnSuccess = "sucessoCadastroEntrevista"}))
+@using (Ajax.BeginForm("SalvarEntrevista", "Administrativo", new AjaxOptions {HttpMethod = "Post", OnSuccess = "sucessoCadastro" }))
 {
     @Html.AntiForgeryToken()
     
