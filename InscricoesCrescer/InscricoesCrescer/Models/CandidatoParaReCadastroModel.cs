@@ -58,7 +58,7 @@ namespace InscricoesCrescer.Models
         [DisplayName("Senha:")]
         public string Senha { get; set; }
 
-        [DisplayName("ConfirmaSenha:")]
+        [DisplayName("Confirma Senha:")]
         public string ConfirmaSenha { get; set; }
     }
 }
