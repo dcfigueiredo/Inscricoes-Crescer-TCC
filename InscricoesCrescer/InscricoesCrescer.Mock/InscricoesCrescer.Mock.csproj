@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Administrador\AdministradorRepositorioMock.cs" />
     <Compile Include="Candidato\CandidatoRepositorioMock.cs" />
+    <Compile Include="Entrevista\EntrevistaRepositorioMock.cs" />
     <Compile Include="ProcessoSeletivo\ProcessoSeletivoRepositorioMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
