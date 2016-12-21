@@ -104,10 +104,8 @@ namespace InscricoesCrescer.Controllers
         {
             if (ModelState.IsValid)
             {
-                EntrevistaEntidade entrevista = ConvertModelParaEntidade(model);
-                
+                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);                
                 servicoEntrevista.Salvar(entrevista);
-
                 TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
                 return Json(JsonRequestBehavior.AllowGet);
             }
@@ -124,33 +122,11 @@ namespace InscricoesCrescer.Controllers
         }
 
         [Autorizador]
-        public ActionResult EditarEntrevista(long id)
-        {
-            EntrevistaEntidade entrevista = servicoEntrevista.BuscarPorId(id);
-            CadastroEntrevistaModel model = ConvertEntidadeParaModel(entrevista);
-            return View("_CadastroEntrevista", model);
-        }
-
-        [Autorizador]
         public PartialViewResult CarregarListaDeCandidatos(int pagina, string filtro)
         {
             IList<CandidatoEntidade> candidatos = candidatoServico.BuscarCandidatos(pagina, filtro);
             ListaCandidatosViewModel model = CarregarCandidatosNaModelDeListagem(candidatos, pagina);
             return PartialView("_ListaCandidatos", model);
-        }
-
-        private CadastroEntrevistaModel ConvertEntidadeParaModel(EntrevistaEntidade entrevista)
-        {
-            CadastroEntrevistaModel model = new CadastroEntrevistaModel();
-            model.Id = entrevista.Id;
-            model.DataEntrevista = entrevista.DataEntrevista;
-            model.ParecerRH = entrevista.ParecerRH;
-            model.ParecerTecnico = entrevista.ParecerTecnico;
-            model.ProvaG36 = entrevista.ProvaG36;
-            model.ProvaAC = entrevista.ProvaAC;
-            model.ProvaTecnica = entrevista.ProvaTecnica;
-            model.CandidatoEntidadeId = entrevista.CandidatoEntidadeId;
-            return model;
         }
 
         private ProcessoSeletivoEntidade MontarProcessoSeletivo(ProcessoSeletivoViewModel model)
@@ -166,7 +142,7 @@ namespace InscricoesCrescer.Controllers
             return processoSeletivo;
         }
 
-        private EntrevistaEntidade ConvertModelParaEntidade(CadastroEntrevistaModel model)
+        private EntrevistaEntidade ConverterModelParaEntidade(CadastroEntrevistaModel model)
         {
             EntrevistaEntidade entrevista = new EntrevistaEntidade();
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(model.CandidatoEntidadeId);
