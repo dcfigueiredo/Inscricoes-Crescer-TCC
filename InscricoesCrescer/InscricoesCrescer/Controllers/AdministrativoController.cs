@@ -119,7 +119,7 @@ namespace InscricoesCrescer.Controllers
         {
             if (ModelState.IsValid)
             {
-                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);                
+                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);                                
                 servicoEntrevista.Salvar(entrevista);
                 //TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
                 return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
@@ -157,6 +157,7 @@ namespace InscricoesCrescer.Controllers
         {
             EntrevistaEntidade entrevista = new EntrevistaEntidade();
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(model.CandidatoEntidadeId);
+            entrevista.Id = model.Id;
             entrevista.EmailAdministrador = ServicoDeAutenticacao.AdministradorLogado.Email;
             entrevista.DataEntrevista = model.DataEntrevista;
             entrevista.ParecerRH = model.ParecerRH;
