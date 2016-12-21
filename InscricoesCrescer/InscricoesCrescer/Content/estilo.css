@@ -88,9 +88,19 @@ body {
 }
 
 
+footer{
+    background-color:rgb(40,43,50);
+    height:50px;
+    color: #fff;
+    text-align:right;
+    margin: 0 auto;
+    padding: 15px;
+}
+
 
 .g-recaptcha{
   margin: 20px;
+  margin-left: 25%;
 }
 
 /*barra lateral menu inicial*/
@@ -106,11 +116,10 @@ body, html {
     width: 100%;
     left: 0;
 }
-
-.row {
+.container-cadastro{
     position: relative;
-    height: 100%;
-    width: 70%;
+    height: 70%;
+    width: 87%;
     left: 0;
 }
  
