@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System;
 using InscricoesCrescer.Dominio.ProcessoSeletivo;
 using InscricoesCrescer.Infraestrutura;
+using InscricoesCrescer.Infraestrutura.Service;
 
 namespace InscricoesCrescer.Controllers
 {
@@ -19,7 +20,7 @@ namespace InscricoesCrescer.Controllers
         private ServicoConfiguracao servicoConfiguracao = ServicoDeDependencia.MontarServicoConfiguracao();
         private EntrevistaServico servicoEntrevista = ServicoDeDependencia.MontarEntrevistaServico();
         private ProcessoSeletivoServico servicoProcessoSeletivo = ServicoDeDependencia.MontarProcessoSeletivoServico();
-        
+        private ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
 
         // GET: Administrativo
         [Autorizador]
@@ -37,7 +38,7 @@ namespace InscricoesCrescer.Controllers
 
         [Autorizador]
         public PartialViewResult CarregarEntrevistas(long id)
-        {            
+        {
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(id);
             IList<EntrevistaEntidade> entrevistas = servicoEntrevista.BuscarPorIdDoCandidato(id);
             candidato.Entrevistas = entrevistas;
@@ -53,7 +54,7 @@ namespace InscricoesCrescer.Controllers
             if (idEntrevista == 0)
             {
                 model = new CadastroEntrevistaModel();
-                model.CandidatoEntidadeId = idEntrevistado;            
+                model.CandidatoEntidadeId = idEntrevistado;
                 return PartialView("_CadastroEntrevista", model);
             }
             else
@@ -67,12 +68,13 @@ namespace InscricoesCrescer.Controllers
 
         [HttpPost]
         [Autorizador]
-        public JsonResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model) {
+        public JsonResult SalvarProcessoSeletivo(ProcessoSeletivoViewModel model)
+        {
 
             if (ModelState.IsValid)
             {
                 ProcessoSeletivoEntidade processo = MontarProcessoSeletivo(model);
-                if(servicoProcessoSeletivo.VerificarProcessoExiste(processo))
+                if (servicoProcessoSeletivo.VerificarProcessoExiste(processo))
                 {
                     //TempData["Data invalida"] = "* Ano ou semestre inválido, ja existe edição cadastrada nesse semestre.";
                     //return PartialView("_ProcessoSeletivo");
@@ -114,21 +116,39 @@ namespace InscricoesCrescer.Controllers
         }
 
         [HttpPost]
-        [Autorizador]       
+        [Autorizador]
+        public JsonResult EditarCandidato(CandidatoParaReCadastroModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Senha == "12345") {
+                    model.Senha = null;
+                }
+                CandidatoEntidade candidato = ConverterCandidatoSegundaEtapa(model);
+                candidatoServico.Salvar(candidato);
+                return Json(new { Mensagem = "Edição efetuada com sucesso." }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new
+            {
+                Mensagem = "Não foi possivel completar a edição! " + "\n" +
+                                         "verifique se todos os dados foram digitados corretamente."
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [Autorizador]
         public JsonResult SalvarEntrevista(CadastroEntrevistaModel model)
         {
             if (ModelState.IsValid)
             {
-                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);                                
+                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);
                 servicoEntrevista.Salvar(entrevista);
-                //TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
                 return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
             }
-            //ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
-            //                        "verifique se todos os dados foram digitados corretamente.");
-
-            return Json(new { Mensagem = "Não foi possivel completar cadastro! " + "\n" +
-                                         "verifique se todos os dados foram digitados corretamente."
+            return Json(new
+            {
+                Mensagem = "Não foi possivel completar cadastro! " + "\n" +
+                             "verifique se todos os dados foram digitados corretamente."
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -179,6 +199,32 @@ namespace InscricoesCrescer.Controllers
             }
             model.QuantidadeDeItensPorPagina = servicoConfiguracao.QuantidadeDeCandidatosPorPagina;
             return model;
+        }
+
+        private CandidatoEntidade ConverterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model)
+        {
+            CandidatoEntidade candidato = new CandidatoEntidade();
+            candidato.Id = model.Id;
+            ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
+            candidato.Nome = model.Nome;
+            candidato.Email = model.Email;
+            candidato.Telefone = model.Telefone;
+            candidato.DataNascimento = model.DataNascimento;
+            candidato.Cidade = model.Cidade;
+            candidato.Curso = model.Curso;
+            candidato.Instituicao = model.Instituicao;
+            candidato.Conclusao = model.Conclusao;
+            candidato.Linkedin = model.Linkedin;
+            candidato.Senha = servicoCriptografia.Criptografar(model.Senha);
+            if (model.ConfirmaSenha == null)
+            {
+                candidato.Status = model.Status;
+            }
+            else
+            {
+                candidato.Status = "Aguardando Contato";
+            }
+            return candidato;
         }
     }
 }

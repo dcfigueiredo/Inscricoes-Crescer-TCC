@@ -26,10 +26,10 @@ namespace InscricoesCrescer.Controllers
         {
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(Convert.ToInt64(id));
             CandidatoParaReCadastroModel model = ConverteCandidatoParaModel(candidato);
-            return PartialView("SegundaEtapaCadastroCandidato", model);
+            return PartialView("_EditarCandidato", model);
         }
 
-        public ActionResult SalvarCandidatoEditado(CandidatoParaReCadastroModel model)
+        public JsonResult SalvarCandidatoEditado(CandidatoParaReCadastroModel model)
         {
             ServicoEmail servico = new ServicoEmail();
             if (servico.ValidaEmail(model.Email))
@@ -37,14 +37,13 @@ namespace InscricoesCrescer.Controllers
                 CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
                 candidato = ConverterCandidatoSegundaEtapa(model);
                 candidatoServico.Salvar(candidato);
-
-                TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
-                return RedirectToAction("Index", "Administrativo");
+                //TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso! *";
+                return Json(new { Mensagem = "Edição realizada com sucesso!" }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                @TempData["cadastradoInvalido"] = "E-mail invalido!";
-                return View("SegundaEtapaCadastroCandidato", model);
+                //@TempData["cadastradoInvalido"] = "E-mail invalido!";
+                return Json(new { Mensagem = "E-mail invalido."}, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -198,6 +197,7 @@ namespace InscricoesCrescer.Controllers
             candidato.Instituicao = model.Instituicao;
             candidato.Conclusao = model.Conclusao;
             candidato.Status = "Inicial";
+            candidato.Senha = "12345";
             return candidato;
         }
 
@@ -217,31 +217,6 @@ namespace InscricoesCrescer.Controllers
             model.Senha = candidato.Senha;
             model.Status = candidato.Status;
             return model;
-        }
-        /*
-         * //http://www.dotnetawesome.com/2015/12/google-new-recaptcha-using-aspnet-mvc.html
-        [HttpPost]
-        public ActionResult FormSubmit()
-        {
-            //Validate Google recaptcha here
-            var response = Request["g-recaptcha-response"];
-            string secretKey = "Your secret here";
-            var client = new WebClient();
-            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
-            var obj = JObject.Parse(result);
-            var status = (bool)obj.SelectToken("success");
-            ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
-
-            //When you will post form for save data, you should check both the model validation and google recaptcha validation
-            //EX.
-            /* if (ModelState.IsValid && status)
-            {
-
-            }
-
-            //Here I am returning to Index page for demo perpose, you can use your view here
-            return View("Index");
-        }*/
-
+        }        
     }
 }
