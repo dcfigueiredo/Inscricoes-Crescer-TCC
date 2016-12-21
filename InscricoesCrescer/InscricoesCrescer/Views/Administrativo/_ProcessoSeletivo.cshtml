@@ -1,19 +1,15 @@
 ﻿@model InscricoesCrescer.Models.ProcessoSeletivoViewModel
 @using InscricoesCrescer.Models
 
-<div style="color: green;">
-    @TempData["cadastradoComSucesso"]
-</div>
-<div style="color: red;">
-    @TempData["Data invalida"]
-</div>
 
 <div class="form-horizontal">
     <h2>Abertura de Processo Seletivo</h2>
     <hr />
+    <div id="mensagem" class="alert alert-info" hidden>
+    </div>
 
     <div class="cadastro-processo-seletivo">
-        @using (Html.BeginForm("SalvarProcessoSeletivo", "Administrativo", new AjaxOptions { HttpMethod = "Post", OnSuccess = "cadastradoComSucesso" }))
+        @using (Ajax.BeginForm("SalvarProcessoSeletivo", "Administrativo", new AjaxOptions { HttpMethod = "Post", OnSuccess = "sucessoCadastro" }))
             {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             
