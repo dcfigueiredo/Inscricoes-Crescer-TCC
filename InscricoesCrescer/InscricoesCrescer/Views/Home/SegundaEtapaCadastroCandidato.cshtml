@@ -25,10 +25,9 @@
 
             @Html.HiddenFor(model => model.Id)
 
-            @if (Session != null)
+            @if (Session["USUARIO_LOGADO_CHAVE"] != null)
             {
                 @Html.HiddenFor(model => model.Senha)
-
                 @Html.HiddenFor(model => model.ConfirmaSenha)
             }
 
@@ -110,7 +109,8 @@
                     @Html.ValidationMessageFor(model => model.Linkedin, "", new { @class = "text-danger" })
                 </div>
             </div>
-            @if (Session == null)
+
+            @if (Session["USUARIO_LOGADO_CHAVE"] == null)
             {
                 <div class="form-group">
                     @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -123,7 +123,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.Password("Confirmar Senha", "", new { placeholder = "confirmação senha", id = "confirmaSenha", @class = "form-control" })
+                        @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control", placeholder = "confirmação senha", id = "ConfirmaSenha", type = "Password" } })
                         @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
                     </div>
                 </div>
