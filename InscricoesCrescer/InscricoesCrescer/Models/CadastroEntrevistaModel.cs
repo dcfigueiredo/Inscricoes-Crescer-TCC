@@ -23,7 +23,7 @@ namespace InscricoesCrescer.Models
             this.ProvaTecnica = entrevista.ProvaTecnica;
         }
 
-        public long? Id { get; internal set; }
+        public long? Id { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
