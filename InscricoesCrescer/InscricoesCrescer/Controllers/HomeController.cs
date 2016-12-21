@@ -13,18 +13,20 @@ namespace InscricoesCrescer.Controllers
     {
 
         CandidatoServico candidatoServico = ServicoDeDependencia.MontarCandidatoServico();
+        ServicoConfiguracao servicoConfiguracao = new ServicoConfiguracao();
 
         public ActionResult Index()
         {
+            TempData["captcha"] = servicoConfiguracao.Captcha;
             return View();
         }
 
         //------------------------------- Acessado pelo Administrativo --------------------------
-        public ActionResult EditarCandidato(string id)
+        public PartialViewResult EditarCandidato(string id)
         {
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(Convert.ToInt64(id));
             CandidatoParaReCadastroModel model = ConverteCandidatoParaModel(candidato);
-            return View("SegundaEtapaCadastroCandidato", model);
+            return PartialView("SegundaEtapaCadastroCandidato", model);
         }
 
         public ActionResult SalvarCandidatoEditado(CandidatoParaReCadastroModel model)

@@ -66,6 +66,23 @@ function ouvirBotoesPaginacaoEFiltro() {
         var id = $(this).attr('id');
         carregarEntrevistas(id);
     });
+    $('.editar').click(function (event) {
+        event.preventDefault();
+        var id = $(this).attr('id');
+        carregarRecadastro(id);
+    });
+}
+
+function carregarRecadastro(id) {
+    $.ajax({
+        url: 'Home/EditarCandidato',
+        type: 'GET',
+        data: { id: id }
+    })
+      .then(function (partialView) {
+          $('#container-partial-views').html(partialView);
+          ouvirBotoesEntrevista();
+      });
 }
 
 function carregarEntrevistas(id) {
@@ -100,6 +117,8 @@ function carregarCadastroEntrevista(idEntrevista, idEntrevistado) {
     })
     .then(function (partialView) {
         $('#container-partial-views').html(partialView);
+        //$("#date-pick").datepicker();
+        //$("#date-pick").datepicker("setDate", new Date());
     });
 }
 
