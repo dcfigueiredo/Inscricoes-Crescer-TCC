@@ -35,7 +35,7 @@ namespace InscricoesCrescer.Controllers
             if (servico.ValidaEmail(model.Email))
             {
                 CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
-                candidato = converterCandidatoSegundaEtapa(model);
+                candidato = ConverterCandidatoSegundaEtapa(model);
                 candidatoServico.Salvar(candidato);
 
                 TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso!";
@@ -73,7 +73,7 @@ namespace InscricoesCrescer.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Session == null)
+                if (Session["USUARIO_LOGADO_CHAVE"] == null)
                 {
                     if (model.Senha.Equals(model.ConfirmaSenha))
                     {
@@ -83,7 +83,7 @@ namespace InscricoesCrescer.Controllers
                             CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
                             if (!candidato.Status.Equals("Aguardando Contato"))
                             {
-                                candidato = converterCandidatoSegundaEtapa(model);
+                                candidato = ConverterCandidatoSegundaEtapa(model);
                                 candidatoServico.Salvar(candidato);
                                 TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso, aguarde próximo contato.";
                                 return View("ConfirmaCadastro");
@@ -142,7 +142,7 @@ namespace InscricoesCrescer.Controllers
                         TempData["cadastradoJaExiste"] = "* Você já possui cadastro, Aguarde contato.";
                         return View("Index");
                     }
-                    candidato = converterCandidato(model);
+                    candidato = ConverterCandidato(model);
                     candidatoServico.Salvar(candidato);
                     if (servico.enviarEmailConfirmacao(model.Email))
                     {
@@ -163,7 +163,7 @@ namespace InscricoesCrescer.Controllers
 
         
         // -------------------------------- métodos Privados -----------------------------------
-        private CandidatoEntidade converterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model)
+        private CandidatoEntidade ConverterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model)
         {
             CandidatoEntidade candidato = new CandidatoEntidade();
             ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
@@ -189,7 +189,7 @@ namespace InscricoesCrescer.Controllers
             return candidato;
         }
 
-        private CandidatoEntidade converterCandidato(CandidatoModel model)
+        private CandidatoEntidade ConverterCandidato(CandidatoModel model)
         {
             CandidatoEntidade candidato = new CandidatoEntidade();
             candidato.Nome = model.Nome;

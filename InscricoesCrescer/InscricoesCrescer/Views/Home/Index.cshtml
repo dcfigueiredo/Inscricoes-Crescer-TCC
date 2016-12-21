@@ -10,8 +10,8 @@
 <script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>
 
 <div class="menu">
-    <img src="~/Content/imagens/logo-cwi.png" alt="Logo-Cwi">
-</div>
+   <img src="~/Content/imagens/logo-vertical-claro.png" alt="Logo-Cwi">
+ </div>
 
 <div class="container">
     <!-- <div class="row">-->
@@ -34,15 +34,16 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, new { @class = "col-sm-2 control-label" })
-            <div class="col-sm-5">
-                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", required = "" })
-                @Html.ValidationMessageFor(model => model.Nome)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", required = "" })
+                    @Html.ValidationMessageFor(model => model.Nome)
+                </div>
             </div>
         </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Email, new { @class = "col-sm-2 control-label" })
+                @Html.LabelFor(model => model.Email, new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-5">
                     @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email", required = "" })
                     @Html.ValidationMessageFor(model => model.Email)
@@ -50,7 +51,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Instituicao, new { @class = "col-sm-2 control-label" })
+                @Html.LabelFor(model => model.Instituicao, new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-5">
                     @Html.TextBoxFor(model => model.Instituicao, new { @class = "form-control", required = "" })
                     @Html.ValidationMessageFor(model => model.Instituicao)
@@ -58,7 +59,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Curso, new { @class = "col-sm-2 control-label" })
+                @Html.LabelFor(model => model.Curso, new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-5">
                     @Html.TextBoxFor(model => model.Curso, new { @class = "form-control", required = "" })
                     @Html.ValidationMessageFor(model => model.Curso)
@@ -66,7 +67,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Conclusao, new { @class = "col-sm-2 control-label" })
+                @Html.LabelFor(model => model.Conclusao, new { @class = "col-sm-3 control-label" })
                 <div class="col-sm-5">
                     @Html.TextBoxFor(model => model.Conclusao, new { @class = "form-control datefield", type = "date", required = "" })
                     @Html.ValidationMessageFor(model => model.Conclusao)

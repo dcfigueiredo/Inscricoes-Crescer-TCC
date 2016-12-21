@@ -4,6 +4,7 @@ body {
 
 .cadastro {
     color: #F49D33;
+    text-align: center;
 }
 
 .titulo-cadastro h2{
@@ -11,7 +12,7 @@ body {
 }
 
 .form-control{
-    width: 70%;
+    width: 95%;
 }
 
 .form-horizontal{
@@ -64,12 +65,13 @@ body {
 
 .menu img{
   height: 100px;
-  width: 120px;
+  width: 215px;
   margin: 10px;
+  margin-left: 35px;
 }
 
 .logotipo img{
-  margin-left: 50px;
+  margin-left: 18px;
 }
 
 .mascote img{
@@ -104,6 +106,13 @@ body, html {
     width: 100%;
     left: 0;
 }
+
+.row {
+    position: relative;
+    height: 100%;
+    width: 70%;
+    left: 0;
+}
  
 .main-content.open-sidebar {
     left: 240px;
@@ -126,6 +135,10 @@ body, html {
 .change-sidebar{
   left: 0px !important;
 }
+#sidebar img {
+    width:200px;
+}
+
 #sidebar ul {
     margin: 0;
     padding: 0;
