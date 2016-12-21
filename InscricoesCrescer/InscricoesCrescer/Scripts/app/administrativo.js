@@ -103,7 +103,7 @@ function carregarCadastroEntrevista(idEntrevista, idEntrevistado) {
     });
 }
 
-function sucessoCadastroEntrevista(resposta) {
+function sucessoCadastro(resposta) {
     $('#mensagem').html(resposta.Mensagem);
     $('#mensagem').show();
 }
