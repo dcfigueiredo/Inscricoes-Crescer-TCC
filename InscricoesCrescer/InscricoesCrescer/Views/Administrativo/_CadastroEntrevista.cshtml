@@ -1,11 +1,15 @@
 ﻿@model InscricoesCrescer.Models.CadastroEntrevistaModel
 
-@using (Ajax.BeginForm("SalvarEntrevista", "Administrativo", new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "container-partial-views" }))
+
+
+@using (Ajax.BeginForm("SalvarEntrevista", "Administrativo", new AjaxOptions {HttpMethod = "Post", OnSuccess = "sucessoCadastroEntrevista"}))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h2>Cadastro Entrevista</h2>
+        <div id="mensagem" class="alert alert-info" hidden>
+        </div>
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -14,41 +18,41 @@
             @Html.HiddenFor(m => m.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataEntrevista, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DataEntrevista, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataEntrevista, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataEntrevista, new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.DataEntrevista, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ParecerRH, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ParecerRH, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ParecerRH, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.ParecerRH, new { @class = "form-control", rows="4", maxlength="4000" } )
                 @Html.ValidationMessageFor(model => model.ParecerRH, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ParecerTecnico, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ParecerTecnico, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ParecerTecnico, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.ParecerTecnico, new { @class = "form-control", rows = "4", maxlength = "4000" } )
                 @Html.ValidationMessageFor(model => model.ParecerTecnico, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProvaG36, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProvaG36, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProvaG36, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.ProvaG36, new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.ProvaG36, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProvaAC, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProvaAC, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProvaAC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.ProvaAC, new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.ProvaAC, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -56,7 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProvaTecnica, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProvaTecnica, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.ProvaTecnica, new { @class = "form-control", type = "number", min = "0", max = "10", step = "0.1"} )
                 @Html.ValidationMessageFor(model => model.ProvaTecnica, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -68,7 +72,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Voltar", "Index")
-</div>

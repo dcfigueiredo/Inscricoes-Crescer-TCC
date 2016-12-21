@@ -102,3 +102,8 @@ function carregarCadastroEntrevista(idEntrevista, idEntrevistado) {
         $('#container-partial-views').html(partialView);
     });
 }
+
+function sucessoCadastroEntrevista(resposta) {
+    $('#mensagem').html(resposta.Mensagem);
+    $('#mensagem').show();
+}
