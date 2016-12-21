@@ -19,5 +19,13 @@ namespace InscricoesCrescer.Servico
                 return qtd;
             }
         }
+
+        public string Captcha {
+            get
+            {
+                string captcha = ConfigurationManager.AppSettings["CaptchaKey"];
+                return captcha;
+            }
+        }
     }
 }

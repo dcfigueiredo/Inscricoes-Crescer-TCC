@@ -120,9 +120,10 @@ body, html {
  
 .main-content.open-sidebar {
     left: 240px;
+    width: 80%;
 }
 #sidebar {
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     left: -240px;
     background-color:rgb(40,43,50);
