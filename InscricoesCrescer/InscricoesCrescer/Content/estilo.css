@@ -38,7 +38,53 @@ body {
 }
 
 .tela-confirmacao{
-    background-color: silver;
+    background-color: white;
+}
+
+.titulo-confirmacao{
+    margin-left: 20%;
+}
+
+.msg-servidor{
+    margin-top: 50px;
+    margin-left: 30%;
+    margin-right: 25%;
+}
+
+.link-site-cwi{
+    margin-left: 20%;
+}
+
+.link-site-cwi a{
+    text-decoration: none;
+    color: orange;
+}
+
+.link-site-cwi a:hover{
+    text-decoration: none;
+    color: silver;
+}
+
+.div-mensagem{
+    margin-top:30px;
+    margin-left:25%;
+    width:650px;
+    height:300px;
+    border:solid;
+    border-width:1px;
+    border-color:lightgray; 
+    border-radius:5px;
+    background-color: white;
+    -moz-box-shadow: 6px 7px 26px #302f30;
+    -webkit-box-shadow: 6px 7px 26px #302f30;
+    box-shadow: 6px 7px 26px #302f30;
+
+    font-family:Arial;
+
+    /*background-color: white;
+    border-radius: 10px;
+    width: 500px;
+    height: 300px;*/
 }
 
 #lista-status select{

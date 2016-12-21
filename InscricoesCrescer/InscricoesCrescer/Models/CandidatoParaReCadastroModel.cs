@@ -61,8 +61,6 @@ namespace InscricoesCrescer.Models
         public string ConfirmaSenha { get; set; }
 
         public List<string> ListaStatus = new List<String>()
-        { "Entrevista Agendada", "Sem Interesse", "Entrevistado", "Em Análise", "Não Classificado", "Pré-Selecionado" };
-
-        
+        { "Entrevista Agendada", "Sem Interesse", "Entrevistado", "Em Análise", "Não Classificado", "Pré-Selecionado" };        
     }
 }

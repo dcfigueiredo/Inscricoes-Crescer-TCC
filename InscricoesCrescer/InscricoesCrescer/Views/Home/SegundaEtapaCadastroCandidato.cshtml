@@ -15,6 +15,8 @@
 </head>
 <body>
     <div class="titulo-cadastro"><h2>Segunda Etapa de Cadastro</h2></div>
+    <div id="mensagem" class="alert alert-info" hidden>
+    </div>
     <hr />
 
     @using (Html.BeginForm("SalvarSegundoCadastro", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
