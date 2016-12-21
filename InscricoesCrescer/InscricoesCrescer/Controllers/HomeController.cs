@@ -123,9 +123,8 @@ namespace InscricoesCrescer.Controllers
                     return View();
                 }
             }
-            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " +
-                                             "Certifique-se que seu email esta correto.";
-            return View("Index");
+            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail.";
+            return View();
 
         }
 
