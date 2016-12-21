@@ -105,15 +105,17 @@ namespace InscricoesCrescer.Controllers
         {
             if (ModelState.IsValid)
             {
-                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);                
+                EntrevistaEntidade entrevista = ConverterModelParaEntidade(model);                                
                 servicoEntrevista.Salvar(entrevista);
-                TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
-                return Json(JsonRequestBehavior.AllowGet);
+                //TempData["cadastradoComSucesso"] = "* cadastrado com sucesso!";
+                return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
             }
-            ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
-                                    "verifique se todos os dados foram digitados corretamente.");
+            //ModelState.AddModelError("", "Não foi possivel completar cadastro! " + "\n" +
+            //                        "verifique se todos os dados foram digitados corretamente.");
 
-            return Json(JsonRequestBehavior.AllowGet);
+            return Json(new { Mensagem = "Não foi possivel completar cadastro! " + "\n" +
+                                         "verifique se todos os dados foram digitados corretamente."
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [Autorizador]
@@ -141,6 +143,7 @@ namespace InscricoesCrescer.Controllers
         {
             EntrevistaEntidade entrevista = new EntrevistaEntidade();
             CandidatoEntidade candidato = candidatoServico.BuscarCandidatoPorID(model.CandidatoEntidadeId);
+            entrevista.Id = model.Id;
             entrevista.EmailAdministrador = ServicoDeAutenticacao.AdministradorLogado.Email;
             entrevista.DataEntrevista = model.DataEntrevista;
             entrevista.ParecerRH = model.ParecerRH;
