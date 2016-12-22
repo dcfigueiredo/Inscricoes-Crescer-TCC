@@ -17,6 +17,7 @@ namespace InscricoesCrescer.Controllers
 
         public ActionResult Logout()
         {
+            Session.Abandon();
             return View("Login");
         }
 

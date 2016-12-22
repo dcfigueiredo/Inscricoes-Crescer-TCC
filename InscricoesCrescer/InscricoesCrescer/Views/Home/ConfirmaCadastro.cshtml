@@ -17,7 +17,7 @@
         <img src="~/Content/imagens/logo-cwi.png" alt="Logo-Cwi">
     </div>
 
-    <div class="div-mensagem"> 
+    <div class="div-mensagem">
         <h1 class="titulo-confirmacao"> Confirmação De E-mail </h1>
 
         <div class="mascote">
@@ -30,9 +30,12 @@
         <h2 class="msg-servidor" style="color:red">
             @TempData["cadastradoInvalido"]
         </h2>
+        <h2 class="subMensagem" style="color:green">
+            @TempData["subMensagem"]
+        </h2>
 
         <h2 class="link-site-cwi"><a href="https://cwi.com.br/Empresa/Crescer"> Visite nosso site e saiba mais </a></h2>
 
-</div>
+    </div>
 </body>
 </html>

@@ -7,19 +7,23 @@ body {
     text-align: center;
 }
 
-.titulo-cadastro h2{
+.titulo-cadastro h2 {
     text-align: center;
 }
 
-.form-control{
+.form-control {
     width: 95%;
 }
 
-.form-horizontal{
+.form-horizontal {
     padding-left: 2%;
 }
 
-.titulo-listagem-candidatos h1{
+.msg-pagina-inicial {
+    margin-left: 25%;
+}
+
+.titulo-listagem-candidatos h1 {
     padding-left: 30%;
     margin-bottom: 10px;
 }
@@ -32,62 +36,65 @@ body {
     width: 400px;
     height: 350px;
     background-color: #F6F6F7;
-    background-size:cover;
+    background-size: cover;
     border-radius: 5px;
     padding-top: 20px;
 }
 
-.tela-confirmacao{
+.tela-confirmacao {
     background-color: white;
 }
 
-.titulo-confirmacao{
+.titulo-confirmacao {
     margin-left: 20%;
 }
 
-.msg-servidor{
+.msg-servidor {
     margin-top: 50px;
     margin-left: 30%;
     margin-right: 25%;
 }
 
-.link-site-cwi{
+.subMensagem {
+    margin-left: 30%;
+    margin-right: 25%;
+}
+
+.link-site-cwi {
     margin-left: 20%;
 }
 
-.link-site-cwi a{
-    text-decoration: none;
-    color: orange;
-}
+    .link-site-cwi a {
+        text-decoration: none;
+        color: orange;
+    }
 
-.link-site-cwi a:hover{
-    text-decoration: none;
-    color: silver;
-}
+        .link-site-cwi a:hover {
+            text-decoration: none;
+            color: silver;
+        }
 
-.div-mensagem{
-    margin-top:30px;
-    margin-left:25%;
-    width:650px;
-    height:300px;
-    border:solid;
-    border-width:1px;
-    border-color:lightgray; 
-    border-radius:5px;
+.div-mensagem {
+    margin-top: 30px;
+    margin-left: 25%;
+    width: 650px;
+    height: 350px;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 5px;
     background-color: white;
     -moz-box-shadow: 6px 7px 26px #302f30;
     -webkit-box-shadow: 6px 7px 26px #302f30;
     box-shadow: 6px 7px 26px #302f30;
-
-    font-family:Arial;
-
+    font-family: Arial;
     /*background-color: white;
     border-radius: 10px;
     width: 500px;
     height: 300px;*/
 }
 
-#lista-status select{
+#lista-status select {
     width: 200px;
     height: 34px;
     border-radius: 10px;
@@ -96,40 +103,40 @@ body {
     color: blue;
 }
 
-#lista-status{
+#lista-status {
     margin-left: 16%;
 }
 
-#sidebar a{
+#sidebar a {
     padding: 20px;
 }
 
-.navbar-form{
+.navbar-form {
     padding-bottom: 15px;
 }
 
-.menu{
+.menu {
     background-color: rgb(40,43,50);
     height: 130px;
 }
 
-.menu img{
-  height: 100px;
-  width: 215px;
-  margin: 10px;
-  margin-left: 35px;
+    .menu img {
+        height: 100px;
+        width: 215px;
+        margin: 10px;
+        margin-left: 35px;
+    }
+
+.logotipo img {
+    margin-left: 18px;
 }
 
-.logotipo img{
-  margin-left: 18px;
+.mascote img {
+    width: 150px;
+    height: 280px;
 }
 
-.mascote img{
-    width:150px;
-    height:280px;
-}
-
-.mascote{
+.mascote {
     width: 140px;
     float: right;
     position: absolute;
@@ -138,19 +145,19 @@ body {
 }
 
 
-footer{
-    background-color:rgb(40,43,50);
-    height:50px;
+footer {
+    background-color: rgb(40,43,50);
+    height: 50px;
     color: #fff;
-    text-align:right;
+    text-align: right;
     margin: 0 auto;
     padding: 15px;
 }
 
 
-.g-recaptcha{
-  margin: 20px;
-  margin-left: 25%;
+.g-recaptcha {
+    margin: 20px;
+    margin-left: 25%;
 }
 
 /*barra lateral menu inicial*/
@@ -160,42 +167,47 @@ body, html {
     font-family: helvetica;
     font-weight: 100;
 }
+
 .container {
     position: relative;
     height: 100%;
     width: 100%;
     left: 0;
 }
-.container-cadastro{
+
+.container-cadastro {
     position: relative;
     height: 70%;
     width: 87%;
     left: 0;
 }
- 
+
 .main-content.open-sidebar {
     left: 240px;
     width: 80%;
 }
+
 #sidebar {
     position: absolute;
     z-index: 1000;
     left: -240px;
-    background-color:rgb(40,43,50);
+    background-color: rgb(40,43,50);
     width: 240px;
     height: 100%;
     box-sizing: border-box;
-      -webkit-transition:  left 0.4s ease-in-out;
-    -moz-transition:  left 0.4s ease-in-out;
-    -ms-transition:  left 0.4s ease-in-out;
-    -o-transition:  left 0.4s ease-in-out;
-    transition:  left 0.4s ease-in-out;
+    -webkit-transition: left 0.4s ease-in-out;
+    -moz-transition: left 0.4s ease-in-out;
+    -ms-transition: left 0.4s ease-in-out;
+    -o-transition: left 0.4s ease-in-out;
+    transition: left 0.4s ease-in-out;
 }
-.change-sidebar{
-  left: 0px !important;
+
+.change-sidebar {
+    left: 0px !important;
 }
+
 #sidebar img {
-    width:200px;
+    width: 200px;
 }
 
 #sidebar ul {
@@ -203,26 +215,30 @@ body, html {
     padding: 0;
     list-style: none;
 }
-#sidebar ul li {
-    margin: 0;
-}
-#sidebar ul li a {
-    padding: 15px 20px;
-    font-size: 16px;
-    font-weight: 100;
-    color: white;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid orange;
-    -webkit-transition:  background 0.3s ease-in-out;
-    -moz-transition:  background 0.3s ease-in-out;
-    -ms-transition:  background 0.3s ease-in-out;
-    -o-transition:  background 0.3s ease-in-out;
-    transition:  background 0.3s ease-in-out;
-}
-#sidebar ul li:hover a {
-    background: orange;
-}
+
+    #sidebar ul li {
+        margin: 0;
+    }
+
+        #sidebar ul li a {
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 100;
+            color: white;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid orange;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            -ms-transition: background 0.3s ease-in-out;
+            -o-transition: background 0.3s ease-in-out;
+            transition: background 0.3s ease-in-out;
+        }
+
+        #sidebar ul li:hover a {
+            background: orange;
+        }
+
 .main-content {
     width: 100%;
     height: 100%;
@@ -230,100 +246,111 @@ body, html {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     position: relative;
-  left: 0;
-      -webkit-transition:  left 0.4s ease-in-out;
-    -moz-transition:  left 0.4s ease-in-out ;
-    -ms-transition:  left 0.4s ease-in-out;
-    -o-transition:  left 0.4s ease-in-out;
-    transition:  left 0.4s ease-in-out;
-}
-.main-content .content{
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-padding-left: 60px;
-width: 100%;
-}
-.main-content .content h1{
-    font-weight: 100;
-}
-.main-content .content p{
-    width: 100%;
-    line-height: 160%;
-}
-.main-content #sidebar-toggle {
-    background: #F4A83D;
-    border-radius: 3px;
-    display: block;
-    position: relative;
-    padding: 10px 7px;
-    float: left;
-}
-.main-content #sidebar-toggle .bar{
-     display: block;
-    width: 18px;
-    margin-bottom: 3px;
-    height: 2px;
-    background-color: #fff;
-    border-radius: 1px;   
-}
-.main-content #sidebar-toggle .bar:last-child{
-     margin-bottom: 0;   
-}
-.large{
-  margin-top: 800px;
+    left: 0;
+    -webkit-transition: left 0.4s ease-in-out;
+    -moz-transition: left 0.4s ease-in-out;
+    -ms-transition: left 0.4s ease-in-out;
+    -o-transition: left 0.4s ease-in-out;
+    transition: left 0.4s ease-in-out;
 }
 
-.espacamento{
-    width:100px;
-    height:100px;
+    .main-content .content {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        padding-left: 60px;
+        width: 100%;
+    }
+
+        .main-content .content h1 {
+            font-weight: 100;
+        }
+
+        .main-content .content p {
+            width: 100%;
+            line-height: 160%;
+        }
+
+    .main-content #sidebar-toggle {
+        background: #F4A83D;
+        border-radius: 3px;
+        display: block;
+        position: relative;
+        padding: 10px 7px;
+        float: left;
+    }
+
+        .main-content #sidebar-toggle .bar {
+            display: block;
+            width: 18px;
+            margin-bottom: 3px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 1px;
+        }
+
+            .main-content #sidebar-toggle .bar:last-child {
+                margin-bottom: 0;
+            }
+
+.large {
+    margin-top: 800px;
+}
+
+.espacamento {
+    width: 100px;
+    height: 100px;
 }
 
 @media only screen and (max-width: 800px) {
-    
+
     /* Force table to not be like tables anymore */
-	#no-more-tables table, 
-	#no-more-tables thead, 
-	#no-more-tables tbody, 
-	#no-more-tables th, 
-	#no-more-tables td, 
-	#no-more-tables tr { 
-		display: block; 
-	}
- 
-	/* Hide table headers (but not display: none;, for accessibility) */
-	#no-more-tables thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
- 
-	#no-more-tables tr { border: 1px solid #ccc; }
- 
-	#no-more-tables td { 
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-		white-space: normal;
-		text-align:left;
-	}
- 
-	#no-more-tables td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-		text-align:left;
-		font-weight: bold;
-	}
- 
-	/*
+    #no-more-tables table,
+    #no-more-tables thead,
+    #no-more-tables tbody,
+    #no-more-tables th,
+    #no-more-tables td,
+    #no-more-tables tr {
+        display: block;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        #no-more-tables thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    #no-more-tables tr {
+        border: 1px solid #ccc;
+    }
+
+    #no-more-tables td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+        #no-more-tables td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /*
 	Label the data
 	*/
-	#no-more-tables td:before { content: attr(data-title); }
+        #no-more-tables td:before {
+            content: attr(data-title);
+        }
 }

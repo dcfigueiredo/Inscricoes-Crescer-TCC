@@ -18,13 +18,14 @@
     </div>
     <h2 class="cadastro">Cadastro do Candidato</h2>
 
-
-    <h3 style="color:green">
-        @TempData["cadastradoComSucesso"]
-    </h3>
-    <h3 style="color:red">
-        @TempData["cadastradoJaExiste"]
-    </h3>
+    <div class="msg-pagina-inicial">
+        <h3 style="color:green">
+            @TempData["cadastradoComSucesso"]
+        </h3>
+        <h3 style="color:red">
+            @TempData["cadastradoJaExiste"]
+        </h3>
+    </div>
 
     @using (Html.BeginForm("Salvar", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
     {

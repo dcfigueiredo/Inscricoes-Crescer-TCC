@@ -65,8 +65,8 @@ namespace InscricoesCrescer.Controllers
                     return View("SegundaEtapaCadastroCandidato", model);
                 }
             }
-            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail, " + "\n" +
-                                             "Certifique-se que seu email esta Cadastrado ou entre em contato conosco.";
+            TempData["cadastradoInvalido"] = "Não foi possivel confirmar seu e-mail";
+            TempData["subMensagem"] = "Certifique-se que seu email esta Cadastrado ou entre em contato conosco.";
             return View("ConfirmaCadastro");
         }
 
@@ -86,7 +86,8 @@ namespace InscricoesCrescer.Controllers
                             {
                                 candidato = ConverterCandidatoSegundaEtapa(model);
                                 candidatoServico.Salvar(candidato);
-                                TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso, aguarde próximo contato.";
+                                TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso";
+                                TempData["subMensagem"] = "aguarde próximo contato.";
                                 return View("ConfirmaCadastro");
                             }
                             @TempData["cadastradoInvalido"] = "Você já possui Cadastro!";
