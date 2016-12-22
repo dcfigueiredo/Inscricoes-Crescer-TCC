@@ -37,7 +37,7 @@ namespace InscricoesCrescer.Controllers
             if (servico.ValidaEmail(model.Email))
             {
                 CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
-                candidato = ConverterCandidatoSegundaEtapa(model);
+                candidato = ConverterCandidatoSegundaEtapa(model, Convert.ToInt64(model.Id));
                 candidatoServico.Salvar(candidato);
                 //TempData["cadastradoComSucesso"] = "* Cadastrado com sucesso! *";
                 return Json(new { Mensagem = "Edição realizada com sucesso!" }, JsonRequestBehavior.AllowGet);
@@ -84,14 +84,15 @@ namespace InscricoesCrescer.Controllers
                             CandidatoEntidade candidato = candidatoServico.BuscarPorEmail(model.Email);
                             if (!candidato.Status.Equals("Aguardando Contato"))
                             {
-                                candidato = ConverterCandidatoSegundaEtapa(model);
+                                candidato = ConverterCandidatoSegundaEtapa(model, Convert.ToInt64(candidato.Id));
                                 candidatoServico.Salvar(candidato);
                                 TempData["cadastradoComSucesso"] = "* Parabéns, você foi cadastrado com sucesso";
                                 TempData["subMensagem"] = "aguarde próximo contato.";
                                 return View("ConfirmaCadastro");
                             }
-                            @TempData["cadastradoInvalido"] = "Você já possui Cadastro!";
-                            return View("SegundaEtapaCadastroCandidato");
+                            TempData["cadastradoInvalido"] = "Você já possui Cadastro!";
+                            TempData["subMensagem"] = "aguarde o próximo contato.";
+                            return View("ConfirmaCadastro");
                         }
                     }
                 }
@@ -174,11 +175,11 @@ namespace InscricoesCrescer.Controllers
 
         
         // -------------------------------- métodos Privados -----------------------------------
-        private CandidatoEntidade ConverterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model)
+        private CandidatoEntidade ConverterCandidatoSegundaEtapa(CandidatoParaReCadastroModel model, long id)
         {
             CandidatoEntidade candidato = new CandidatoEntidade();
             ServicoCriptografia servicoCriptografia = new ServicoCriptografia();
-            candidato.Id = model.Id;
+            candidato.Id = id;
             candidato.Nome = model.Nome;
             candidato.Email = model.Email;
             candidato.Telefone = model.Telefone;
